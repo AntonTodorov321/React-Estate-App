@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "react-bootstrap": "^2.10.4"
   },
   "proxy": "http://localhost:3030"
 }
