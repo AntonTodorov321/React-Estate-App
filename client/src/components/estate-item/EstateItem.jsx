@@ -10,9 +10,10 @@ export default function EstateItem({
         <>
             <h4>{name}</h4>
             <div>Size: {size} sq m</div>
-            <div>Type: {type} {currency === 'Euro' ? '€' : 'lv'}</div>
-            <div>Price: {price}</div>
+            <div>Type: {type}</div>
+            <div>Price: {price}  {currency === 'Euro' ? '€' : 'lv'}</div>
             <div>location: {location}</div>
+            <div><img src="" alt="" /></div>
         </>
     );
 };
