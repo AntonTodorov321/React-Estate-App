@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2em;
+    justify-content:space-between;
+    background-color: rgb(231, 235, 237);
+    padding: 1.5em;
+}
+
+.image{
+    width: 300px;
+    border-radius: 15px;
+    margin-left: 5em;
+}
+
+.content{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 2em;
+}
+
+.important{
+    font-weight: bold;
+    color: rgb(141, 31, 31);
+}

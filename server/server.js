@@ -1344,36 +1344,36 @@
         estates: {
             "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
                 name: "Rent one-bedroom apartment",
-                type: 'one-bedroom',
                 price: 325,
                 currency: "Euro",
                 location: "Sofia, Manastirski Livadi",
                 size: 45,
                 img: "https://www.essexapartmenthomes.com/-/media/Project/EssexPropertyTrust/Sites/EssexApartmentHomes/Blog/2021/2021-01-12-Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up/Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up-1.jpg",
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
-                typeOfBuilding: "тухла"
+                typeOfBuilding: "тухла",
+                contacts: "088 888 8888"
             },
             "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
                 name: "Rent maisonette apartment",
-                type: 'maisonette',
                 price: 970,
                 currency: "Euro",
                 location: "Sofia, Lozenec",
                 size: 210,
                 img: "https://d1hy6t2xeg0mdl.cloudfront.net/image/326244/4454e60113/standard",
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
-                typeOfBuilding: "EПК"
+                typeOfBuilding: "EПК",
+                contacts: "088 888 8888"
             },
             "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
                 name: "Rent two-bedroom apartment",
-                type: 'two-bedroom',
                 price: 900,
                 currency: "lv",
                 location: "Sofia, Iztok",
                 size: 78,
                 img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTooLB8CtqQq5l3A0uksL0S5hTiPkM0tQuKgw&s",
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
-                typeOfBuilding: "панел"
+                typeOfBuilding: "панел",
+                contacts: "088 888 8888"
             }
         }
     };

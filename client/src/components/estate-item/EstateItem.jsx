@@ -1,19 +1,25 @@
+import styles from './EstateItem.module.css';
+
 export default function EstateItem({
     name,
-    type,
     price,
     currency,
     location,
-    size
+    img,
+    description
 }) {
     return (
-        <>
-            <h4>{name}</h4>
-            <div>Size: {size} sq m</div>
-            <div>Type: {type}</div>
-            <div>Price: {price}  {currency === 'Euro' ? '€' : 'lv'}</div>
-            <div>location: {location}</div>
-            <div><img src="" alt="" /></div>
-        </>
+        <div className={styles.content}>
+            <div className={styles.container}>
+                <div>
+                    <h4 className={styles.important}>{name}</h4>
+                    <p><div className={styles.important}>Location: </div> {location}</p>
+                    <p><div className={styles.important}>Price: </div> {price}  {currency === 'Euro' ? '€' : 'lv'}</p>
+                    <p><div className={styles.important}>Description: </div> {description}</p>
+                </div>
+                <div ><img src={img} alt={name} className={styles.image} /></div>
+            </div>
+            <hr />
+        </div>
     );
 };
