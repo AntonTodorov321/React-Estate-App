@@ -1,13 +1,22 @@
-import { Header } from "./components/header/Header";
+import { Routes, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { EstateList } from "./components/estate-list/EstateList";
+
+import Home from './components/home/Home';
+import Header from './components/header/Header'
+import Footer from './components/footer/Footer';
+import EstateList from "./components/estate-list/EstateList";
 
 function App() {
     return (
         <>
-            <Header></Header>
-            <EstateList></EstateList>
+            <Header />
+
+            <Routes>
+                <Route path='/' element={<Home />} />
+            </Routes>
+
+            <Footer />
         </>
     )
 }

@@ -3,7 +3,7 @@ const baseUrl = "http://localhost:3030/data/estates";
 import { useEffect, useState } from "react"
 import EstateItem from "../estate-item/EstateItem";
 
-export const EstateList = () => {
+export default function EstateList() {
     const [estate, setEstates] = useState([]);
 
     useEffect(() => {
@@ -13,8 +13,6 @@ export const EstateList = () => {
                 setEstates(data);
             });
     }, []);
-
-    console.log(estate);
 
     return (
         <>
