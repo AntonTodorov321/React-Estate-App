@@ -1348,10 +1348,18 @@
                 currency: "Euro",
                 location: "Sofia, Manastirski Livadi",
                 size: 45,
-                img: "https://www.essexapartmenthomes.com/-/media/Project/EssexPropertyTrust/Sites/EssexApartmentHomes/Blog/2021/2021-01-12-Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up/Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up-1.jpg",
+                mainImg: "https://www.essexapartmenthomes.com/-/media/Project/EssexPropertyTrust/Sites/EssexApartmentHomes/Blog/2021/2021-01-12-Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up/Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up-1.jpg",
+                allImg: [
+                    'https://www.luxurychicagoapartments.com/wp-content/uploads/2023/03/Panorama-Convertible-2-2-scaled-1.jpg',
+                    'https://www.essexapartmenthomes.com/-/media/Project/EssexPropertyTrust/Sites/EssexApartmentHomes/Blog/2021/2021-01-12-Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up/Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up-1.jpg',
+                    'https://ppmapartments.com/wp-content/uploads/2021/03/1-3.jpg'
+                ],
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
                 typeOfBuilding: "тухла",
-                contacts: "088 888 8888"
+                contacts: "088 888 8888",
+                floor: 3,
+                totalFloors: 6,
+                heating: 'GAS'
             },
             "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
                 name: "Rent maisonette apartment",
@@ -1359,10 +1367,18 @@
                 currency: "Euro",
                 location: "Sofia, Lozenec",
                 size: 210,
-                img: "https://d1hy6t2xeg0mdl.cloudfront.net/image/326244/4454e60113/standard",
+                mainImg: "https://d1hy6t2xeg0mdl.cloudfront.net/image/326244/4454e60113/standard",
+                allImg: [
+                    'https://res.cloudinary.com/apartmentlist/image/fetch/f_auto,q_auto,t_renter_life_article/https://images.ctfassets.net/jeox55pd4d8n/7Mckao0912QFOK5HuU0DiI/ee6e9ad51c4db7d6eaf417a2d54aa83d/Interior_living-room__loft_style._Maisonette_a_modern_residential_with_a_billiard_room_in_the_big_house._Aquarium_and_styliz.jpg',
+                    'https://www.zillowstatic.com/bedrock/app/uploads/sites/26/maisonette-hero-1e52d0.jpg',
+                    'https://cf.bstatic.com/xdata/images/hotel/max1024x768/447780546.jpg?k=e1c8e246171879035c67b195dc69ceca6de739b9a3c1404547b093080418f49a&o=&hp=1'
+                ],
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
                 typeOfBuilding: "EПК",
-                contacts: "088 888 8888"
+                contacts: "088 888 8888",
+                floor: 12,
+                totalFloors: 15,
+                heating: 'TPP'
             },
             "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
                 name: "Rent two-bedroom apartment",
@@ -1370,10 +1386,18 @@
                 currency: "lv",
                 location: "Sofia, Iztok",
                 size: 78,
-                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTooLB8CtqQq5l3A0uksL0S5hTiPkM0tQuKgw&s",
+                mainImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTooLB8CtqQq5l3A0uksL0S5hTiPkM0tQuKgw&s",
+                allImg: [
+                    'https://fpg.roomsketcher.com/image/topic/28/image/2-Bedroom-Apartment-Plan-3D.jpg',
+                    'https://www.bowlingbrookapts.com/sites/default/files/patuxent-1.jpg',
+                    'https://springmoor.org/wp-content/uploads/2020/09/2br-apt-scaled.jpg'
+                ],
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
                 typeOfBuilding: "панел",
-                contacts: "088 888 8888"
+                contacts: "088 888 8888",
+                floor: 5,
+                totalFloors: 8,
+                heating: 'air condition'
             }
         }
     };

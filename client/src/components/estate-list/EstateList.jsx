@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import EstateItem from "../estate-item/EstateItem";
 
 export default function EstateList() {
-    const [estate, setEstates] = useState([]);
+    const [estates, setEstates] = useState([]);
 
     useEffect(() => {
         fetch(baseUrl)
@@ -16,7 +16,7 @@ export default function EstateList() {
 
     return (
         <>
-            {estate.map(e =>
+            {estates.map(e =>
                 <EstateItem
                     key={e._id}
                     {...e}

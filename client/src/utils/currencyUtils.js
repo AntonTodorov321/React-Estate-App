@@ -1,0 +1,1 @@
+export const getCurrencySymbol = (currency) => currency === 'Euro' ? '€' : 'lv';

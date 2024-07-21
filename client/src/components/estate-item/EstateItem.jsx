@@ -1,12 +1,16 @@
+import { Link } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import styles from './EstateItem.module.css';
+import {getCurrencySymbol} from '../../utils/currencyUtils.js';
 
 export default function EstateItem({
+    _id,
     name,
     price,
     currency,
     location,
-    img,
+    mainImg,
     description
 }) {
     return (
@@ -14,13 +18,13 @@ export default function EstateItem({
             <div className={styles.container}>
                 <div>
                     <h4 className={styles.important}>{name}</h4>
-                    <p><div className={styles.important}>Location: </div> {location}</p>
-                    <p><div className={styles.important}>Price: </div> {price}  {currency === 'Euro' ? '€' : 'lv'}</p>
-                    <p><div className={styles.important}>Description: </div> {description}</p>
-                    <Button variant="primary" className={styles.button}>Details</Button>
+                    <p><span className={styles.important}>Location: </span> {location}</p>
+                    <p><span className={styles.important}>Price: </span> {price} {getCurrencySymbol(currency)}</p>
+                    <p><span className={styles.important}>Description: </span> {description}</p>
+                    <Button as={Link} to={`/estates/${_id}`} variant="primary" className={styles.button}>Details</Button>
                     <Button variant="danger">Delete</Button>
                 </div>
-                <div ><img src={img} alt={name} className={styles.image} /></div>
+                <div ><img src={mainImg} alt={name} className={styles.image} /></div>
             </div>
             <hr />
         </div>
