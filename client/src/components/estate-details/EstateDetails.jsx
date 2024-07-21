@@ -9,15 +9,17 @@ export default function EstateDetails() {
 
     useEffect(() => {
         fetch(`${baseUrl}/${estateId}`)
-        .then(res => res.json())
-        .then(data => setEstate(data));
+            .then(res => res.json())
+            .then(data => setEstate(data));
     }, [estateId]);
 
     console.log(estate);
 
     return (
-        <>
-
-        </>
+        <div>
+            <h2>{estate.name}</h2>
+            <div>{estate.location}</div>
+            <div>{estate.price}</div>
+        </div>
     );
 };
