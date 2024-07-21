@@ -14,6 +14,7 @@ function App() {
 
             <Routes>
                 <Route path='/' element={<Home />} />
+                <Route path='/all-estates' element={<EstateList />} />
             </Routes>
 
             <Footer />
