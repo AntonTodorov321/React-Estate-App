@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 
 import { getCurrencySymbol } from '../../utils/currencyUtils.js';
 import styles from './EstateDetails.module.css';
+import ImageCarousel from "../carousel/ImageCarousel.jsx";
 
 
 export default function EstateDetails() {
     const { estateId } = useParams();
-    const [estate, setEstate] = useState({});
+    const [estate, setEstate] = useState({ allImg: [] });
 
     useEffect(() => {
         fetch(`${baseUrl}/${estateId}`)
@@ -20,7 +21,6 @@ export default function EstateDetails() {
     console.log(estate);
 
     let currencySymbol = getCurrencySymbol(estate.currency);
-
     return (
         <>
             <div className={styles.container}>
@@ -34,6 +34,7 @@ export default function EstateDetails() {
                         <div className={styles.importantRed}>{estate.price} {currencySymbol}</div>
                         <div>({(estate.price / estate.size).toFixed(2)} {currencySymbol}/m<sup>2</sup>)</div>
                     </div>
+                    <ImageCarousel allImg={estate.allImg} />
                 </div>
             </div>
             <h3>{estate.name}</h3>
