@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 60%;
+    background-color: rgb(231, 235, 237);
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5em;
+}
+
+.captionDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.importantRed {
+    color: rgb(141, 31, 31);
+    font-size: 1.3em;
+    font-weight: bold;
+}
