@@ -8,8 +8,8 @@
     width: 60%;
     background-color: rgb(231, 235, 237);
     display: flex;
-    justify-content: space-between;
     padding: 1.5em;
+    flex-direction: column;
 }
 
 .captionDescription {
@@ -22,4 +22,10 @@
     color: rgb(141, 31, 31);
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
