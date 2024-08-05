@@ -1,34 +1,11 @@
 import { useState } from "react";
 
-const FORM_KEYS = {
-    name: 'name',
-    contacts: 'contacts',
-    description: 'description',
-    floor: 'floor',
-    totalFloors: 'total-floors',
-    price: 'price',
-    size: 'size',
-    heating : 'heating',
-    location : 'location',
-    currency : 'currency',
-    typeOfBuilding : 'type-of-building'
-};
+import { FORM_KEYS } from '../../utils/add-estate/formKeys';
+import { formInitialState } from '../../utils/add-estate/formInitialState';
 
 export default function AddEstate() {
 
-    const [formValues, setFormValues] = useState({
-        [FORM_KEYS.name]: '',
-        [FORM_KEYS.contacts]: '',
-        [FORM_KEYS.description]: '',
-        [FORM_KEYS.floor]: '',
-        [FORM_KEYS.totalFloors]: '',
-        [FORM_KEYS.price]: '',
-        [FORM_KEYS.size]: '',
-        [FORM_KEYS.heating]: '',
-        [FORM_KEYS.location]: '',
-        [FORM_KEYS.currency]: '',
-        [FORM_KEYS.typeOfBuilding]: '',
-    });
+    const [formValues, setFormValues] = useState(formInitialState);
 
     const changeHandler = (e) => {
         setFormValues(state => ({
@@ -37,7 +14,7 @@ export default function AddEstate() {
         }));
     };
 
-    const submitHandler = () =>{
+    const submitHandler = () => {
         console.log(formValues);
     };
 
