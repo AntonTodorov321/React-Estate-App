@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const FORM_KEYS = {
     name: 'name',
     contacts: 'contacts',
@@ -5,12 +7,39 @@ const FORM_KEYS = {
     floor: 'floor',
     totalFloors: 'total-floors',
     price: 'price',
-    size: 'size'
+    size: 'size',
+    heating : 'heating',
+    location : 'location',
+    currency : 'currency',
+    typeOfBuilding : 'type-of-building'
 };
 
-console.log(FORM_KEYS);
-
 export default function AddEstate() {
+
+    const [formValues, setFormValues] = useState({
+        [FORM_KEYS.name]: '',
+        [FORM_KEYS.contacts]: '',
+        [FORM_KEYS.description]: '',
+        [FORM_KEYS.floor]: '',
+        [FORM_KEYS.totalFloors]: '',
+        [FORM_KEYS.price]: '',
+        [FORM_KEYS.size]: '',
+        [FORM_KEYS.heating]: '',
+        [FORM_KEYS.location]: '',
+        [FORM_KEYS.currency]: '',
+        [FORM_KEYS.typeOfBuilding]: '',
+    });
+
+    const changeHandler = (e) => {
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    };
+
+    const submitHandler = () =>{
+        console.log(formValues);
+    };
 
     return (
         <>
@@ -20,41 +49,51 @@ export default function AddEstate() {
                     type="text"
                     name={FORM_KEYS.name}
                     id={FORM_KEYS.name}
+                    value={formValues.name}
+                    onChange={changeHandler}
                 />
                 <br />
 
                 <label htmlFor="contacts">Contacts: </label>
                 <input
                     type="text"
-                    name="contacts"
-                    id="contacts"
+                    name={FORM_KEYS.contacts}
+                    id={FORM_KEYS.contacts}
+                    value={formValues.contacts}
+                    onChange={changeHandler}
                 />
                 <br />
 
                 <label htmlFor="description">Description: </label>
                 <input
                     type="text"
-                    name="description"
-                    id="description"
+                    name={FORM_KEYS.description}
+                    id={FORM_KEYS.description}
+                    value={formValues.description}
+                    onChange={changeHandler}
                 />
                 <br />
 
                 <label htmlFor="floor">Floor: </label>
                 <input
                     type="number"
-                    name="floor"
-                    id="floor"
+                    name={FORM_KEYS.floor}
+                    id={FORM_KEYS.floor}
+                    value={formValues.floor}
+                    onChange={changeHandler}
                 />
 
                 <label>from: </label>
                 <input
                     type="number"
-                    name="total-floors"
+                    name={FORM_KEYS.totalFloors}
+                    value={formValues.totalFloors}
+                    onChange={changeHandler}
                 />
                 <br />
 
                 <label>Heating: </label>
-                <select>
+                <select onChange={changeHandler} name={FORM_KEYS.heating}>
                     <option value=""></option>
                     <option value="GAS">GAS</option>
                     <option value="Air conditioner">Air conditioner</option>
@@ -63,7 +102,7 @@ export default function AddEstate() {
                 <br />
 
                 <label>Location: </label>
-                <select>
+                <select onChange={changeHandler} name={FORM_KEYS.location}>
                     <option value=""></option>
                     <option value="Manastirski Livadi">Manastirski Livadi</option>
                     <option value="Lozenec">Lozenec</option>
@@ -76,10 +115,12 @@ export default function AddEstate() {
                 <label htmlFor="price">Price: </label>
                 <input
                     type="number"
-                    name="price"
-                    id="price"
+                    name={FORM_KEYS.price}
+                    id={FORM_KEYS.price}
+                    value={formValues.price}
+                    onChange={changeHandler}
                 />
-                <select>
+                <select onChange={changeHandler} name={FORM_KEYS.currency}>
                     <option value=""></option>
                     <option value="lv">lv</option>
                     <option value="EUR">EUR</option>
@@ -89,19 +130,21 @@ export default function AddEstate() {
                 <label htmlFor="size">Size: </label>
                 <input
                     type="number"
-                    name="size"
-                    id="size"
+                    name={FORM_KEYS.size}
+                    id={FORM_KEYS.size}
+                    value={formValues.size}
+                    onChange={changeHandler}
                 />
                 <br />
 
                 <label>Type of building: </label>
-                <select>
+                <select onChange={changeHandler} name={FORM_KEYS.typeOfBuilding}>
                     <option value=""></option>
                     <option value="brick">brick</option>
                     <option value="EPK">EPK</option>
                     <option value="panel">panel</option>
                 </select>
-                <button type="button">Submit</button>
+                <button type="button" onClick={submitHandler}>Submit</button>
             </form>
         </>
     )
