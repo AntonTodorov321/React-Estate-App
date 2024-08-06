@@ -1,10 +1,12 @@
+const baseUrl = 'http://localhost:3030/users/login';
+
 import { useState } from 'react';
 
 import styles from './Login.module.css';
 
 export default function () {
     const [formValues, setFormValues] = useState({
-        username: '',
+        email: '',
         password: ''
     });
 
@@ -16,7 +18,11 @@ export default function () {
     };
 
     const submitHandler = () => {
-        console.log(formValues);
+        fetch(baseUrl, {
+            method: 'POST',
+            body: JSON.stringify(formValues)
+        }).then(data => data.json())
+            .then(res => console.log(res));
     };
 
     return (
@@ -28,10 +34,10 @@ export default function () {
                         <label htmlFor="username">Username:</label>
                         <input
                             type="text"
-                            name="username"
+                            name="email"
                             className={styles.input}
                             onChange={changeHandler}
-                            value={formValues.username}
+                            value={formValues.email}
                         />
                     </div>
 
