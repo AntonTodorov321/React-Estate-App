@@ -2,22 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
     font-family: Arial, sans-serif;
+    margin-top: 7em;
 }
 
 .loginBox {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 4em;
+    border-radius: 1em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 32%;
     text-align: center;
 }
 
 .title {
-    margin-bottom: 20px;
+    margin-bottom: 0.8em;  
+    font-size: 3em;  
 }
 
 .inputGroup {
@@ -27,35 +27,24 @@
 
 .input {
     width: 100%;
-    padding: 10px;
-    margin: 8px 0;
+    padding: 15px;             
+    margin: 10px 0;         
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 16px; 
 }
 
 .button {
-    width: 100%;
-    padding: 10px;
+    width: 50%;
+    padding: 15px;             
     background-color: #007BFF;
     border: none;
     border-radius: 4px;
     color: white;
-    font-size: 16px;
-    cursor: pointer;
+    font-size: 18px;  
 }
 
 .button:hover {
     background-color: #0056b3;
-}
-
-.forgotPassword {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #007BFF;
-}
-
-.forgotPassword:hover {
-    text-decoration: underline;
 }

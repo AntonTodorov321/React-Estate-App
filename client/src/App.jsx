@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer';
 import EstateList from "./components/estate-list/EstateList";
 import AddEstate from "./components/add-estate/AddEstate";
 import EstateDetails from "./components/estate-details/EstateDetails";
+import Login from './components/login/Login';
 
 function App() {
     return (
@@ -19,6 +20,8 @@ function App() {
                 <Route path='/all-estates' element={<EstateList />} />
                 <Route path='/add-estate' element={<AddEstate />} />
                 <Route path='/estates/:estateId' element={<EstateDetails />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/logout' element={<EstateDetails />} />
             </Routes>
 
             <Footer />
