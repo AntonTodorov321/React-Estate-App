@@ -1,29 +1,11 @@
-const baseUrl = 'http://localhost:3030/users/login';
+import { useContext, useState } from 'react';
 
-import { useState } from 'react';
-
+import { AuthContext } from '../../contexts/authContext';
 import styles from './Login.module.css';
 
 export default function () {
-    const [formValues, setFormValues] = useState({
-        email: '',
-        password: ''
-    });
 
-    const changeHandler = (e) => {
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }))
-    };
-
-    const submitHandler = () => {
-        fetch(baseUrl, {
-            method: 'POST',
-            body: JSON.stringify(formValues)
-        }).then(data => data.json())
-            .then(res => console.log(res));
-    };
+    const { loginSubmitHandler, loginFormValues, changeHandler } = useContext(AuthContext);
 
     return (
         <div className={styles.container}>
@@ -37,7 +19,7 @@ export default function () {
                             name="email"
                             className={styles.input}
                             onChange={changeHandler}
-                            value={formValues.email}
+                            value={loginFormValues.email}
                         />
                     </div>
 
@@ -48,11 +30,11 @@ export default function () {
                             name="password"
                             className={styles.input}
                             onChange={changeHandler}
-                            value={formValues.password}
+                            value={loginFormValues.password}
                         />
                     </div>
 
-                    <button type="button" onClick={submitHandler} className={styles.button}>Login</button>
+                    <button type="button" onClick={loginSubmitHandler} className={styles.button}>Login</button>
                 </form>
             </div>
         </div>

@@ -1,6 +1,11 @@
+const baseUrl = 'http://localhost:3030/users/login';
+
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { AuthContext } from './contexts/authContext';
 
 import Home from './components/home/Home';
 import Header from './components/header/Header'
@@ -11,8 +16,36 @@ import EstateDetails from "./components/estate-details/EstateDetails";
 import Login from './components/login/Login';
 
 function App() {
+    const [auth, setAuth] = useState({});
+
+    const [loginFormValues, setLoginFormValues] = useState({
+        email: '',
+        password: ''
+    });
+
+    const loginSubmitHandler = () => {
+        fetch(baseUrl, {
+            method: 'POST',
+            body: JSON.stringify(loginFormValues)
+        }).then(data => data.json())
+            .then(res => console.log(res));
+    };
+
+    const changeHandler = (e) => {
+        setLoginFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }))
+    };
+
+    const values = {
+        loginSubmitHandler,
+        changeHandler,
+        loginFormValues,
+    };
+
     return (
-        <>
+        <AuthContext.Provider value={values}>
             <Header />
 
             <Routes>
@@ -25,7 +58,7 @@ function App() {
             </Routes>
 
             <Footer />
-        </>
+        </AuthContext.Provider>
     )
 }
 
