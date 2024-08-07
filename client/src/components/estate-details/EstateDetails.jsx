@@ -18,8 +18,6 @@ export default function EstateDetails() {
             .then(data => setEstate(data));
     }, [estateId]);
 
-    console.log(estate);
-
     let currencySymbol = getCurrencySymbol(estate.currency);
     return (
         <>

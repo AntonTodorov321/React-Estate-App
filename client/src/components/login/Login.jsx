@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import styles from './Login.module.css';
 
-export default function () {
+export default function Login () {
     const { loginSubmitHandler } = useContext(AuthContext);
 
     const [formValues, setFormValues] = useState({

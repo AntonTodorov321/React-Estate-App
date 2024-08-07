@@ -15,6 +15,7 @@ import EstateList from "./components/estate-list/EstateList";
 import AddEstate from "./components/add-estate/AddEstate";
 import EstateDetails from "./components/estate-details/EstateDetails";
 import Login from './components/login/Login';
+import Register from './components/register/Register';
 
 function App() {
     const [auth, setAuth] = useState({});
@@ -46,6 +47,7 @@ function App() {
                 <Route path={Path.AddEstate} element={<AddEstate />} />
                 <Route path={Path.Login} element={<Login />} />
                 <Route path={Path.Logout} element={<EstateDetails />} />
+                <Route path={Path.Register} element={<Register />} />
                 <Route path='/estates/:estateId' element={<EstateDetails />} />
             </Routes>
 
