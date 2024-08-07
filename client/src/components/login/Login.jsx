@@ -4,8 +4,19 @@ import { AuthContext } from '../../contexts/authContext';
 import styles from './Login.module.css';
 
 export default function () {
+    const  loginSubmitHandler = useContext(AuthContext);
+    
+    const [formValues, setFormValues] = useState({
+        email: '',
+        password: ''
+    });
 
-    const { loginSubmitHandler, loginFormValues, changeHandler } = useContext(AuthContext);
+    const changeHandler = (e) => {
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }))
+    };
 
     return (
         <div className={styles.container}>
@@ -19,7 +30,7 @@ export default function () {
                             name="email"
                             className={styles.input}
                             onChange={changeHandler}
-                            value={loginFormValues.email}
+                            value={formValues.email}
                         />
                     </div>
 
@@ -30,11 +41,11 @@ export default function () {
                             name="password"
                             className={styles.input}
                             onChange={changeHandler}
-                            value={loginFormValues.password}
+                            value={formValues.password}
                         />
                     </div>
 
-                    <button type="button" onClick={loginSubmitHandler} className={styles.button}>Login</button>
+                    <button type="button" onClick={() => loginSubmitHandler(formValues)} className={styles.button}>Login</button>
                 </form>
             </div>
         </div>

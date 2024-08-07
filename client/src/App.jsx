@@ -1,11 +1,12 @@
 const baseUrl = 'http://localhost:3030/users/login';
 
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { AuthContext } from './contexts/authContext';
+import { Path } from './paths';
 
 import Home from './components/home/Home';
 import Header from './components/header/Header'
@@ -17,35 +18,20 @@ import Login from './components/login/Login';
 
 function App() {
     const [auth, setAuth] = useState({});
+    const navigate = useNavigate();
 
-    const [loginFormValues, setLoginFormValues] = useState({
-        email: '',
-        password: ''
-    });
-
-    const loginSubmitHandler = () => {
-        fetch(baseUrl, {
+    const loginSubmitHandler = async (loginFormValues) => {
+        let result = await fetch(baseUrl, {
             method: 'POST',
             body: JSON.stringify(loginFormValues)
-        }).then(data => data.json())
-            .then(res => console.log(res));
-    };
+        });
 
-    const changeHandler = (e) => {
-        setLoginFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }))
-    };
-
-    const values = {
-        loginSubmitHandler,
-        changeHandler,
-        loginFormValues,
+        setAuth(result);
+        navigate(Path.Home);
     };
 
     return (
-        <AuthContext.Provider value={values}>
+        <AuthContext.Provider value={loginSubmitHandler}>
             <Header />
 
             <Routes>
