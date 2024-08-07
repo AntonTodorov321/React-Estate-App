@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 
 import { AuthContext } from '../../contexts/authContext';
-import styles from './Login.module.css';
+import styles from '../Auth.module.css';
 
 export default function Login () {
     const { loginSubmitHandler } = useContext(AuthContext);

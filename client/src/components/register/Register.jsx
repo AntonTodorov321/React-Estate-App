@@ -1,46 +1,48 @@
+import styles from '../Auth.module.css';
+
 export default function Register() {
     return (
-        <div class="container">
-            <div class="loginBox">
-                <h2 class="title">Register</h2>
+        <div className={styles.container}>
+            <div className={styles.loginBox}>
+                <h2 className={styles.title}>Register</h2>
                 <form>
-                    <div class="inputGroup">
-                        <label for="username">Username:</label>
+                    <div className={styles.inputGroup}>
+                        <label htmlFor="username">Username:</label>
                         <input
                             type="text"
                             name="username"
-                            class="input"
+                            className={styles.input}
                         />
                     </div>
 
-                    <div class="inputGroup">
-                        <label for="email">Email:</label>
+                    <div className={styles.inputGroup}>
+                        <label htmlFor="email">Email:</label>
                         <input
                             type="email"
                             name="email"
-                            class="input"
+                            className={styles.input}
                         />
                     </div>
 
-                    <div class="inputGroup">
-                        <label for="password">Password:</label>
+                    <div className={styles.inputGroup}>
+                        <label htmlFor="password">Password:</label>
                         <input
                             type="password"
                             name="password"
-                            class="input"
+                            className={styles.input}
                         />
                     </div>
 
-                    <div class="inputGroup">
-                        <label for="confirmPassword">Confirm Password:</label>
+                    <div className={styles.inputGroup}>
+                        <label htmlFor="confirmPassword">Confirm Password:</label>
                         <input
                             type="password"
                             name="confirmPassword"
-                            class="input"
+                            className={styles.input}
                         />
                     </div>
 
-                    <button type="button" class="button">Register</button>
+                    <button type="button" className={styles.button}>Register</button>
                 </form>
             </div>
         </div>
