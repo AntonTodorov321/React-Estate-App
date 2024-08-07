@@ -24,23 +24,29 @@ function App() {
         let result = await fetch(baseUrl, {
             method: 'POST',
             body: JSON.stringify(loginFormValues)
-        });
+        }).then(data => data.json())
 
         setAuth(result);
         navigate(Path.Home);
     };
 
+    const values = {
+        loginSubmitHandler,
+        username: auth.username,
+        isAuthenticated: !!auth.username
+    };
+
     return (
-        <AuthContext.Provider value={loginSubmitHandler}>
+        <AuthContext.Provider value={values}>
             <Header />
 
             <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/all-estates' element={<EstateList />} />
-                <Route path='/add-estate' element={<AddEstate />} />
+                <Route path={Path.Home} element={<Home />} />
+                <Route path={Path.AllEstates} element={<EstateList />} />
+                <Route path={Path.AddEstate} element={<AddEstate />} />
+                <Route path={Path.Login} element={<Login />} />
+                <Route path={Path.Logout} element={<EstateDetails />} />
                 <Route path='/estates/:estateId' element={<EstateDetails />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/logout' element={<EstateDetails />} />
             </Routes>
 
             <Footer />

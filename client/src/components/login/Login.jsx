@@ -4,8 +4,8 @@ import { AuthContext } from '../../contexts/authContext';
 import styles from './Login.module.css';
 
 export default function () {
-    const  loginSubmitHandler = useContext(AuthContext);
-    
+    const { loginSubmitHandler } = useContext(AuthContext);
+
     const [formValues, setFormValues] = useState({
         email: '',
         password: ''
