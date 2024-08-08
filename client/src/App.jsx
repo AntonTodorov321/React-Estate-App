@@ -24,6 +24,7 @@ function App() {
     const loginSubmitHandler = async values => {
         const result = await authService.login(values);
         
+        localStorage.setItem('accessToken', result.accessToken);
         setAuth(result);
         navigate(Path.Home);
     };
@@ -31,12 +32,15 @@ function App() {
     const registerSubmitHandler = async (values) => {
         const result = await authService.register(values);
 
+        localStorage.setItem('accessToken', result.accessToken);
         setAuth(result);
         navigate(Path.Home);
     };
 
     const logoutHandler = () => {
         setAuth({});
+
+        localStorage.removeItem('accessToken');
     }
 
     const values = {
