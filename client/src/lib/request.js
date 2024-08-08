@@ -1,0 +1,27 @@
+const buildOptions = (data) => {
+    const options = {};
+
+    if (data) {
+        options.body = JSON.stringify(data);
+        options.headers = {
+            'content-type': 'application/json'
+        };
+    };
+
+    return {};
+};
+
+const request = async (method, url, data) => {
+    const responce = await fetch(url, {
+        ...buildOptions(data),
+        method,
+    });
+
+    return await responce.json();
+};
+
+export const get = request.bind(null, 'GET');
+export const post = request.bind(null, 'POST');
+export const put = request.bind(null, 'PUT');
+export const patch = request.bind(null, 'PATCH');
+export const remove = request.bind(null, 'DELETE');

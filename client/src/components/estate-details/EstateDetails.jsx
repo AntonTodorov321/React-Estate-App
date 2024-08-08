@@ -1,10 +1,10 @@
-const baseUrl = 'http://localhost:3030/data/estates';
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getCurrencySymbol } from '../../utils/currencyUtils.js';
 import styles from './EstateDetails.module.css';
+import * as estateService from '../../services/estateService.js';
+
 import ImageCarousel from "../carousel/ImageCarousel.jsx";
 
 
@@ -13,8 +13,7 @@ export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
 
     useEffect(() => {
-         fetch(`${baseUrl}/${estateId}`)
-            .then(res => res.json())
+        estateService.getDetails(estateId)
             .then(data => setEstate(data));
     }, [estateId]);
 

@@ -16,6 +16,7 @@ import AddEstate from "./components/add-estate/AddEstate";
 import EstateDetails from "./components/estate-details/EstateDetails";
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Logout from './components/logout/Logout';
 
 function App() {
     const [auth, setAuth] = useState({});
@@ -43,9 +44,14 @@ function App() {
         navigate(Path.Home);
     };
 
+    const logoutHandler = () => {
+        setAuth({});
+    }
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         username: auth.username,
         isAuthenticated: !!auth.email
     };
@@ -59,7 +65,7 @@ function App() {
                 <Route path={Path.AllEstates} element={<EstateList />} />
                 <Route path={Path.AddEstate} element={<AddEstate />} />
                 <Route path={Path.Login} element={<Login />} />
-                <Route path={Path.Logout} element={<EstateDetails />} />
+                <Route path={Path.Logout} element={<Logout />} />
                 <Route path={Path.Register} element={<Register />} />
                 <Route path='/estates/:estateId' element={<EstateDetails />} />
             </Routes>
