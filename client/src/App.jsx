@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3030/users/login';
+const baseUrl = 'http://localhost:3030/users';
 
 import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ function App() {
     const navigate = useNavigate();
 
     const loginSubmitHandler = async (loginFormValues) => {
-        let result = await fetch(baseUrl, {
+        const result = await fetch(`${baseUrl}/login`, {
             method: 'POST',
             body: JSON.stringify(loginFormValues)
         }).then(data => data.json())
@@ -33,14 +33,21 @@ function App() {
 
     const registerSubmitHandler = async (registerFormValues) => {
         console.log(registerFormValues);
-        
+
+        const result = await fetch(`${baseUrl}/register`, {
+            method: 'POST',
+            body: JSON.stringify(registerFormValues)
+        }).then(data => (data.json()));
+
+        setAuth(result);
+        navigate(Path.Home);
     };
 
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         username: auth.username,
-        isAuthenticated: !!auth.username
+        isAuthenticated: !!auth.email
     };
 
     return (

@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/authContext';
 import styles from '../Auth.module.css';
 
 const RegisterFormKeys = {
+    Username: 'username',
     Email: 'email',
     Password: 'password',
     ConfirmPassword: 'confirm-password'
@@ -16,6 +17,7 @@ export default function Register() {
         [RegisterFormKeys.Email]: '',
         [RegisterFormKeys.Password]: '',
         [RegisterFormKeys.ConfirmPassword]: '',
+        [RegisterFormKeys.Username]: '',
     });
 
     const changeHandler = (e) => {
@@ -30,6 +32,18 @@ export default function Register() {
             <div className={styles.loginBox}>
                 <h2 className={styles.title}>Register</h2>
                 <form>
+                    <div className={styles.inputGroup}>
+                        <label htmlFor={RegisterFormKeys.Username}>Username:</label>
+                        <input
+                            type="text"
+                            name={RegisterFormKeys.Username}
+                            id={RegisterFormKeys.Username}
+                            className={styles.input}
+                            onChange={changeHandler}
+                            value={formValues.username}
+                        />
+                    </div>
+
                     <div className={styles.inputGroup}>
                         <label htmlFor={RegisterFormKeys.Email}>Email:</label>
                         <input
