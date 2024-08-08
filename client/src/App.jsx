@@ -1,10 +1,9 @@
-const baseUrl = 'http://localhost:3030/users';
-
 import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import * as authService from './services/authService';
 import { AuthContext } from './contexts/authContext';
 import { Path } from './paths';
 
@@ -22,23 +21,15 @@ function App() {
     const [auth, setAuth] = useState({});
     const navigate = useNavigate();
 
-    const loginSubmitHandler = async (loginFormValues) => {
-        const result = await fetch(`${baseUrl}/login`, {
-            method: 'POST',
-            body: JSON.stringify(loginFormValues)
-        }).then(data => data.json())
-
+    const loginSubmitHandler = async values => {
+        const result = await authService.login(values);
+        
         setAuth(result);
         navigate(Path.Home);
     };
 
-    const registerSubmitHandler = async (registerFormValues) => {
-        console.log(registerFormValues);
-
-        const result = await fetch(`${baseUrl}/register`, {
-            method: 'POST',
-            body: JSON.stringify(registerFormValues)
-        }).then(data => (data.json()));
+    const registerSubmitHandler = async (values) => {
+        const result = await authService.register(values);
 
         setAuth(result);
         navigate(Path.Home);

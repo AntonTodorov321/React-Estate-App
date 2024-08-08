@@ -4,11 +4,11 @@ const buildOptions = (data) => {
     if (data) {
         options.body = JSON.stringify(data);
         options.headers = {
-            'content-type': 'application/json'
+             'content-type': 'application/json'
         };
     };
 
-    return {};
+    return options;
 };
 
 const request = async (method, url, data) => {
@@ -16,7 +16,7 @@ const request = async (method, url, data) => {
         ...buildOptions(data),
         method,
     });
-
+    
     return await responce.json();
 };
 
