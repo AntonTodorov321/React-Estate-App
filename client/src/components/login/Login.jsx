@@ -3,12 +3,17 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import styles from '../Auth.module.css';
 
-export default function Login () {
+const LoginFormKeys = {
+    Email: 'email',
+    Password: 'password'
+};
+
+export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
 
     const [formValues, setFormValues] = useState({
-        email: '',
-        password: ''
+        [LoginFormKeys.Email]: '',
+        [LoginFormKeys.Password]: '',
     });
 
     const changeHandler = (e) => {
@@ -24,10 +29,11 @@ export default function Login () {
                 <h2 className={styles.title}>Login</h2>
                 <form>
                     <div className={styles.inputGroup}>
-                        <label htmlFor="username">Username:</label>
+                        <label htmlFor={LoginFormKeys.Email}>Email:</label>
                         <input
                             type="text"
-                            name="email"
+                            name={LoginFormKeys.Email}
+                            id={LoginFormKeys.Email}
                             className={styles.input}
                             onChange={changeHandler}
                             value={formValues.email}
@@ -35,10 +41,11 @@ export default function Login () {
                     </div>
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor={LoginFormKeys.Password}>Password:</label>
                         <input
                             type="password"
-                            name="password"
+                            name={LoginFormKeys.Password}
+                            id={LoginFormKeys.Password}
                             className={styles.input}
                             onChange={changeHandler}
                             value={formValues.password}

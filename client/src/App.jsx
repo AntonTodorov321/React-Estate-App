@@ -31,8 +31,14 @@ function App() {
         navigate(Path.Home);
     };
 
+    const registerSubmitHandler = async (registerFormValues) => {
+        console.log(registerFormValues);
+        
+    };
+
     const values = {
         loginSubmitHandler,
+        registerSubmitHandler,
         username: auth.username,
         isAuthenticated: !!auth.username
     };

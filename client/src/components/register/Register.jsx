@@ -1,48 +1,72 @@
+import { useContext, useState } from 'react';
+
+import { AuthContext } from '../../contexts/authContext';
 import styles from '../Auth.module.css';
 
+const RegisterFormKeys = {
+    Email: 'email',
+    Password: 'password',
+    ConfirmPassword: 'confirm-password'
+};
+
 export default function Register() {
+    const { registerSubmitHandler } = useContext(AuthContext);
+
+    const [formValues, setFormValues] = useState({
+        [RegisterFormKeys.Email]: '',
+        [RegisterFormKeys.Password]: '',
+        [RegisterFormKeys.ConfirmPassword]: '',
+    });
+
+    const changeHandler = (e) => {
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.loginBox}>
                 <h2 className={styles.title}>Register</h2>
                 <form>
                     <div className={styles.inputGroup}>
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            type="text"
-                            name="username"
-                            className={styles.input}
-                        />
-                    </div>
-
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor={RegisterFormKeys.Email}>Email:</label>
                         <input
                             type="email"
-                            name="email"
+                            name={RegisterFormKeys.Email}
+                            id={RegisterFormKeys.Email}
                             className={styles.input}
+                            onChange={changeHandler}
+                            value={formValues.email}
                         />
                     </div>
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor={RegisterFormKeys.Password}>Password:</label>
                         <input
                             type="password"
-                            name="password"
+                            id={RegisterFormKeys.Password}
+                            name={RegisterFormKeys.Password}
                             className={styles.input}
+                            onChange={changeHandler}
+                            value={formValues.password}
                         />
                     </div>
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="confirmPassword">Confirm Password:</label>
+                        <label htmlFor={RegisterFormKeys.ConfirmPassword}>Confirm Password:</label>
                         <input
                             type="password"
-                            name="confirmPassword"
+                            name={RegisterFormKeys.ConfirmPassword}
+                            id={RegisterFormKeys.ConfirmPassword}
                             className={styles.input}
+                            onChange={changeHandler}
+                            value={formValues.confirmPassword}
                         />
                     </div>
 
-                    <button type="button" className={styles.button}>Register</button>
+                    <button type="button" className={styles.button} onClick={() => registerSubmitHandler(formValues)}>Register</button>
                 </form>
             </div>
         </div>
