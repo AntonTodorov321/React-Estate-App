@@ -167,7 +167,9 @@ export default function AddEstate() {
                     imageUrls={imageUrls}
                 />
 
-                <button type="button" onClick={submitHandler}>Submit</button>
+                <div className={styles.fullRowSubmit}>
+                    <button type="button" onClick={submitHandler} className={styles.submit}>Submit</button>
+                </div>
             </form >
         </div >
     );

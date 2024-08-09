@@ -1,0 +1,43 @@
+.text {
+    color: #802929;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.addUrl {
+    margin-right: 2em;
+    width: 65%;
+    margin-top: 0.2em;
+}
+
+.containerFull {
+    width: 100%;
+}
+
+.addButton {
+    padding: 0.5em 2.5em;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.addButton:hover {
+    background-color: #0056b3;
+}
+
+.image {
+    width: 300px;
+    height: auto;
+    margin-top: 0.6em;
+}
+
+.removeButton{
+    padding: 0.2em 1.2em;
+    background-color: #e30909;
+    margin-left: 2em;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}

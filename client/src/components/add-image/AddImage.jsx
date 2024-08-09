@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import styles from './AddImage.module.css';
+
 export default function AddImage({
     setImageUrls,
     imageUrls,
@@ -25,23 +27,25 @@ export default function AddImage({
 
     return (
         <>
-            <label>Image URL's:</label>
-            <div>
-                <input
-                    type="text"
-                    value={currentUrl}
-                    onChange={handleUrl}
-                    placeholder="Enter image URL"
-                    style={{ marginRight: '10px', width: '300px' }}
-                />
-                <button type="button" onClick={handleAddUrl}>Add</button>
+            <div className={styles.containerFull}>
+                <label className={styles.text}>Image URL's:</label>
+                <div>
+                    <input
+                        type="text"
+                        value={currentUrl}
+                        onChange={handleUrl}
+                        placeholder="Enter image URL"
+                        className={styles.addUrl}
+                    />
+                    <button type="button" onClick={handleAddUrl} className={styles.addButton}>Add</button>
+                </div>
             </div>
 
-            <div style={{ marginTop: '20px' }}>
+            <div>
                 {imageUrls.map((url, index) => (
-                    <div key={index} style={{ marginBottom: '10px' }}>
-                        <img src={url} alt={`Image ${index}`} style={{ width: '300px', height: 'auto' }} />
-                        <button type="button" onClick={() => removeUrlFromList(index)}>Remove</button>
+                    <div key={index}>
+                        <img src={url} alt={`Image ${index}`} className={styles.image} />
+                        <button type="button" className={styles.removeButton} onClick={() => removeUrlFromList(index)}>Remove</button>
                     </div>
                 ))}
             </div>
