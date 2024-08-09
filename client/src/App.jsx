@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import * as authService from './services/authService';
 import { AuthProvider } from './contexts/authContext';
 import { Path } from './paths';
 
@@ -18,45 +16,8 @@ import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 
 function App() {
-    const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accesToken');
-
-        return {};
-    });
-    const navigate = useNavigate();
-
-    const loginSubmitHandler = async values => {
-        const result = await authService.login(values);
-
-        localStorage.setItem('accessToken', result.accessToken);
-        setAuth(result);
-        navigate(Path.Home);
-    };
-
-    const registerSubmitHandler = async (values) => {
-        const result = await authService.register(values);
-
-        localStorage.setItem('accessToken', result.accessToken);
-        setAuth(result);
-        navigate(Path.Home);
-    };
-
-    const logoutHandler = () => {
-        setAuth({});
-
-        localStorage.removeItem('accessToken');
-    }
-
-    const values = {
-        loginSubmitHandler,
-        registerSubmitHandler,
-        logoutHandler,
-        username: auth.username,
-        isAuthenticated: !!auth.email
-    };
-
     return (
-        <AuthProvider value={values}>
+        <AuthProvider>
             <Header />
 
             <Routes>
@@ -71,7 +32,7 @@ function App() {
 
             <Footer />
         </AuthProvider>
-    )
-}
+    );
+};
 
-export default App
+export default App;

@@ -3,8 +3,9 @@ import { useState } from "react";
 import styles from './AddImage.module.css';
 
 export default function AddImage({
-    setImageUrls,
     imageUrls,
+    removeUrlFromList,
+    handleAddUrlToList,
 }) {
     const [currentUrl, setCurrentUrl] = useState('');
 
@@ -14,15 +15,9 @@ export default function AddImage({
 
     const handleAddUrl = () => {
         if (currentUrl.trim()) {
-            setImageUrls([...imageUrls, currentUrl]);
             setCurrentUrl('');
+            handleAddUrlToList(currentUrl);
         };
-    };
-
-    const removeUrlFromList = (indexToRemove) => {
-        setImageUrls(state =>
-            state.filter((_, index) => index !== indexToRemove)
-        );
     };
 
     return (

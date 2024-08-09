@@ -31,6 +31,16 @@ export default function AddEstate() {
         navigate(Path.AllEstates);
     };
 
+    const removeUrlFromList = (indexToRemove) => {
+        setImageUrls(state =>
+            state.filter((_, index) => index !== indexToRemove)
+        );
+    };
+
+    const handleAddUrlToList = (currentUrl) => {
+        setImageUrls([...imageUrls, currentUrl]);
+    };
+
     return (
         <div className={styles.container}>
             <form className={styles.textContainer}>
@@ -172,8 +182,9 @@ export default function AddEstate() {
                 </div>
 
                 <AddImage
-                    setImageUrls={setImageUrls}
                     imageUrls={imageUrls}
+                    removeUrlFromList={removeUrlFromList}
+                    handleAddUrlToList={handleAddUrlToList}
                 />
 
                 <div className={styles.fullRowSubmit}>
