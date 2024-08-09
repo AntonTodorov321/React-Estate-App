@@ -1,7 +1,7 @@
 import { FORM_KEYS } from './formKeys';
 
 export const formInitialState = {
-    [FORM_KEYS.name]: '',
+    [FORM_KEYS.typeOfEstate]: '',
     [FORM_KEYS.contacts]: '',
     [FORM_KEYS.description]: '',
     [FORM_KEYS.floor]: '',

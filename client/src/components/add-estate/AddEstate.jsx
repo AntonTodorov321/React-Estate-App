@@ -23,109 +23,144 @@ export default function AddEstate() {
     };
 
     return (
-        <>
-            <form>
-                <label htmlFor="name">Name: </label>
-                <input
-                    type="text"
-                    name={FORM_KEYS.name}
-                    id={FORM_KEYS.name}
-                    value={formValues.name}
-                    onChange={changeHandler}
-                />
-                <br />
+        <div className={styles.container}>
+            <form className={styles.textContainer}>
 
-                <label htmlFor="contacts">Contacts: </label>
-                <input
-                    type="text"
-                    name={FORM_KEYS.contacts}
-                    id={FORM_KEYS.contacts}
-                    value={formValues.contacts}
-                    onChange={changeHandler}
-                />
-                <br />
+                <div className={styles.firstRow}>
+                    <div className={styles.containerInput}>
+                        <label className={styles.text}>Type of estate</label>
+                        <select className={`${styles.selectOption} ${styles.inputSize}`} onChange={changeHandler} name={FORM_KEYS.typeOfEstate}>
+                            <option value=""></option>
+                            <option value="one-bedroom">One-bedroom</option>
+                            <option value="maisonette">Maisonette</option>
+                            <option value="two-bedroom">Two-bedroom</option>
+                        </select>
+                    </div>
+                </div>
 
-                <label htmlFor="description">Description: </label>
-                <input
-                    type="text"
-                    name={FORM_KEYS.description}
-                    id={FORM_KEYS.description}
-                    value={formValues.description}
-                    onChange={changeHandler}
-                />
-                <br />
+                <div className={styles.firstRow}>
+                    <div className={styles.containerInput}>
+                        <label className={styles.text}>Location</label>
+                        <select onChange={changeHandler} name={FORM_KEYS.location} className={`${styles.selectOption} ${styles.inputSize}`}>
+                            <option value=""></option>
+                            <option value="Manastirski Livadi">Manastirski Livadi</option>
+                            <option value="Lozenec">Lozenec</option>
+                            <option value="Iztok">Iztok</option>
+                            <option value="Studentski Grad">Studentski Grad</option>
+                            <option value="Mladost">Mladost</option>
+                        </select>
+                    </div>
+                </div>
 
-                <label htmlFor="floor">Floor: </label>
-                <input
-                    type="number"
-                    name={FORM_KEYS.floor}
-                    id={FORM_KEYS.floor}
-                    value={formValues.floor}
-                    onChange={changeHandler}
-                />
+                <div className={styles.secondRow}>
+                    <div className={styles.containerInput}>
+                        <label htmlFor="price" className={styles.text}>Price</label>
+                        <input
+                            type="number"
+                            name={FORM_KEYS.price}
+                            id={FORM_KEYS.price}
+                            value={formValues.price}
+                            onChange={changeHandler}
+                            className={`${styles.selectOption} ${styles.inputSize}`}
+                        />
+                    </div>
+                </div>
 
-                <label>from: </label>
-                <input
-                    type="number"
-                    name={FORM_KEYS.totalFloors}
-                    value={formValues.totalFloors}
-                    onChange={changeHandler}
-                />
-                <br />
+                <div className={styles.secondRow}>
+                    <div className={styles.containerInput}>
+                        <label htmlFor="currency" className={styles.text}>Currency</label>
+                        <select onChange={changeHandler} name={FORM_KEYS.currency} className={`${styles.selectOption} ${styles.inputSize}`}>
+                            <option value=""></option>
+                            <option value="lv">lv</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+                </div>
 
-                <label>Heating: </label>
-                <select onChange={changeHandler} name={FORM_KEYS.heating}>
-                    <option value=""></option>
-                    <option value="GAS">GAS</option>
-                    <option value="Air conditioner">Air conditioner</option>
-                    <option value="TPP">TPP</option>
-                </select>
-                <br />
+                <div className={styles.secondRow}>
+                    <div className={styles.containerInput}>
+                        <label htmlFor="size" className={styles.text}>Size</label>
+                        <input
+                            type="number"
+                            name={FORM_KEYS.size}
+                            id={FORM_KEYS.size}
+                            value={formValues.size}
+                            onChange={changeHandler}
+                            className={`${styles.selectOption} ${styles.inputSize}`}
+                        />
+                    </div>
+                </div>
 
-                <label>Location: </label>
-                <select onChange={changeHandler} name={FORM_KEYS.location}>
-                    <option value=""></option>
-                    <option value="Manastirski Livadi">Manastirski Livadi</option>
-                    <option value="Lozenec">Lozenec</option>
-                    <option value="Iztok">Iztok</option>
-                    <option value="Studentski Grad">Studentski Grad</option>
-                    <option value="Mladost">Mladost</option>
-                </select>
-                <br />
+                <div className={styles.containerInput}>
+                    <label htmlFor="floor" className={styles.text}>Floor</label>
+                    <input
+                        type="number"
+                        name={FORM_KEYS.floor}
+                        id={FORM_KEYS.floor}
+                        value={formValues.floor}
+                        onChange={changeHandler}
+                        className={styles.selectOption}
+                    />
+                </div>
 
-                <label htmlFor="price">Price: </label>
-                <input
-                    type="number"
-                    name={FORM_KEYS.price}
-                    id={FORM_KEYS.price}
-                    value={formValues.price}
-                    onChange={changeHandler}
-                />
-                <select onChange={changeHandler} name={FORM_KEYS.currency}>
-                    <option value=""></option>
-                    <option value="lv">lv</option>
-                    <option value="EUR">EUR</option>
-                </select>
-                <br />
+                <div className={styles.containerInput}>
+                    <label className={styles.text}>Total floors</label>
+                    <input
+                        type="number"
+                        name={FORM_KEYS.totalFloors}
+                        value={formValues.totalFloors}
+                        onChange={changeHandler}
+                        className={styles.selectOption}
+                    />
+                </div>
 
-                <label htmlFor="size">Size: </label>
-                <input
-                    type="number"
-                    name={FORM_KEYS.size}
-                    id={FORM_KEYS.size}
-                    value={formValues.size}
-                    onChange={changeHandler}
-                />
-                <br />
+                <div className={styles.containerInput}>
+                    <label className={styles.text}>Heating</label>
+                    <select onChange={changeHandler} name={FORM_KEYS.heating} className={styles.selectOption}>
+                        <option value=""></option>
+                        <option value="GAS">GAS</option>
+                        <option value="Air conditioner">Air conditioner</option>
+                        <option value="TPP">TPP</option>
+                    </select>
+                </div>
 
-                <label>Type of building: </label>
-                <select onChange={changeHandler} name={FORM_KEYS.typeOfBuilding}>
-                    <option value=""></option>
-                    <option value="brick">brick</option>
-                    <option value="EPK">EPK</option>
-                    <option value="panel">panel</option>
-                </select>
-                <br />
+                <div className={styles.containerInput}>
+                    <label className={styles.text}>Type of building</label>
+                    <select onChange={changeHandler} name={FORM_KEYS.typeOfBuilding} className={styles.selectOption}>
+                        <option value=""></option>
+                        <option value="brick">brick</option>
+                        <option value="EPK">EPK</option>
+                        <option value="panel">panel</option>
+                    </select>
+                </div>
+
+                <div className={styles.fullRow}>
+                    <div className={styles.containerInput}>
+                        <label htmlFor="contacts" className={styles.text}>Contacts</label>
+                        <input
+                            type="text"
+                            name={FORM_KEYS.contacts}
+                            id={FORM_KEYS.contacts}
+                            value={formValues.contacts}
+                            onChange={changeHandler}
+                            className={`${styles.inputSizeContacts} ${styles.selectOption}`}
+                        />
+                    </div>
+                </div>
+
+                <div className={styles.fullRow}>
+                    <div className={styles.containerInput}>
+                        <label htmlFor="description" className={styles.text}>Description</label>
+                        <textarea
+                            rows="4"
+                            className={styles.textareaSize}
+                            name={FORM_KEYS.description}
+                            id={FORM_KEYS.description}
+                            value={formValues.description}
+                            onChange={changeHandler}
+                        />
+                    </div>
+                </div>
 
                 <AddImage
                     setImageUrls={setImageUrls}
@@ -133,7 +168,7 @@ export default function AddEstate() {
                 />
 
                 <button type="button" onClick={submitHandler}>Submit</button>
-            </form>
-        </>
-    )
-}
+            </form >
+        </div >
+    );
+};

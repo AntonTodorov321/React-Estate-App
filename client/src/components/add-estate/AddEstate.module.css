@@ -1,0 +1,58 @@
+.container {
+    width: 50%;
+    margin: 0 auto;
+    border-width: 3px 1px 1px 1px;
+    border-style: solid;
+    border-color: #802929;
+    padding: 1em;
+}
+
+.text {
+    color: #802929;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 0.2em;
+}
+
+.textContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.containerInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectOption {
+    height: 1.7em;
+}
+
+.inputSize {
+    width: 70%;
+    margin-bottom: 0.6em;
+}
+
+.firstRow {
+    width: 48%;
+    margin-bottom: 0.6em;
+}
+
+.secondRow {
+    width: 30%;
+    margin-bottom: 0.6em;
+}
+
+.fullRow {
+    width: 100%;
+    margin-bottom: 0.6em;
+}
+
+.inputSizeContacts{
+    width: 30%;
+}
+
+.textareaSize{
+    width: 80%;
+}

@@ -1,5 +1,5 @@
 export const FORM_KEYS = {
-    name: 'name',
+    typeOfEstate: 'type-of-estate',
     contacts: 'contacts',
     description: 'description',
     floor: 'floor',
