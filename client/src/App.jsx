@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import * as authService from './services/authService';
-import { AuthContext } from './contexts/authContext';
+import { AuthProvider } from './contexts/authContext';
 import { Path } from './paths';
 
 import Home from './components/home/Home';
@@ -19,7 +19,7 @@ import Logout from './components/logout/Logout';
 
 function App() {
     const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('accesToken');
 
         return {};
     });
@@ -27,7 +27,7 @@ function App() {
 
     const loginSubmitHandler = async values => {
         const result = await authService.login(values);
-        
+
         localStorage.setItem('accessToken', result.accessToken);
         setAuth(result);
         navigate(Path.Home);
@@ -56,7 +56,7 @@ function App() {
     };
 
     return (
-        <AuthContext.Provider value={values}>
+        <AuthProvider value={values}>
             <Header />
 
             <Routes>
@@ -70,7 +70,7 @@ function App() {
             </Routes>
 
             <Footer />
-        </AuthContext.Provider>
+        </AuthProvider>
     )
 }
 
