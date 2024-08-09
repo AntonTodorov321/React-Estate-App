@@ -2,11 +2,13 @@ import { useState } from "react";
 
 import { FORM_KEYS } from '../../utils/add-estate/formKeys';
 import { formInitialState } from '../../utils/add-estate/formInitialState';
+import styles from './AddEstate.module.css';
 
 import AddImage from "../add-image/AddImage";
 
 export default function AddEstate() {
     const [formValues, setFormValues] = useState(formInitialState);
+    const [imageUrls, setImageUrls] = useState([]);
 
     const changeHandler = (e) => {
         setFormValues(state => ({
@@ -17,6 +19,7 @@ export default function AddEstate() {
 
     const submitHandler = () => {
         console.log(formValues);
+        console.log(imageUrls);
     };
 
     return (
@@ -124,7 +127,10 @@ export default function AddEstate() {
                 </select>
                 <br />
 
-                <AddImage />
+                <AddImage
+                    setImageUrls={setImageUrls}
+                    imageUrls={imageUrls}
+                />
 
                 <button type="button" onClick={submitHandler}>Submit</button>
             </form>

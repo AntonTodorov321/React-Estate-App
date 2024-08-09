@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-export default function AddImage() {
+export default function AddImage({
+    setImageUrls,
+    imageUrls,
+}) {
     const [currentUrl, setCurrentUrl] = useState('');
-    const [imageUrls, setImageUrls] = useState([]);
 
     const handleUrl = (e) => {
         setCurrentUrl(e.target.value);

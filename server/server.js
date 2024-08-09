@@ -1343,7 +1343,7 @@
     var seedData = {
         estates: {
             "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
-                name: "Rent one-bedroom apartment",
+                typeOfEstate: "one-bedroom",
                 price: 325,
                 currency: "Euro",
                 location: "Sofia, Manastirski Livadi",
@@ -1362,7 +1362,7 @@
                 heating: 'GAS'
             },
             "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
-                name: "Rent maisonette apartment",
+                typeOfEstate: "maisonette",
                 price: 970,
                 currency: "Euro",
                 location: "Sofia, Lozenec",
@@ -1381,7 +1381,7 @@
                 heating: 'TPP'
             },
             "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
-                name: "Rent two-bedroom apartment",
+                typeOfEstate: "two-bedroom",
                 price: 900,
                 currency: "lv",
                 location: "Sofia, Iztok",
