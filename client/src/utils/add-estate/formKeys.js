@@ -1,13 +1,13 @@
 export const FORM_KEYS = {
-    typeOfEstate: 'type-of-estate',
+    typeOfEstate: 'typeOfEstate',
     contacts: 'contacts',
     description: 'description',
     floor: 'floor',
-    totalFloors: 'total-floors',
+    totalFloors: 'totalFloors',
     price: 'price',
     size: 'size',
     heating: 'heating',
     location: 'location',
     currency: 'currency',
-    typeOfBuilding: 'type-of-building'
+    typeOfBuilding: 'typeOfBuilding'
 };

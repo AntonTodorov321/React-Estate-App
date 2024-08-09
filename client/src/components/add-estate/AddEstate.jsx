@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import * as estateService from '../../services/estateService';
 import { FORM_KEYS } from '../../utils/add-estate/formKeys';
 import { formInitialState } from '../../utils/add-estate/formInitialState';
+import { Path } from "../../paths";
 import styles from './AddEstate.module.css';
 
 import AddImage from "../add-image/AddImage";
@@ -9,6 +12,7 @@ import AddImage from "../add-image/AddImage";
 export default function AddEstate() {
     const [formValues, setFormValues] = useState(formInitialState);
     const [imageUrls, setImageUrls] = useState([]);
+    const navigate = useNavigate();
 
     const changeHandler = (e) => {
         setFormValues(state => ({
@@ -17,9 +21,14 @@ export default function AddEstate() {
         }));
     };
 
-    const submitHandler = () => {
-        console.log(formValues);
-        console.log(imageUrls);
+    const submitHandler = async () => {
+        await estateService.create({
+            ...formValues,
+            allImg: imageUrls,
+            mainImg: imageUrls[0]
+        });
+
+        navigate(Path.AllEstates);
     };
 
     return (
