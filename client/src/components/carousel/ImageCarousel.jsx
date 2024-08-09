@@ -8,7 +8,7 @@ export default function ImageCarousel({
     return (
         <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true}>
             {allImg.map((img) => (
-                <div>
+                <div key={img}>
                     <img src={img}  />
                 </div>
             ))}

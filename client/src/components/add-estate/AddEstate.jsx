@@ -3,8 +3,9 @@ import { useState } from "react";
 import { FORM_KEYS } from '../../utils/add-estate/formKeys';
 import { formInitialState } from '../../utils/add-estate/formInitialState';
 
-export default function AddEstate() {
+import AddImage from "../add-image/AddImage";
 
+export default function AddEstate() {
     const [formValues, setFormValues] = useState(formInitialState);
 
     const changeHandler = (e) => {
@@ -121,6 +122,10 @@ export default function AddEstate() {
                     <option value="EPK">EPK</option>
                     <option value="panel">panel</option>
                 </select>
+                <br />
+
+                <AddImage />
+
                 <button type="button" onClick={submitHandler}>Submit</button>
             </form>
         </>
