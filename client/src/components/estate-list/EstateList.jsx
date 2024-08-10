@@ -14,11 +14,11 @@ export default function EstateList() {
 
     return (
         <>
-            {estates.map(e =>
+            {estates.map(estate =>
                 <EstateItem
-                    key={e._id}
-                    {...e}
+                    key={estate._id}
+                    {...estate}
                 />)}
         </>
-    )
-}
+    );
+};
