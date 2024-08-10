@@ -11,7 +11,6 @@ import { Path } from '../../paths';
 
 export default function Header() {
     const { username, isAuthenticated } = useContext(AuthContext);
-
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container >

@@ -12,7 +12,6 @@ export default function EstateDetails() {
     const { estateId } = useParams();
     const [estate, setEstate] = useState({ allImg: [] });
     const { userId } = useContext(AuthContext);
-
     useEffect(() => {
         estateService.getDetails(estateId)
             .then(data => setEstate(data));

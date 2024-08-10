@@ -15,28 +15,32 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 import EditEstate from './components/edit-estate/EditEstate';
-import ErrorBoundary from './components/error-boundary/ErrorBoundary';
+import ErrorBoundaryInner from './components/error-boundary/ErrorBoundary';
+import AuthGuard from './components/guard/AuthGuard';
 
 function App() {
     return (
-        <ErrorBoundary>
+        <ErrorBoundaryInner>
             <AuthProvider>
                 <Header />
 
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />
                     <Route path={Path.AllEstates} element={<EstateList />} />
-                    <Route path={Path.AddEstate} element={<AddEstate />} />
                     <Route path={Path.Login} element={<Login />} />
-                    <Route path={Path.Logout} element={<Logout />} />
                     <Route path={Path.Register} element={<Register />} />
-                    <Route path='/estates/:estateId' element={<EstateDetails />} />
-                    <Route path='/estates/edit/:estateId' element={<EditEstate />} />
+
+                    <Route element={<AuthGuard />}>
+                        <Route path={Path.AddEstate} element={<AddEstate />} />
+                        <Route path='/estates/:estateId' element={<EstateDetails />} />
+                        <Route path='/estates/edit/:estateId' element={<EditEstate />} />
+                        <Route path={Path.Logout} element={<Logout />} />
+                    </Route>
                 </Routes>
 
                 <Footer />
             </AuthProvider>
-        </ErrorBoundary>
+        </ErrorBoundaryInner>
     );
 };
 
