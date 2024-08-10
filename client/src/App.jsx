@@ -14,6 +14,7 @@ import EstateDetails from "./components/estate-details/EstateDetails";
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
+import EditEstate from './components/edit-estate/EditEstate';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path={Path.Logout} element={<Logout />} />
                 <Route path={Path.Register} element={<Register />} />
                 <Route path='/estates/:estateId' element={<EstateDetails />} />
+                <Route path='/estates/edit/:estateId' element={<EditEstate />} />
             </Routes>
 
             <Footer />

@@ -12,4 +12,5 @@ export const formInitialState = {
     [FORM_KEYS.location]: '',
     [FORM_KEYS.currency]: '',
     [FORM_KEYS.typeOfBuilding]: '',
+    [FORM_KEYS.allImg]: []
 }

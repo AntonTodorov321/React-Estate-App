@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import * as estateService from '../../services/estateService';
 import { FORM_KEYS } from '../../utils/add-estate/formKeys';
@@ -9,10 +9,18 @@ import styles from '../css/AddOrEditEstate.module.css';
 
 import AddImage from "../add-image/AddImage";
 
-export default function AddEstate() {
+export default function EditEstate() {
     const [formValues, setFormValues] = useState(formInitialState);
-    const [imageUrls, setImageUrls] = useState([]);
+    const [imageUrls] = useState([]);
     const navigate = useNavigate();
+    const { estateId } = useParams();
+
+    useEffect(() => {
+        estateService.getOne(estateId)
+            .then(data => {
+                setFormValues(data);
+            });
+    }, [estateId])
 
     const changeHandler = (e) => {
         setFormValues(state => ({
@@ -24,7 +32,6 @@ export default function AddEstate() {
     const submitHandler = async () => {
         await estateService.create({
             ...formValues,
-            allImg: imageUrls,
             mainImg: imageUrls[0]
         });
 
@@ -32,13 +39,17 @@ export default function AddEstate() {
     };
 
     const removeUrlFromList = (indexToRemove) => {
-        setImageUrls(state =>
-            state.filter((_, index) => index !== indexToRemove)
-        );
+        setFormValues(state => ({
+            ...state,
+            allImg : [state.allImg.filter((_, index) => index !== indexToRemove)]
+        }));
     };
 
     const handleAddUrlToList = (currentUrl) => {
-        setImageUrls([...imageUrls, currentUrl]);
+        setFormValues({
+            ...formValues,
+            allImg: [...formValues.allImg, currentUrl]
+        });
     };
 
     return (
@@ -48,7 +59,7 @@ export default function AddEstate() {
                 <div className={styles.firstRow}>
                     <div className={styles.containerInput}>
                         <label className={styles.text}>Type of estate</label>
-                        <select className={`${styles.selectOption} ${styles.inputSize}`} onChange={changeHandler} name={FORM_KEYS.typeOfEstate}>
+                        <select onChange={changeHandler} value={formValues.typeOfEstate} className={`${styles.selectOption} ${styles.inputSize}`} name={FORM_KEYS.typeOfEstate}>
                             <option value=""></option>
                             <option value="one-bedroom">One-bedroom</option>
                             <option value="maisonette">Maisonette</option>
@@ -60,7 +71,7 @@ export default function AddEstate() {
                 <div className={styles.firstRow}>
                     <div className={styles.containerInput}>
                         <label className={styles.text}>Location</label>
-                        <select onChange={changeHandler} name={FORM_KEYS.location} className={`${styles.selectOption} ${styles.inputSize}`}>
+                        <select onChange={changeHandler} value={formValues.location} name={FORM_KEYS.location} className={`${styles.selectOption} ${styles.inputSize}`}>
                             <option value=""></option>
                             <option value="Manastirski Livadi">Manastirski Livadi</option>
                             <option value="Lozenec">Lozenec</option>
@@ -88,7 +99,7 @@ export default function AddEstate() {
                 <div className={styles.secondRow}>
                     <div className={styles.containerInput}>
                         <label htmlFor="currency" className={styles.text}>Currency</label>
-                        <select onChange={changeHandler} name={FORM_KEYS.currency} className={`${styles.selectOption} ${styles.inputSize}`}>
+                        <select onChange={changeHandler} value={formValues.currency} name={FORM_KEYS.currency} className={`${styles.selectOption} ${styles.inputSize}`}>
                             <option value=""></option>
                             <option value="lv">lv</option>
                             <option value="EUR">EUR</option>
@@ -135,7 +146,7 @@ export default function AddEstate() {
 
                 <div className={styles.containerInput}>
                     <label className={styles.text}>Heating</label>
-                    <select onChange={changeHandler} name={FORM_KEYS.heating} className={styles.selectOption}>
+                    <select onChange={changeHandler} value={formValues.heating} name={FORM_KEYS.heating} className={styles.selectOption}>
                         <option value=""></option>
                         <option value="GAS">GAS</option>
                         <option value="Air conditioner">Air conditioner</option>
@@ -145,7 +156,7 @@ export default function AddEstate() {
 
                 <div className={styles.containerInput}>
                     <label className={styles.text}>Type of building</label>
-                    <select onChange={changeHandler} name={FORM_KEYS.typeOfBuilding} className={styles.selectOption}>
+                    <select onChange={changeHandler} value={formValues.typeOfbu} name={FORM_KEYS.typeOfBuilding} className={styles.selectOption}>
                         <option value=""></option>
                         <option value="brick">brick</option>
                         <option value="EPK">EPK</option>
@@ -182,7 +193,7 @@ export default function AddEstate() {
                 </div>
 
                 <AddImage
-                    imageUrls={imageUrls}
+                    imageUrls={formValues.allImg}
                     removeUrlFromList={removeUrlFromList}
                     handleAddUrlToList={handleAddUrlToList}
                 />

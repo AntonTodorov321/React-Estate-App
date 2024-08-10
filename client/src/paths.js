@@ -4,5 +4,5 @@ export const Path = {
     AddEstate: '/add-estate',
     Login: '/login',
     Logout: '/logout',
-    Register: '/register'
+    Register: '/register',
 };

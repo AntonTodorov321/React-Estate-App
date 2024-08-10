@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import Button from 'react-bootstrap/Button';
-
 import { getCurrencySymbol } from '../../utils/currencyUtils.js';
 import { AuthContext } from "../../contexts/authContext.jsx";
 import styles from './EstateDetails.module.css';
@@ -46,7 +44,7 @@ export default function EstateDetails() {
 
                 <div className={styles.edit}>
                     {estate._ownerId === userId &&
-                        <but as={Link} to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</but>
+                        <Link to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</Link>
                     }
                 </div>
             </div>

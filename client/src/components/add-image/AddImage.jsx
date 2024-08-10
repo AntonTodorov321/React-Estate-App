@@ -7,6 +7,7 @@ export default function AddImage({
     removeUrlFromList,
     handleAddUrlToList,
 }) {
+    
     const [currentUrl, setCurrentUrl] = useState('');
 
     const handleUrl = (e) => {

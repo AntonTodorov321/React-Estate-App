@@ -43,4 +43,6 @@
     color: white;
     cursor: pointer;
     font-size: 1.2em;
+    direction: none;
+    text-decoration: none;
 }

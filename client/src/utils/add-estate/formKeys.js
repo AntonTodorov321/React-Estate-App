@@ -9,5 +9,6 @@ export const FORM_KEYS = {
     heating: 'heating',
     location: 'location',
     currency: 'currency',
-    typeOfBuilding: 'typeOfBuilding'
+    typeOfBuilding: 'typeOfBuilding',
+    allImg: 'allImg'
 };
