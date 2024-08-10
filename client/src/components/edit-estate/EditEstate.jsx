@@ -41,7 +41,7 @@ export default function EditEstate() {
     const removeUrlFromList = (indexToRemove) => {
         setFormValues(state => ({
             ...state,
-            allImg : [state.allImg.filter((_, index) => index !== indexToRemove)]
+            allImg: state.allImg.filter((_, index) => index !== indexToRemove)
         }));
     };
 

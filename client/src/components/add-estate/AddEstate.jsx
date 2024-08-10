@@ -11,7 +11,6 @@ import AddImage from "../add-image/AddImage";
 
 export default function AddEstate() {
     const [formValues, setFormValues] = useState(formInitialState);
-    const [imageUrls, setImageUrls] = useState([]);
     const navigate = useNavigate();
 
     const changeHandler = (e) => {
@@ -24,21 +23,24 @@ export default function AddEstate() {
     const submitHandler = async () => {
         await estateService.create({
             ...formValues,
-            allImg: imageUrls,
-            mainImg: imageUrls[0]
+            mainImg: formValues.allImg[0]
         });
 
         navigate(Path.AllEstates);
     };
 
     const removeUrlFromList = (indexToRemove) => {
-        setImageUrls(state =>
-            state.filter((_, index) => index !== indexToRemove)
-        );
+        setFormValues(state => ({
+            ...state,
+            allImg: state.allImg.filter((_, index) => index !== indexToRemove)
+        }));
     };
 
     const handleAddUrlToList = (currentUrl) => {
-        setImageUrls([...imageUrls, currentUrl]);
+        setFormValues({
+            ...formValues,
+            allImg: [...formValues.allImg, currentUrl]
+        });
     };
 
     return (
@@ -182,7 +184,7 @@ export default function AddEstate() {
                 </div>
 
                 <AddImage
-                    imageUrls={imageUrls}
+                    imageUrls={formValues.allImg}
                     removeUrlFromList={removeUrlFromList}
                     handleAddUrlToList={handleAddUrlToList}
                 />
