@@ -11,7 +11,6 @@ import AddImage from "../add-image/AddImage";
 
 export default function EditEstate() {
     const [formValues, setFormValues] = useState(formInitialState);
-    const [imageUrls] = useState([]);
     const navigate = useNavigate();
     const { estateId } = useParams();
 
@@ -30,9 +29,9 @@ export default function EditEstate() {
     };
 
     const submitHandler = async () => {
-        await estateService.create({
+        await estateService.edit(estateId, {
             ...formValues,
-            mainImg: imageUrls[0]
+            mainImg: formValues.allImg[0]
         });
 
         navigate(Path.AllEstates);

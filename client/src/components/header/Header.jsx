@@ -37,9 +37,10 @@ export default function Header() {
                         {isAuthenticated &&
                             <>
                                 <Nav.Link as={Link} to={Path.Logout}>Logout</Nav.Link>
-                                <p style={{ margin: 'auto' }}>| {username}</p>
+                                <p style={{ margin: 'auto' }}>Hello, {username}</p>
                             </>
                         }
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
