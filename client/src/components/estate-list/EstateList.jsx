@@ -11,7 +11,6 @@ export default function EstateList() {
         estateService.getAll()
             .then(data => setEstates(data));
     }, []);
-    console.log(estates);
 
     return (
         <>
