@@ -12,16 +12,7 @@ import AddImage from "../add-image/AddImage";
 import { editOrAddEstateSchema } from "../../schemas";
 
 export default function AddEstate() {
-    let submitHandler;
-    const navigate = useNavigate();
-
-    const { values, errors, touched, handleBlur, handleSubmit, handleChange } = useFormik({
-        initialValues: formInitialState,
-        validationSchema: editOrAddEstateSchema,
-        onSubmit: submitHandler
-    });
-
-    submitHandler = async () => {
+    const submitHandler = async (values) => {
         await estateService.create({
             ...values,
             mainImg: values.allImg[0]
@@ -30,18 +21,21 @@ export default function AddEstate() {
         navigate(Path.AllEstates);
     };
 
+    const navigate = useNavigate();
+
+    const { values, errors, touched,
+         handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
+        initialValues: formInitialState,
+        validationSchema: editOrAddEstateSchema,
+        onSubmit: submitHandler
+    });
+
     const removeUrlFromList = (indexToRemove) => {
-        setFormValues(state => ({
-            ...state,
-            allImg: state.allImg.filter((_, index) => index !== indexToRemove)
-        }));
+        setFieldValue('allImg', values.allImg.filter((_, index) => index !== indexToRemove));
     };
 
-    const handleAddUrlToList = (currentUrl) => {
-        setFormValues({
-            ...values,
-            allImg: [...values.allImg, currentUrl]
-        });
+    const handleAddUrlToList = (newUrl) => {
+        setFieldValue('allImg', [...values.allImg, newUrl]);
     };
 
     return (
