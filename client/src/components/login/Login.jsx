@@ -1,6 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+
+import { useFormik } from 'formik';
 
 import { AuthContext } from '../../contexts/authContext';
+import { loginSchema } from '../../schemas';
 import styles from '../css/Auth.module.css';
 
 const LoginFormKeys = {
@@ -11,33 +14,35 @@ const LoginFormKeys = {
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
 
-    const [formValues, setFormValues] = useState({
-        [LoginFormKeys.Email]: '',
-        [LoginFormKeys.Password]: '',
+    const { values, errors, touched, handleSubmit, handleBlur, handleChange } = useFormik({
+        initialValues: {
+            [LoginFormKeys.Email]: '',
+            [LoginFormKeys.Password]: '',
+        },
+        validationSchema: loginSchema,
+        onSubmit: loginSubmitHandler
     });
-
-    const changeHandler = (e) => {
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }))
-    };
 
     return (
         <div className={styles.container}>
             <div className={styles.loginBox}>
                 <h2 className={styles.title}>Login</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className={styles.inputGroup}>
                         <label htmlFor={LoginFormKeys.Email}>Email:</label>
                         <input
                             type="text"
                             name={LoginFormKeys.Email}
                             id={LoginFormKeys.Email}
-                            className={styles.input}
-                            onChange={changeHandler}
-                            value={formValues.email}
+                            className={`${styles.input} 
+                            ${errors.email && touched.email ? styles.inputError : ''}`}
+                            onChange={handleChange}
+                            value={values.email}
+                            onBlur={handleBlur}
+                            placeholder='Enter your email'
                         />
+                        {errors.email && touched.email &&
+                            <p className={styles.errorMessage}>{errors.email}</p>}
                     </div>
 
                     <div className={styles.inputGroup}>
@@ -46,13 +51,18 @@ export default function Login() {
                             type="password"
                             name={LoginFormKeys.Password}
                             id={LoginFormKeys.Password}
-                            className={styles.input}
-                            onChange={changeHandler}
-                            value={formValues.password}
+                            className={`${styles.input}
+                             ${errors.password && touched.password ? styles.inputError : ''}`}
+                            onChange={handleChange}
+                            value={values.password}
+                            onBlur={handleBlur}
+                            placeholder='Enter your password'
                         />
+                        {errors.password && touched.password &&
+                            <p className={styles.errorMessage}>{errors.password}</p>}
                     </div>
 
-                    <button type="button" onClick={() => loginSubmitHandler(formValues)} className={styles.button}>Login</button>
+                    <button type="submit" className={styles.button}>Login</button>
                 </form>
             </div>
         </div>

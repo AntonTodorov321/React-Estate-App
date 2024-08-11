@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import { useFormik } from 'formik';
 import { registerSchema } from '../../schemas';
@@ -16,7 +16,7 @@ const RegisterFormKeys = {
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
 
-    const { values, errors, handleBlur, handleChange, handleSubmit, touched } = useFormik({
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit, } = useFormik({
         initialValues: {
             [RegisterFormKeys.Email]: '',
             [RegisterFormKeys.Password]: '',
@@ -24,7 +24,7 @@ export default function Register() {
             [RegisterFormKeys.Username]: '',
         },
         validationSchema: registerSchema,
-        onSubmit : registerSubmitHandler
+        onSubmit: registerSubmitHandler
     });
 
     return (
@@ -40,7 +40,7 @@ export default function Register() {
                             name={RegisterFormKeys.Email}
                             id={RegisterFormKeys.Email}
                             className={`${styles.input} 
-                            ${errors.email && touched.email ? styles.inputError : ''}`}
+                                 ${errors.email && touched.email ? styles.inputError : ''}`}
                             onChange={handleChange}
                             value={values.email}
                             onBlur={handleBlur}
