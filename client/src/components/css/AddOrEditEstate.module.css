@@ -44,16 +44,21 @@
     margin-bottom: 0.6em;
 }
 
+.thirdRow {
+    margin-bottom: 0.6em;
+    width: 20%;
+}
+
 .fullRow {
     width: 100%;
     margin-bottom: 0.6em;
 }
 
-.inputSizeContacts{
+.inputSizeContacts {
     width: 30%;
 }
 
-.textareaSize{
+.textareaSize {
     width: 80%;
 }
 
@@ -71,7 +76,16 @@
     background-color: #0056b3;
 }
 
-.fullRowSubmit{
+.fullRowSubmit {
     width: 100%;
     text-align: center;
+}
+
+.inputError {
+    border-color: red;
+}
+
+.errorMessage {
+    color: red;
+    width: 100%;
 }

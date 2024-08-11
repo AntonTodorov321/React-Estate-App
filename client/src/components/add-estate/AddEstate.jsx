@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useFormik } from 'formik';
 
 import * as estateService from '../../services/estateService';
 import { FORM_KEYS } from '../../utils/add-estate/formKeys';
@@ -8,22 +9,22 @@ import { Path } from "../../paths";
 import styles from '../css/AddOrEditEstate.module.css';
 
 import AddImage from "../add-image/AddImage";
+import { editOrAddEstateSchema } from "../../schemas";
 
 export default function AddEstate() {
-    const [formValues, setFormValues] = useState(formInitialState);
+    let submitHandler;
     const navigate = useNavigate();
 
-    const changeHandler = (e) => {
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    };
+    const { values, errors, touched, handleBlur, handleSubmit, handleChange } = useFormik({
+        initialValues: formInitialState,
+        validationSchema: editOrAddEstateSchema,
+        onSubmit: submitHandler
+    });
 
-    const submitHandler = async () => {
+    submitHandler = async () => {
         await estateService.create({
-            ...formValues,
-            mainImg: formValues.allImg[0]
+            ...values,
+            mainImg: values.allImg[0]
         });
 
         navigate(Path.AllEstates);
@@ -38,31 +39,49 @@ export default function AddEstate() {
 
     const handleAddUrlToList = (currentUrl) => {
         setFormValues({
-            ...formValues,
-            allImg: [...formValues.allImg, currentUrl]
+            ...values,
+            allImg: [...values.allImg, currentUrl]
         });
     };
 
     return (
         <div className={styles.container}>
-            <form className={styles.textContainer}>
+            <form className={styles.textContainer} onSubmit={handleSubmit}>
 
                 <div className={styles.firstRow}>
                     <div className={styles.containerInput}>
                         <label className={styles.text}>Type of estate</label>
-                        <select className={`${styles.selectOption} ${styles.inputSize}`} onChange={changeHandler} name={FORM_KEYS.typeOfEstate}>
+
+                        <select
+                            onChange={handleChange}
+                            value={values.typeOfEstate}
+                            className={`${styles.selectOption} ${styles.inputSize} 
+                            ${errors.typeOfEstate && touched.typeOfEstate ? styles.inputError : ''}`}
+                            name={FORM_KEYS.typeOfEstate}
+                            onBlur={handleBlur}
+                        >
                             <option value=""></option>
                             <option value="one-bedroom">One-bedroom</option>
                             <option value="maisonette">Maisonette</option>
                             <option value="two-bedroom">Two-bedroom</option>
                         </select>
+                        {errors.typeOfEstate && touched.typeOfEstate &&
+                            <p className={styles.errorMessage}>{errors.typeOfEstate}</p>}
                     </div>
                 </div>
 
                 <div className={styles.firstRow}>
                     <div className={styles.containerInput}>
                         <label className={styles.text}>Location</label>
-                        <select onChange={changeHandler} name={FORM_KEYS.location} className={`${styles.selectOption} ${styles.inputSize}`}>
+
+                        <select
+                            value={values.location}
+                            onChange={handleChange}
+                            className={`${styles.selectOption} ${styles.inputSize} 
+                             ${errors.location && touched.location ? styles.inputError : ''}`}
+                            name={FORM_KEYS.location}
+                            onBlur={handleBlur}
+                        >
                             <option value=""></option>
                             <option value="Manastirski Livadi">Manastirski Livadi</option>
                             <option value="Lozenec">Lozenec</option>
@@ -70,6 +89,8 @@ export default function AddEstate() {
                             <option value="Studentski Grad">Studentski Grad</option>
                             <option value="Mladost">Mladost</option>
                         </select>
+                        {errors.location && touched.location &&
+                            <p className={styles.errorMessage}>{errors.location}</p>}
                     </div>
                 </div>
 
@@ -78,23 +99,37 @@ export default function AddEstate() {
                         <label htmlFor="price" className={styles.text}>Price</label>
                         <input
                             type="number"
+                            value={values.price}
+                            onChange={handleChange}
                             name={FORM_KEYS.price}
                             id={FORM_KEYS.price}
-                            value={formValues.price}
-                            onChange={changeHandler}
-                            className={`${styles.selectOption} ${styles.inputSize}`}
+                            className={`${styles.selectOption} ${styles.inputSize}
+                            ${errors.price && touched.price ? styles.inputError : ''}`}
+                            onBlur={handleBlur}
                         />
+                        {errors.price && touched.price &&
+                            <p className={styles.errorMessage}>{errors.price}</p>}
                     </div>
                 </div>
 
                 <div className={styles.secondRow}>
                     <div className={styles.containerInput}>
                         <label htmlFor="currency" className={styles.text}>Currency</label>
-                        <select onChange={changeHandler} name={FORM_KEYS.currency} className={`${styles.selectOption} ${styles.inputSize}`}>
+
+                        <select
+                            onChange={handleChange}
+                            value={values.currency}
+                            className={`${styles.selectOption} ${styles.inputSize}
+                            ${errors.currency && touched.currency ? styles.inputError : ''}`}
+                            name={FORM_KEYS.currency}
+                            onBlur={handleBlur}
+                        >
                             <option value=""></option>
                             <option value="lv">lv</option>
                             <option value="EUR">EUR</option>
                         </select>
+                        {errors.currency && touched.currency &&
+                            <p className={styles.errorMessage}>{errors.currency}</p>}
                     </div>
                 </div>
 
@@ -103,69 +138,119 @@ export default function AddEstate() {
                         <label htmlFor="size" className={styles.text}>Size</label>
                         <input
                             type="number"
+                            onChange={handleChange}
+                            value={values.size}
                             name={FORM_KEYS.size}
                             id={FORM_KEYS.size}
-                            value={formValues.size}
-                            onChange={changeHandler}
-                            className={`${styles.selectOption} ${styles.inputSize}`}
+                            className={`${styles.selectOption} ${styles.inputSize}
+                            ${errors.size && touched.size ? styles.inputError : ''}`}
+                            onBlur={handleBlur}
                         />
+                        {errors.size && touched.size &&
+                            <p className={styles.errorMessage}>{errors.size}</p>}
                     </div>
                 </div>
 
-                <div className={styles.containerInput}>
-                    <label htmlFor="floor" className={styles.text}>Floor</label>
-                    <input
-                        type="number"
-                        name={FORM_KEYS.floor}
-                        id={FORM_KEYS.floor}
-                        value={formValues.floor}
-                        onChange={changeHandler}
-                        className={styles.selectOption}
-                    />
+                <div className={styles.thirdRow}>
+                    <div className={styles.containerInput}>
+                        <label htmlFor="floor" className={styles.text}>Floor</label>
+                        <input
+                            type="number"
+                            onChange={handleChange}
+                            value={values.floor}
+                            name={FORM_KEYS.floor}
+                            id={FORM_KEYS.floor}
+                            className={`${styles.selectOption}
+                        ${errors.floor && touched.floor ? styles.inputError : ''}`}
+                            onBlur={handleBlur}
+                        />
+                        {errors.floor && touched.floor &&
+                            <p className={`${styles.errorMessage}`}>{errors.floor}</p>}
+                    </div>
                 </div>
 
-                <div className={styles.containerInput}>
-                    <label className={styles.text}>Total floors</label>
-                    <input
-                        type="number"
-                        name={FORM_KEYS.totalFloors}
-                        value={formValues.totalFloors}
-                        onChange={changeHandler}
-                        className={styles.selectOption}
-                    />
+                <div className={styles.thirdRow}>
+
+                    <div className={styles.containerInput}>
+                        <label className={styles.text}>Total floors</label>
+                        <input
+                            type="number"
+                            onChange={handleChange}
+                            value={values.totalFloors}
+                            name={FORM_KEYS.totalFloors}
+                            className={`${styles.selectOption}
+                        ${errors.totalFloors && touched.totalFloors ? styles.inputError : ''}`}
+                            onBlur={handleBlur}
+                        />
+                        {errors.totalFloors && touched.totalFloors &&
+                            <p className={styles.errorMessage}>{errors.totalFloors}</p>}
+                    </div>
                 </div>
 
-                <div className={styles.containerInput}>
-                    <label className={styles.text}>Heating</label>
-                    <select onChange={changeHandler} name={FORM_KEYS.heating} className={styles.selectOption}>
-                        <option value=""></option>
-                        <option value="GAS">GAS</option>
-                        <option value="Air conditioner">Air conditioner</option>
-                        <option value="TPP">TPP</option>
-                    </select>
+
+                <div className={styles.thirdRow}>
+
+                    <div className={styles.containerInput}>
+                        <label className={styles.text}>Heating</label>
+
+                        <select
+                            value={values.heating}
+                            onChange={handleChange}
+                            className={`${styles.selectOption}
+                        ${errors.heating && touched.heating ? styles.inputError : ''}`}
+                            name={FORM_KEYS.heating}
+                            onBlur={handleBlur}
+                        >
+                            <option value=""></option>
+                            <option value="GAS">GAS</option>
+                            <option value="Air conditioner">Air conditioner</option>
+                            <option value="TPP">TPP</option>
+                        </select>
+                        {errors.heating && touched.heating &&
+                            <p className={styles.errorMessage}>{errors.heating}</p>}
+                    </div>
                 </div>
 
-                <div className={styles.containerInput}>
-                    <label className={styles.text}>Type of building</label>
-                    <select onChange={changeHandler} name={FORM_KEYS.typeOfBuilding} className={styles.selectOption}>
-                        <option value=""></option>
-                        <option value="brick">brick</option>
-                        <option value="EPK">EPK</option>
-                        <option value="panel">panel</option>
-                    </select>
+
+                <div className={styles.thirdRow}>
+
+                    <div className={styles.containerInput}>
+                        <label className={styles.text}>Type of building</label>
+
+                        <select
+                            onChange={handleChange}
+                            value={values.typeOfBuilding}
+                            className={`${styles.selectOption}
+                        ${errors.typeOfBuilding && touched.typeOfBuilding ? styles.inputError : ''}`}
+                            name={FORM_KEYS.typeOfBuilding}
+                            onBlur={handleBlur}
+                        >
+                            <option value=""></option>
+                            <option value="brick">brick</option>
+                            <option value="EPK">EPK</option>
+                            <option value="panel">panel</option>
+                        </select>
+                        {errors.typeOfBuilding && touched.typeOfBuilding &&
+                            <p className={styles.errorMessage}>{errors.typeOfBuilding}</p>}
+                    </div>
                 </div>
+
 
                 <div className={styles.fullRow}>
                     <div className={styles.containerInput}>
                         <label htmlFor="contacts" className={styles.text}>Contacts</label>
                         <input
                             type="text"
+                            value={values.contacts}
+                            onChange={handleChange}
                             name={FORM_KEYS.contacts}
                             id={FORM_KEYS.contacts}
-                            value={formValues.contacts}
-                            onChange={changeHandler}
-                            className={`${styles.inputSizeContacts} ${styles.selectOption}`}
+                            className={`${styles.inputSizeContacts} ${styles.selectOption}
+                            ${errors.contacts && touched.contacts ? styles.inputError : ''}`}
+                            onBlur={handleBlur}
                         />
+                        {errors.contacts && touched.contacts &&
+                            <p className={styles.errorMessage}>{errors.contacts}</p>}
                     </div>
                 </div>
 
@@ -174,23 +259,27 @@ export default function AddEstate() {
                         <label htmlFor="description" className={styles.text}>Description</label>
                         <textarea
                             rows="4"
-                            className={styles.textareaSize}
+                            onChange={handleChange}
+                            value={values.description}
+                            className={`${styles.textareaSize}
+                            ${errors.description && touched.description ? styles.inputError : ''}`}
                             name={FORM_KEYS.description}
                             id={FORM_KEYS.description}
-                            value={formValues.description}
-                            onChange={changeHandler}
+                            onBlur={handleBlur}
                         />
+                        {errors.description && touched.description &&
+                            <p className={styles.errorMessage}>{errors.description}</p>}
                     </div>
                 </div>
 
                 <AddImage
-                    imageUrls={formValues.allImg}
+                    imageUrls={values.allImg}
                     removeUrlFromList={removeUrlFromList}
                     handleAddUrlToList={handleAddUrlToList}
                 />
 
                 <div className={styles.fullRowSubmit}>
-                    <button type="button" onClick={submitHandler} className={styles.submit}>Submit</button>
+                    <button type="submit" className={styles.submit}>Submit</button>
                 </div>
             </form >
         </div >
