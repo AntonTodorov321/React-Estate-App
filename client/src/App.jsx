@@ -38,7 +38,6 @@ function App() {
                     <Route path={Path.AllEstates} element={<EstateList />} />
                     <Route path={Path.Login} element={<Login />} />
                     <Route path={Path.Register} element={<Register />} />
-                    <Route path="*" element={<NotFound />} />
 
                     <Route element={<AuthGuard />}>
                         <Route path={Path.AddEstate} element={<AddEstate />} />
@@ -46,6 +45,8 @@ function App() {
                         <Route path='/estates/edit/:estateId' element={<EditEstate />} />
                         <Route path={Path.Logout} element={<Logout />} />
                     </Route>
+
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
 
                 <Footer />

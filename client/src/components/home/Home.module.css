@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.featuredSection {
+    padding: 2rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.featuredProperties {
+    display: flex;
+    gap: 1rem;
+}
+
+.propertyCard {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+}
+
+.propertyImage {
+    width: 100%;
+    height: auto;
+}
+
+.propertyTitle {
+    font-size: 1.25rem;
+    margin: 0.5rem;
+}
+
+.detailsButton {
+    display: inline-block;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    color: #007bff;
+    text-decoration: none;
+}
