@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { getCurrencySymbol } from '../../utils/currencyUtils.js';
 import { AuthContext } from "../../contexts/authContext.jsx";
+import { Path } from "../../paths.js";
 import styles from './EstateDetails.module.css';
 import * as estateService from '../../services/estateService.js';
 
@@ -12,12 +13,25 @@ export default function EstateDetails() {
     const { estateId } = useParams();
     const [estate, setEstate] = useState({ allImg: [] });
     const { userId } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     useEffect(() => {
         estateService.getDetails(estateId)
             .then(data => setEstate(data));
     }, [estateId]);
 
     let currencySymbol = getCurrencySymbol(estate.currency);
+
+    const deleteButtonClickHandler = async () => {
+        const result = confirm(`Are you sure you want to delete ${estate.typeOfEstate} apartment in ${estate.location}?`)
+
+        if (result) {
+            await estateService.remove(estateId);
+
+            navigate(Path.AllEstates);
+        };
+    };
+
 
     return (
         <div className={styles.container}>
@@ -43,7 +57,10 @@ export default function EstateDetails() {
 
                 <div className={styles.edit}>
                     {estate._ownerId === userId &&
-                        <Link to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</Link>
+                        <>
+                            <Link to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</Link>
+                            <button onClick={deleteButtonClickHandler} className={styles.deleteButton}>Delete</button>
+                        </>
                     }
                 </div>
             </div>

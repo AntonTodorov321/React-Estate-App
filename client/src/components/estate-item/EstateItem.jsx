@@ -9,7 +9,6 @@ import { AuthContext } from '../../contexts/authContext.jsx';
 
 export default function EstateItem({
     _id,
-    _ownerId,
     typeOfEstate,
     price,
     currency,
@@ -17,7 +16,7 @@ export default function EstateItem({
     mainImg,
     description,
 }) {
-    const { isAuthenticated, userId } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext);
 
     return (
         <div className={styles.content}>
@@ -31,7 +30,6 @@ export default function EstateItem({
                         <Button as={Link} to={`/estates/${_id}`} variant="primary" className={styles.button}>Details</Button>
                     }
 
-                    {_ownerId === userId && isAuthenticated && <Button variant="danger">Delete</Button>}
                 </div>
                 <div ><img src={mainImg} alt={typeOfEstate} className={styles.image} /></div>
             </div>

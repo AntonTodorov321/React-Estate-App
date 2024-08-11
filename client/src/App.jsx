@@ -15,12 +15,12 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 import EditEstate from './components/edit-estate/EditEstate';
-import ErrorBoundaryInner from './components/error-boundary/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary';
 import AuthGuard from './components/guard/AuthGuard';
 
 function App() {
     return (
-        <ErrorBoundaryInner>
+        <ErrorBoundary>
             <AuthProvider>
                 <Header />
 
@@ -40,7 +40,7 @@ function App() {
 
                 <Footer />
             </AuthProvider>
-        </ErrorBoundaryInner>
+        </ErrorBoundary>
     );
 };
 
