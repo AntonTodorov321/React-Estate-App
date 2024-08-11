@@ -39,6 +39,7 @@ export default function AddImage({
             <div>
                 {imageUrls.map((url, index) => (
                     <div key={index}>
+                        {index === 0 ? <div className={styles.mainImg}>This is your main</div> : ''}
                         <img src={url} alt={`Image ${index}`} className={styles.image} />
                         <button type="button" className={styles.removeButton} onClick={() => removeUrlFromList(index)}>Remove</button>
                     </div>
