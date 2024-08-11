@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from 'react-toastify'
 
 import { AuthProvider } from './contexts/authContext';
 import { Path } from './paths';
@@ -18,11 +19,18 @@ import EditEstate from './components/edit-estate/EditEstate';
 import ErrorBoundary from './components/ErrorBoundary';
 import AuthGuard from './components/guard/AuthGuard';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
     return (
         <ErrorBoundary>
             <AuthProvider>
                 <Header />
+                <ToastContainer
+                    autoClose={1500}
+                    draggable={true}
+                    position="top-right"
+                    theme="light" />
 
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />

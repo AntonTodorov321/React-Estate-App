@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 
 import * as estateService from '../../services/estateService';
 import { FORM_KEYS } from '../../utils/add-estate/formKeys';
@@ -13,22 +14,27 @@ import { editOrAddEstateSchema } from "../../schemas";
 
 export default function AddEstate() {
     const submitHandler = async (values) => {
-        await estateService.create({
-            ...values,
-            mainImg: values.allImg[0]
-        });
+        try {
+            await estateService.create({
+                ...values,
+                mainImg: values.allImg[0]
+            });
 
-        navigate(Path.AllEstates);
+            navigate(Path.AllEstates);
+        } catch (err) {
+
+            toast.error('An error occurred: ' + err.message);
+        }
     };
 
     const navigate = useNavigate();
 
     const { values, errors, touched,
-         handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
-        initialValues: formInitialState,
-        validationSchema: editOrAddEstateSchema,
-        onSubmit: submitHandler
-    });
+        handleBlur, handleSubmit, handleChange, setFieldValue } = useFormik({
+            initialValues: formInitialState,
+            validationSchema: editOrAddEstateSchema,
+            onSubmit: submitHandler
+        });
 
     const removeUrlFromList = (indexToRemove) => {
         setFieldValue('allImg', values.allImg.filter((_, index) => index !== indexToRemove));

@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
+import { toast } from "react-toastify";
+
 import { getCurrencySymbol } from '../../utils/currencyUtils.js';
 import { AuthContext } from "../../contexts/authContext.jsx";
 import { Path } from "../../paths.js";
@@ -26,9 +28,13 @@ export default function EstateDetails() {
         const result = confirm(`Are you sure you want to delete ${estate.typeOfEstate} apartment in ${estate.location}?`)
 
         if (result) {
-            await estateService.remove(estateId);
+            try {
+                await estateService.remove(estateId);
 
-            navigate(Path.AllEstates);
+                navigate(Path.AllEstates);
+            } catch (err) {
+                toast.error('An error occurred: ' + err.message);
+            }
         };
     };
 

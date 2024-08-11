@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useFormik } from "formik";
+import { toast } from "react-toastify";
 
 import * as estateService from '../../services/estateService';
 import { editOrAddEstateSchema } from "../../schemas";
@@ -33,10 +34,14 @@ export default function EditEstate() {
         });
 
     useEffect(() => {
-        estateService.getOne(estateId)
-            .then(data => {
-                setValues(data);
-            });
+        try {
+            estateService.getOne(estateId)
+                .then(data => {
+                    setValues(data);
+                });
+        } catch (err) {
+            toast.error('An error occurred: ' + err.message);
+        }
     }, [estateId])
 
     const removeUrlFromList = (indexToRemove) => {
