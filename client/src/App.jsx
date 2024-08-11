@@ -20,6 +20,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import AuthGuard from './components/guard/AuthGuard';
 
 import 'react-toastify/dist/ReactToastify.css';
+import NotFound from './components/not-found/NotFound';
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
                     <Route path={Path.AllEstates} element={<EstateList />} />
                     <Route path={Path.Login} element={<Login />} />
                     <Route path={Path.Register} element={<Register />} />
+                    <Route path="*" element={<NotFound />} />
 
                     <Route element={<AuthGuard />}>
                         <Route path={Path.AddEstate} element={<AddEstate />} />

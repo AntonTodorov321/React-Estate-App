@@ -40,12 +40,8 @@ export const AuthProvider = ({
     };
 
     const logoutHandler = async () => {
-        try {
-            setAuth({});
-            localStorage.removeItem('accessToken');
-        } catch (err) {
-            toast.error('An error occurred: ' + err.message);
-        };
+        setAuth({});
+        localStorage.removeItem('accessToken');
     };
 
     const values = {
