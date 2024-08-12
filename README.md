@@ -12,7 +12,7 @@ The estate app is designed to connect property owners with potential renters. It
 ### Setup Instructions
 
 1. **Clone the Project:**
-   - Clone the project from the following GitHub repository: [https://github.com/AntonTodorov321/React-Estate-App](https://github.com/AntonTodorov321/React-Estate-App)
+   - Clone the project from the following GitHub repository: [Estate App](https://github.com/AntonTodorov321/React-Estate-App)
 
 2. **Client Setup:**
    - **Open Command Prompt:**
@@ -47,3 +47,18 @@ If you don't want to make a registration, feel free to use one of these:
 1. Email: `george@abv.bg`, Password: `123456`
 2. Email: `peter@abv.bg`, Password: `123456`
 3. Email: `admin@abv.bg`, Password: `admin`
+
+## Technology Stack
+
+### Client-Side Stack
+- **React**: JavaScript library for building user interfaces.
+- **React Router**: Declarative routing for React applications.
+- **React-Toastify**: Library for displaying toast notifications.
+- **HTML/CSS:** For the structure and styling of the application.
+- **CSS Modules and Styled Components:** For component-level styling.
+- **Formik:** For handling form validation, form submission, and managing form state.
+- **Yup:** Schema validation library used with Formik for validating form inputs.
+- **Fetch API:** For making HTTP requests to the back-end API.
+
+## Server Repository
+The server code for this project is hosted in a separate repository. You can access it here:  [Softuni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
