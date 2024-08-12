@@ -3,6 +3,12 @@
 ## Overview
 The estate app is designed to connect property owners with potential renters. It simplifies the process of renting properties, making it easier for landlords to find tenants and for renters to find the perfect place to live. This business documentation provides a comprehensive guide for people using the app.
 
+## Key Features
+- **Browse Listings:** View available properties.
+- **View Details:** Logged-in users can see detailed property info.
+- **Add Estate:** Logged-in users can add new properties.
+- **Edit & Delete Estate:** Owners can edit their own listings.
+
 ## Get Started
 
 ### Prerequisites
@@ -12,7 +18,7 @@ The estate app is designed to connect property owners with potential renters. It
 ### Setup Instructions
 
 1. **Clone the Project:**
-   - Clone the project from the following GitHub repository: [Estate App](https://github.com/AntonTodorov321/React-Estate-App)
+   - Clone the project from the following GitHub repository [Estate App](https://github.com/AntonTodorov321/React-Estate-App)
 
 2. **Client Setup:**
    - **Open Command Prompt:**
@@ -42,7 +48,7 @@ The estate app is designed to connect property owners with potential renters. It
 
 4. **Enjoy the app**
 
-## Hints
+## Tips
 If you don't want to make a registration, feel free to use one of these:
 1. Email: `george@abv.bg`, Password: `123456`
 2. Email: `peter@abv.bg`, Password: `123456`
@@ -61,4 +67,4 @@ If you don't want to make a registration, feel free to use one of these:
 - **Fetch API:** For making HTTP requests to the back-end API.
 
 ## Server Repository
-For the server i use SoftUni Practice Server. You can access it here:  [Softuni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
+For the server I use SoftUni Practice Server. You can access it here [Softuni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
