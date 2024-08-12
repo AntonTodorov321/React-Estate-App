@@ -61,4 +61,4 @@ If you don't want to make a registration, feel free to use one of these:
 - **Fetch API:** For making HTTP requests to the back-end API.
 
 ## Server Repository
-The server code for this project is hosted in a separate repository. You can access it here:  [Softuni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
+For the server i use SoftUni Practice Server. You can access it here:  [Softuni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
