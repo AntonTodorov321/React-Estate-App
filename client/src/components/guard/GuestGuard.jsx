@@ -1,8 +1,10 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate, Outlet } from 'react-router-dom';
 
-import { AuthContext } from "../../contexts/authContext";
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
+
+import { AuthContext } from '../../contexts/authContext';
+import Spinner from '../spinner/Spinner';
 
 export default function GuestGuard() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -11,19 +13,18 @@ export default function GuestGuard() {
 
     useEffect(() => {
         if (isAuthenticated) {
-            toast.info('You are already authenticated');
-
+            toast.info('You are already authenticated. Redirecting ...');
             setTimeout(() => {
-                navigate(-1, { replace: true });
-            }, 800);
+                navigate(-1,);
+            }, 1000);
         } else {
             setIsRedirecting(false);
         }
     }, [isAuthenticated, navigate]);
 
     if (isRedirecting) {
-        return null;
-    };
+        return <Spinner/>;
+    }
 
     return <Outlet />;
-};
+}

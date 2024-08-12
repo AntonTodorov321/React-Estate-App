@@ -21,7 +21,7 @@ export const AuthProvider = ({
             setAuth(result);
 
             localStorage.setItem('accessToken', result.accessToken);
-            navigate(-1);
+            navigate(Path.Home);
         } catch (err) {
             toast.error('An error occurred: ' + err.message);
         };
