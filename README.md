@@ -13,7 +13,7 @@
 <ul>
   <li>Clone the Project:
     <ul>
-      <li>Clone the project from the following GitHub repository: [https://github.com/ConnectingPets/PetsMatch](https://github.com/AntonTodorov321/React-Estate-App)</li>
+      <li>Clone the project from the following GitHub repository:[Estate App](https://github.com/AntonTodorov321/React-Estate-App)</li>
     </ul>
  </li>
 </ul>
