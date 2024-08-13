@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer} from 'react-toastify'
 
 import { AuthProvider } from './contexts/authContext';
 import { Path } from './paths';
@@ -21,6 +20,7 @@ import AuthGuard from './components/guard/AuthGuard';
 import NotFound from './components/not-found/NotFound';
 import GuestGuard from './components/guard/GuestGuard';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {

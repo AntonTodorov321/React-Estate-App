@@ -10,6 +10,7 @@ import styles from './EstateDetails.module.css';
 import * as estateService from '../../services/estateService.js';
 
 import ImageCarousel from "../carousel/ImageCarousel.jsx";
+import Map from "../map/Map.jsx";
 
 export default function EstateDetails() {
     const { estateId } = useParams();
@@ -70,6 +71,7 @@ export default function EstateDetails() {
                     }
                 </div>
             </div>
+            <Map />
         </div>
     );
 };
