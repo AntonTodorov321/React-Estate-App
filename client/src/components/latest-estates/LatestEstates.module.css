@@ -1,0 +1,22 @@
+.card {
+    width: 33%
+}
+
+.cardImg {
+    width: 100%;
+    height: auto;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.button {
+    width: 30%;
+}

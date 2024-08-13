@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
+import styles from './LatestEstates.module.css';
+
 export default function GetLatest({
     _id,
     typeOfEstate,
@@ -10,15 +12,15 @@ export default function GetLatest({
     description
 }) {
     return (
-        <Card style={{ width: '33%' }}>
-            <Card.Img variant="top" src={mainImg} style={{ width: '100%', height: 'auto' }} />
-            <Card.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-                <Card.Title style={{ textAlign: 'center' }}>Rent {typeOfEstate} apartment</Card.Title>
-                <Card.Text style={{ textAlign: 'center' }}>
+        <Card className={styles.card}>
+            <Card.Img variant="top" src={mainImg} alt={typeOfEstate} className={styles.Img} />
+            <Card.Body className={styles.cardBody}>
+                <Card.Title className={styles.textCenter}>Rent {typeOfEstate} apartment</Card.Title>
+                <Card.Text className={styles.textCenter}>
                     {description}
                 </Card.Text>
-                <div style={{ textAlign: 'center' }}>
-                    <Button as={Link} to={`/estates/${_id}`} variant="primary" style={{ width: '30%', textAlign: 'center' }}>Details</Button>
+                <div className={styles.textCenter}>
+                    <Button as={Link} to={`/estates/${_id}`} variant="primary" className={styles.button}>Details</Button>
                 </div>
             </Card.Body>
         </Card>

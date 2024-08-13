@@ -21,9 +21,9 @@ export default function Home() {
             </header>
 
             <section className={styles.featuredSection}>
-                <h2 className={styles.sectionTitle}>Featured Properties</h2>
+                <h2 className={styles.sectionTitle}>Newest apartments</h2>
                 <div className={styles.featuredProperties}>
-                    {latestEstates.map(estate => <LatestEstates {...estate} />)}
+                    {latestEstates.map(estate => <LatestEstates key={estate._id} {...estate} />)}
                 </div>
             </section>
         </div>

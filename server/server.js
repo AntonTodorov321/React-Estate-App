@@ -1359,7 +1359,8 @@
                 contacts: "088 888 8888",
                 floor: 3,
                 totalFloors: 6,
-                heating: 'GAS'
+                heating: 'GAS',
+                _createdOn: 1723570947699
             },
             "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
                 typeOfEstate: "maisonette",
@@ -1378,7 +1379,8 @@
                 contacts: "088 888 8888",
                 floor: 12,
                 totalFloors: 15,
-                heating: 'TPP'
+                heating: 'TPP',
+                _createdOn: 1723570947699
             },
             "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
                 typeOfEstate: "two-bedroom",
@@ -1397,7 +1399,8 @@
                 contacts: "088 888 8888",
                 floor: 5,
                 totalFloors: 8,
-                heating: 'air condition'
+                heating: 'air condition',
+                _createdOn: 1723570947699
             }
         }
     };

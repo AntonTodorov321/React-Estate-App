@@ -46,7 +46,7 @@ export default function EstateDetails() {
                 <div className={styles.header}>
                     <div>
                         <h2>Rent {estate.typeOfEstate} apartment</h2>
-                        <h4>{estate.location}</h4>
+                        <h4>Sofia, {estate.location}</h4>
                     </div>
 
                     <div className={styles.captionDescription}>
@@ -56,7 +56,7 @@ export default function EstateDetails() {
                 </div>
                 <ImageCarousel allImg={estate.allImg} />
                 <h3>Rent {estate.typeOfEstate} apartment</h3>
-                <div>{estate.location} ({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
+                <div>Sofia, {estate.location} ({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
                 <div>Size: {estate.size}m<sup>2</sup>&nbsp; | &nbsp; Floor: {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp; Heating: {estate.heating}</div>
                 <div>Type of building: {estate.typeOfBuilding}</div>
                 <div>Description: {estate.description}</div>

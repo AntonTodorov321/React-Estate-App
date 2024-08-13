@@ -23,7 +23,7 @@ export default function EstateItem({
             <div className={styles.container}>
                 <div>
                     <h4 className={styles.important}>Rent {typeOfEstate} apartment</h4>
-                    <p><span className={styles.important}>Location: </span> {location}</p>
+                    <p><span className={styles.important}>Location: </span> Sofia, {location}</p>
                     <p><span className={styles.important}>Price: </span> {price} {getCurrencySymbol(currency)}</p>
                     <p><span className={styles.important}>Description: </span> {description}</p>
                     {isAuthenticated &&

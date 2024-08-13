@@ -18,10 +18,10 @@ export default function EditEstate() {
     const { estateId } = useParams();
 
     const submitHandler = async (values) => {
-        await estateService.create({
+        await estateService.edit({
             ...values,
             mainImg: values.allImg[0]
-        });
+        }, estateId);
 
         navigate(Path.AllEstates);
     };
