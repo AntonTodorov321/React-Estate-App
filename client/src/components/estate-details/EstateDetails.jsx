@@ -46,6 +46,10 @@ export default function EstateDetails() {
         };
     };
 
+    const addComment = (newComment) => {
+        setComment(state => [...state, newComment]);
+    };
+
     return (
         <>
             <div className={styles.container}>
@@ -89,8 +93,13 @@ export default function EstateDetails() {
                     )}
                 </div>
             </div>
-            <AddComment estateId={estateId} />
-            <Map neighborhood={estate.location} />
+
+            <AddComment
+                estateId={estateId}
+                addComment={addComment}
+            />
+
+            <Map />
         </>
     );
 };

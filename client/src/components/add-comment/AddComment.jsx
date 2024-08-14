@@ -3,13 +3,16 @@ import { useState } from 'react';
 import styles from './AddComment.module.css';
 import * as commentService from '../../services/commentService';
 
+const initialValues = {
+    username: '',
+    content: ''
+};
+
 export default function AddComment({
-    estateId
+    estateId,
+    addComment
 }) {
-    const [formValues, setFormValues] = useState({
-        username: '',
-        content: ''
-    });
+    const [formValues, setFormValues] = useState(initialValues);
 
     const changeHandler = (e) => {
         setFormValues(state => ({
@@ -21,11 +24,14 @@ export default function AddComment({
     const addCommentHandler = async (e) => {
         e.preventDefault();
 
-        await commentService.create(
+        const newComment = await commentService.create(
             estateId,
             formValues.content,
             formValues.username
         );
+
+        addComment(newComment);
+        setFormValues(initialValues);
     };
 
     return (
@@ -50,7 +56,7 @@ export default function AddComment({
                         name='content'
                         id="content"
                         className={styles.textarea}
-                        value={formValues.comment}
+                        value={formValues.content}
                         onChange={changeHandler}
                         placeholder='Comment...'
                     />
