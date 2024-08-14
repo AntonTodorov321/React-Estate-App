@@ -11,6 +11,7 @@ import * as estateService from '../../services/estateService.js';
 
 import ImageCarousel from "../carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
+import AddComment from "../add-comment/AddComment.jsx";
 
 export default function EstateDetails() {
     const { estateId } = useParams();
@@ -73,6 +74,7 @@ export default function EstateDetails() {
                     </div>
                 </div>
             </div>
+            <AddComment />
             <Map neighborhood={estate.location} />
         </>
     );
