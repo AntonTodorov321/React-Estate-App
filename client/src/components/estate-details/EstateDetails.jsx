@@ -40,7 +40,6 @@ export default function EstateDetails() {
         };
     };
 
-
     return (
         <>
             <div className={styles.container}>
@@ -74,7 +73,7 @@ export default function EstateDetails() {
                     </div>
                 </div>
             </div>
-            <AddComment />
+            <AddComment estateId={estateId} />
             <Map neighborhood={estate.location} />
         </>
     );
