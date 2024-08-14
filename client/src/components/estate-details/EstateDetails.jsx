@@ -41,37 +41,39 @@ export default function EstateDetails() {
 
 
     return (
-        <div className={styles.container}>
-            <div className={styles.content}>
-                <div className={styles.header}>
-                    <div>
-                        <h2>Rent {estate.typeOfEstate} apartment</h2>
-                        <h4>Sofia, {estate.location}</h4>
-                    </div>
+        <>
+            <div className={styles.container}>
+                <div className={styles.content}>
+                    <div className={styles.header}>
+                        <div>
+                            <h2>Rent {estate.typeOfEstate} apartment</h2>
+                            <h4>Sofia, {estate.location}</h4>
+                        </div>
 
-                    <div className={styles.captionDescription}>
-                        <div className={styles.importantRed}>{estate.price} {currencySymbol}</div>
-                        <div>({(estate.price / estate.size).toFixed(2)} {currencySymbol}/m<sup>2</sup>)</div>
+                        <div className={styles.captionDescription}>
+                            <div className={styles.importantRed}>{estate.price} {currencySymbol}</div>
+                            <div>({(estate.price / estate.size).toFixed(2)} {currencySymbol}/m<sup>2</sup>)</div>
+                        </div>
                     </div>
-                </div>
-                <ImageCarousel allImg={estate.allImg} />
-                <h3>Rent {estate.typeOfEstate} apartment</h3>
-                <div>Sofia, {estate.location} ({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
-                <div>Size: {estate.size}m<sup>2</sup>&nbsp; | &nbsp; Floor: {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp; Heating: {estate.heating}</div>
-                <div>Type of building: {estate.typeOfBuilding}</div>
-                <div>Description: {estate.description}</div>
-                <div>Contacts: {estate.contacts}</div>
+                    <ImageCarousel allImg={estate.allImg} />
+                    <h3>Rent {estate.typeOfEstate} apartment</h3>
+                    <div>Sofia, {estate.location} ({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
+                    <div>Size: {estate.size}m<sup>2</sup>&nbsp; | &nbsp; Floor: {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp; Heating: {estate.heating}</div>
+                    <div>Type of building: {estate.typeOfBuilding}</div>
+                    <div>Description: {estate.description}</div>
+                    <div>Contacts: {estate.contacts}</div>
 
-                <div className={styles.edit}>
-                    {estate._ownerId === userId &&
-                        <>
-                            <Link to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</Link>
-                            <button onClick={deleteButtonClickHandler} className={styles.deleteButton}>Delete</button>
-                        </>
-                    }
+                    <div className={styles.edit}>
+                        {estate._ownerId === userId &&
+                            <>
+                                <Link to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</Link>
+                                <button onClick={deleteButtonClickHandler} className={styles.deleteButton}>Delete</button>
+                            </>
+                        }
+                    </div>
                 </div>
             </div>
-            <Map />
-        </div>
+            <Map neighborhood={estate.location} />
+        </>
     );
 };

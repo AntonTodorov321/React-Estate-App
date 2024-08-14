@@ -25,7 +25,8 @@ export default function EstateItem({
                     <h4 className={styles.important}>Rent {typeOfEstate} apartment</h4>
                     <p><span className={styles.important}>Location: </span> Sofia, {location}</p>
                     <p><span className={styles.important}>Price: </span> {price} {getCurrencySymbol(currency)}</p>
-                    <p><span className={styles.important}>Description: </span> {description}</p>
+                    {description && 
+                    <p><span className={styles.important}>Description: </span> {description}</p>}
                     {isAuthenticated &&
                         <Button as={Link} to={`/estates/${_id}`} variant="primary" className={styles.button}>Details</Button>
                     }

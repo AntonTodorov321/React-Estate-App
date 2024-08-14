@@ -1346,7 +1346,7 @@
                 typeOfEstate: "one-bedroom",
                 price: 325,
                 currency: "Euro",
-                location: "Sofia, Manastirski Livadi",
+                location: "Manastirski Livadi",
                 size: 45,
                 mainImg: "https://www.essexapartmenthomes.com/-/media/Project/EssexPropertyTrust/Sites/EssexApartmentHomes/Blog/2021/2021-01-12-Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up/Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up-1.jpg",
                 allImg: [
@@ -1366,7 +1366,7 @@
                 typeOfEstate: "maisonette",
                 price: 970,
                 currency: "Euro",
-                location: "Sofia, Lozenec",
+                location: "Lozenec",
                 size: 210,
                 mainImg: "https://d1hy6t2xeg0mdl.cloudfront.net/image/326244/4454e60113/standard",
                 allImg: [
@@ -1375,7 +1375,7 @@
                     'https://cf.bstatic.com/xdata/images/hotel/max1024x768/447780546.jpg?k=e1c8e246171879035c67b195dc69ceca6de739b9a3c1404547b093080418f49a&o=&hp=1'
                 ],
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
-                typeOfBuilding: "EПК",
+                typeOfBuilding: "EPK",
                 contacts: "088 888 8888",
                 floor: 12,
                 totalFloors: 15,
@@ -1386,7 +1386,7 @@
                 typeOfEstate: "two-bedroom",
                 price: 900,
                 currency: "lv",
-                location: "Sofia, Iztok",
+                location: "Iztok",
                 size: 78,
                 mainImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTooLB8CtqQq5l3A0uksL0S5hTiPkM0tQuKgw&s",
                 allImg: [
@@ -1395,7 +1395,7 @@
                     'https://springmoor.org/wp-content/uploads/2020/09/2br-apt-scaled.jpg'
                 ],
                 description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
-                typeOfBuilding: "панел",
+                typeOfBuilding: "panel",
                 contacts: "088 888 8888",
                 floor: 5,
                 totalFloors: 8,
