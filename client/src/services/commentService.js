@@ -11,3 +11,9 @@ export const create = async (estateId, comment, username) => {
 
     return newComment;
 };
+
+export const getAll = async () => {
+    const result = await request.get(baseUrl);
+
+    return Object.values(result);
+}

@@ -8,7 +8,7 @@ export default function AddComment({
 }) {
     const [formValues, setFormValues] = useState({
         username: '',
-        comment: ''
+        content: ''
     });
 
     const changeHandler = (e) => {
@@ -21,14 +21,11 @@ export default function AddComment({
     const addCommentHandler = async (e) => {
         e.preventDefault();
 
-       const newComment =  await commentService.create(
+        await commentService.create(
             estateId,
-            formValues.comment,
+            formValues.content,
             formValues.username
         );
-
-        console.log(newComment);
-        
     };
 
     return (
@@ -50,7 +47,7 @@ export default function AddComment({
                 <div className={styles.inputContainer}>
                     <label htmlFor="content" className={styles.label}>Content:</label>
                     <textarea
-                        name='comment'
+                        name='content'
                         id="content"
                         className={styles.textarea}
                         value={formValues.comment}
@@ -62,4 +59,4 @@ export default function AddComment({
             </form>
         </div>
     );
-}
+};

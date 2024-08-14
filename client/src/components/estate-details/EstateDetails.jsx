@@ -8,20 +8,26 @@ import { AuthContext } from "../../contexts/authContext.jsx";
 import { Path } from "../../paths.js";
 import styles from './EstateDetails.module.css';
 import * as estateService from '../../services/estateService.js';
+import * as commentService from '../../services/commentService.js';
 
 import ImageCarousel from "../carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
 import AddComment from "../add-comment/AddComment.jsx";
+import CommnetItem from "../../comment-item/CommentItem.jsx";
 
 export default function EstateDetails() {
-    const { estateId } = useParams();
     const [estate, setEstate] = useState({ allImg: [] });
+    const [comments, setComment] = useState([]);
+    const { estateId } = useParams();
     const { userId } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         estateService.getDetails(estateId)
-            .then(data => setEstate(data));
+            .then(setEstate);
+
+        commentService.getAll()
+            .then(setComment);
     }, [estateId]);
 
     let currencySymbol = getCurrencySymbol(estate.currency);
@@ -71,6 +77,16 @@ export default function EstateDetails() {
                             </>
                         }
                     </div>
+
+                    {comments.length > 0 && (
+                        <>
+                            <h3 className={styles.title}>Comments:</h3>
+
+                            {comments.map(comment => (
+                                <CommnetItem key={comment._id} {...comment} />
+                            ))}
+                        </>
+                    )}
                 </div>
             </div>
             <AddComment estateId={estateId} />
