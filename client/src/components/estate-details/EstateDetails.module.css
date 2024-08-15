@@ -35,6 +35,10 @@
     margin-top: 3em;
 }
 
+.textBold{
+    font-weight: bold;
+}
+
 .editButton {
     padding: 12px 35px;
     border: none;

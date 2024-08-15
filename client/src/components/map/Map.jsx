@@ -55,7 +55,6 @@ export default function Map() {
 
     const { isLoaded, loadError } = useJsApiLoader({
         googleMapsApiKey: ApiKey,
-        libraries: ['places']
     });
 
     if (loadError) {

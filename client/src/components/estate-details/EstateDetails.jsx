@@ -67,11 +67,16 @@ export default function EstateDetails() {
                     </div>
                     <ImageCarousel allImg={estate.allImg} />
                     <h3>Rent {estate.typeOfEstate} apartment</h3>
-                    <div>Sofia, {estate.location} ({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
-                    <div>Size: {estate.size}m<sup>2</sup>&nbsp; | &nbsp; Floor: {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp; Heating: {estate.heating}</div>
-                    <div>Type of building: {estate.typeOfBuilding}</div>
-                    <div>Description: {estate.description}</div>
-                    <div>Contacts: {estate.contacts}</div>
+                    <div className={styles.textBold}>Sofia, {estate.location}</div>
+                    <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
+                    <div>
+                        <span className={styles.textBold}>Size:</span> {estate.size}m<sup>2</sup>&nbsp; | &nbsp;
+                        <span className={styles.textBold}>Floor:</span> {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp;
+                        <span className={styles.textBold}>Heating:</span> {estate.heating}
+                    </div>
+                    <div><span className={styles.textBold}>Type of building:</span> {estate.typeOfBuilding}</div>
+                    <div><span className={styles.textBold}>Description:</span> {estate.description}</div>
+                    <div><span className={styles.textBold}>Contacts:</span> {estate.contacts}</div>
 
                     <div className={styles.edit}>
                         {estate._ownerId === userId &&
