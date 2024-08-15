@@ -70,12 +70,34 @@ export default function EstateDetails() {
                     <div className={styles.textBold}>Sofia, {estate.location}</div>
                     <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
                     <div>
-                        <span className={styles.textBold}>Size:</span> {estate.size}m<sup>2</sup>&nbsp; | &nbsp;
-                        <span className={styles.textBold}>Floor:</span> {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp;
-                        <span className={styles.textBold}>Heating:</span> {estate.heating}
+                        <span className={styles.textBold}>Size:</span> {estate.size}m<sup>2</sup>
+
+                        {estate.floor && (
+                            <>
+                                <span className={styles.textBold}> &nbsp; | &nbsp; Floor:</span>
+                                {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp;
+                            </>
+                        )}
+
+                        {estate.heating && (
+                            <>
+                                <span className={styles.textBold}>Heating:</span> {estate.heating}
+                            </>
+                        )}
                     </div>
-                    <div><span className={styles.textBold}>Type of building:</span> {estate.typeOfBuilding}</div>
-                    <div><span className={styles.textBold}>Description:</span> {estate.description}</div>
+
+                    {estate.typeOfBuilding && (
+                        <div>
+                            <span className={styles.textBold}>Type of building:</span> {estate.typeOfBuilding}
+                        </div>
+                    )}
+
+                    {estate.description && (
+                        <div>
+                            <span className={styles.textBold}>Description:</span> {estate.description}
+                        </div>
+                    )}
+
                     <div><span className={styles.textBold}>Contacts:</span> {estate.contacts}</div>
 
                     <div className={styles.edit}>
