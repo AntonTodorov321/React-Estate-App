@@ -26,7 +26,7 @@ export default function EstateDetails() {
         estateService.getDetails(estateId)
             .then(setEstate);
 
-        commentService.getAll()
+        commentService.getCurrent(estateId)
             .then(setComment);
     }, [estateId]);
 
