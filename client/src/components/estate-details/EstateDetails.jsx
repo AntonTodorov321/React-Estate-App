@@ -19,7 +19,7 @@ export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
     const [comments, setComment] = useState([]);
     const { estateId } = useParams();
-    const { userId } = useContext(AuthContext);
+    const { userId, username } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function EstateDetails() {
     };
 
     const addComment = (newComment) => {
-        setComment(state => [...state, newComment]);
+        setComment(state => [...state, { ...newComment, owner: { username } }]);
     };
 
     return (

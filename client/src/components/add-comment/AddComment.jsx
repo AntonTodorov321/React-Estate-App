@@ -27,7 +27,6 @@ export default function AddComment({
         const newComment = await commentService.create(
             estateId,
             formValues.content,
-            formValues.username
         );
 
         addComment(newComment);
@@ -38,18 +37,6 @@ export default function AddComment({
         <div className={styles.formContainer}>
             <h3>Add a comment</h3>
             <form className={styles.form}>
-                <div className={styles.inputContainer}>
-                    <label htmlFor="username" className={styles.label}>Username:</label>
-                    <input
-                        name='username'
-                        type="text"
-                        id="username"
-                        className={styles.input}
-                        value={formValues.username}
-                        onChange={changeHandler}
-                        placeholder='username'
-                    />
-                </div>
                 <div className={styles.inputContainer}>
                     <label htmlFor="content" className={styles.label}>Content:</label>
                     <textarea
