@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 
 import { Carousel } from 'react-responsive-carousel';
 
+import styles from './ImageCarousel.module.css';
+
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default function ImageCarousel({
@@ -23,16 +25,17 @@ export default function ImageCarousel({
     };
 
     return (
-        <div ref={focusDivRef} onKeyDown={handleKeyDown} tabIndex='0'>
+        <div ref={focusDivRef} onKeyDown={handleKeyDown} tabIndex='0' className={styles.div}>
             <Carousel
                 showThumbs={true}
                 autoPlay={false}
                 infiniteLoop={true}
                 ref={carouselRef}
+                className={styles.carouselContainer}
             >
                 {allImg.map((img) => (
-                    <div key={img}>
-                        <img src={img} />
+                    <div key={img} className={styles.slide}>
+                        <img src={img} className={styles.carouselImage} />
                     </div>
                 ))}
             </Carousel>
