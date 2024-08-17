@@ -71,3 +71,22 @@ If you don't want to make a registration, feel free to use one of these:
 
 ## Server Repository
 For the server I use SoftUni Practice Server. You can access it here [Softuni Practice Server](https://github.com/softuni-practice-server/softuni-practice-server)
+
+## Screenshots
+![Home page](https://github.com/user-attachments/assets/e8586c1c-76f8-4f0c-8262-77dcf295fd08)
+<br/>
+<br/>
+<br/>
+![All estates](https://github.com/user-attachments/assets/fed6869e-417c-4fe3-b65e-de431233ca56)
+<br/>
+<br/>
+<br/>
+![Add estate](https://github.com/user-attachments/assets/7d35cb07-7593-43f3-a52a-ed90e211ef48)
+<br/>
+<br/>
+<br/>
+![Estate details part 1](https://github.com/user-attachments/assets/fe53a169-8adb-4d4f-a2a1-2ae0fbf6ff12)
+<br/>
+<br/>
+<br/>
+![Estate details part 2](https://github.com/user-attachments/assets/d01713f1-7921-4703-8bba-a6adb95805c2)
