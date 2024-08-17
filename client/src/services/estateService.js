@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3030/data/estates";
+const baseUrl = `${import.meta.env.VITE_API_URL}/data/estates`;
 
 import * as request from "../lib/request";
 
