@@ -13,7 +13,7 @@ import * as commentService from '../../services/commentService.js';
 import ImageCarousel from "../carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
 import AddComment from "../add-comment/AddComment.jsx";
-import CommnetItem from "../../comment-item/CommentItem.jsx";
+import CommnetItem from "../comment-item/CommentItem.jsx";
 
 export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
