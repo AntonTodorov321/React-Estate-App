@@ -14,7 +14,7 @@ export default function Header() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container >
-                <img className={styles.logo} src="../../public/favicon.png" alt="favicon.png" />
+                <img className={styles.logo} src="/favicon.png" alt="favicon" />
                 <Navbar.Brand as={Link} to='/'>Real Estate</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

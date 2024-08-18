@@ -1,6 +1,6 @@
-import * as request from '../lib/request';
+const baseUrl = `${import.meta.env.VITE_API_URL}/data/comment`;
 
-const baseUrl = 'http://localhost:3030/data/comment';
+import * as request from '../lib/request';
 
 export const create = async (estateId, comment) => {
     const newComment = await request.post(baseUrl, {
