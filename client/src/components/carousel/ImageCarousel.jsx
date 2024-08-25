@@ -14,24 +14,32 @@ export default function ImageCarousel({
     estate
 }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedImg, setSelectedImg] = useState(0);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-    const openModal = (img) => {
-        console.log('open');
-
-        setSelectedImg(img);
+    const openModal = (index) => {
+        setSelectedImageIndex(index);
         setIsModalOpen(true);
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setSelectedImg(null);
+        setSelectedImageIndex(null);
+    };
+
+    const handleImageChange = (index) => {
+        setSelectedImageIndex(index);
+    };
+
+    const handlePrevClick = () => {
+        carouselRef.current.decrement();
+    };
+
+    const handleNextClick = () => {
+        carouselRef.current.increment();
     };
 
     return (
-
-
-        <div className={styles.div}>
+        <div className={styles.container}>
             <Carousel
                 showThumbs={true}
                 autoPlay={false}
@@ -40,26 +48,37 @@ export default function ImageCarousel({
                 showArrows={false}
                 showIndicators={false}
                 showStatus={false}
-                className={styles.carouselContainer}
+                onChange={handleImageChange}
+                className={`${styles.carouselContainer} ${isModalOpen ? styles.carouselHidden : ''}`}
             >
-                {allImg.map((img) => (
+                {allImg.map((img, index) => (
                     <div
                         key={img}
                         className={styles.slide}
-                        onClick={() => openModal(img)}
+                        onClick={() => openModal(index)}
                     >
                         <img src={img} className={styles.carouselImage} />
                     </div>
                 ))}
             </Carousel>
 
+            <div className={styles.showStatus}>
+                <div className={styles.centerArrows}>
+                    <span className={styles.arrow} onClick={handlePrevClick}>&lt;</span>
+                    {selectedImageIndex + 1}/{allImg.length}
+                    <span className={styles.arrow} onClick={handleNextClick}>&gt;</span>
+                </div>
+                <span className={styles.bigger}>&#128269;Bigger</span>
+            </div>
+
 
             <ImageModal
                 estate={estate}
                 isModalOpen={isModalOpen}
                 closeModal={closeModal}
+                selectedImageIndex={selectedImageIndex}
+                handleImageChange={handleImageChange}
             />
-
         </div>
     );
 }

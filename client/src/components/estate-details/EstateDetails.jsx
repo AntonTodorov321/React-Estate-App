@@ -6,9 +6,9 @@ import { toast } from "react-toastify";
 import * as estateUtil from '../../utils/estateUtils.js';
 import { AuthContext } from "../../contexts/authContext.jsx";
 import { Path } from "../../paths.js";
-import styles from './EstateDetails.module.css';
 import * as estateService from '../../services/estateService.js';
 import * as commentService from '../../services/commentService.js';
+import styles from './EstateDetails.module.css';
 
 import ImageCarousel from "../carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
@@ -88,7 +88,7 @@ export default function EstateDetails() {
                     estate={estate}
                 />
 
-                <h3>{estateUtil.completeEstateName(estate.typeOfEstate)}</h3>
+                <h3 className={styles.caption}>{estateUtil.completeEstateName(estate.typeOfEstate)}</h3>
                 <div className={styles.textBold}>{estateUtil.completeEstateLocation(estate.location)}</div>
                 <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
                 <div>

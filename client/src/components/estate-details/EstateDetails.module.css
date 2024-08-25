@@ -37,7 +37,7 @@
     margin-top: 3em;
 }
 
-.textBold{
+.textBold {
     font-weight: bold;
 }
 
@@ -61,4 +61,8 @@
     font-size: 1.2em;
     text-decoration: none;
     margin-left: 1em;
+}
+
+.caption {
+    margin-top: 1em;
 }
