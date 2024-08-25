@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -18,6 +18,8 @@ import CommnetItem from "../comment-item/CommentItem.jsx";
 export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
     const [comments, setComment] = useState([]);
+    const focusDivRef = useRef();
+    const carouselRef = useRef();
     const { estateId } = useParams();
     const { userId, username } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -28,6 +30,8 @@ export default function EstateDetails() {
 
         commentService.getCurrent(estateId)
             .then(setComment);
+
+        focusDivRef.current.focus()
     }, [estateId]);
 
     let currencySymbol = getCurrencySymbol(estate.currency);
@@ -50,75 +54,91 @@ export default function EstateDetails() {
         setComment(state => [...state, { ...newComment, owner: { username } }]);
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'ArrowLeft') {
+            carouselRef.current.decrement();
+        } else if (e.key === 'ArrowRight') {
+            carouselRef.current.increment();
+        }
+    };
+
     return (
-        <>
-            <div className={styles.container}>
-                <div className={styles.content}>
-                    <div className={styles.header}>
-                        <div>
-                            <h2>Rent {estate.typeOfEstate} apartment</h2>
-                            <h4>Sofia, {estate.location}</h4>
-                        </div>
-
-                        <div className={styles.captionDescription}>
-                            <div className={styles.importantRed}>{estate.price} {currencySymbol}</div>
-                            <div>({(estate.price / estate.size).toFixed(2)} {currencySymbol}/m<sup>2</sup>)</div>
-                        </div>
-                    </div>
-                    <ImageCarousel allImg={estate.allImg} />
-                    <h3>Rent {estate.typeOfEstate} apartment</h3>
-                    <div className={styles.textBold}>Sofia, {estate.location}</div>
-                    <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
+        <div
+            ref={focusDivRef}
+            onKeyDown={handleKeyDown}
+            tabIndex='0'
+            className={styles.container}
+        >
+            <div className={styles.content}>
+                <div className={styles.header}>
                     <div>
-                        <span className={styles.textBold}>Size:</span> {estate.size}m<sup>2</sup>
-
-                        {estate.floor && (
-                            <>
-                                <span className={styles.textBold}> &nbsp; | &nbsp; Floor:</span>
-                                {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp;
-                            </>
-                        )}
-
-                        {estate.heating && (
-                            <>
-                                <span className={styles.textBold}>Heating:</span> {estate.heating}
-                            </>
-                        )}
+                        <h2>Rent {estate.typeOfEstate} apartment</h2>
+                        <h4>Sofia, {estate.location}</h4>
                     </div>
 
-                    {estate.typeOfBuilding && (
-                        <div>
-                            <span className={styles.textBold}>Type of building:</span> {estate.typeOfBuilding}
-                        </div>
-                    )}
-
-                    {estate.description && (
-                        <div>
-                            <span className={styles.textBold}>Description:</span> {estate.description}
-                        </div>
-                    )}
-
-                    <div><span className={styles.textBold}>Contacts:</span> {estate.contacts}</div>
-
-                    <div className={styles.edit}>
-                        {estate._ownerId === userId &&
-                            <>
-                                <Link to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</Link>
-                                <button onClick={deleteButtonClickHandler} className={styles.deleteButton}>Delete</button>
-                            </>
-                        }
+                    <div className={styles.captionDescription}>
+                        <div className={styles.importantRed}>{estate.price} {currencySymbol}</div>
+                        <div>({(estate.price / estate.size).toFixed(2)} {currencySymbol}/m<sup>2</sup>)</div>
                     </div>
+                </div>
 
-                    {comments.length > 0 && (
+                <ImageCarousel
+                    allImg={estate.allImg}
+                    carouselRef={carouselRef}
+                />
+
+                <h3>Rent {estate.typeOfEstate} apartment</h3>
+                <div className={styles.textBold}>Sofia, {estate.location}</div>
+                <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
+                <div>
+                    <span className={styles.textBold}>Size:</span> {estate.size}m<sup>2</sup>
+
+                    {estate.floor && (
                         <>
-                            <h3 className={styles.title}>Comments:</h3>
+                            <span className={styles.textBold}> &nbsp; | &nbsp; Floor:</span>
+                            {estate.floor}-th from {estate.totalFloors} &nbsp; | &nbsp;
+                        </>
+                    )}
 
-                            {comments.map(comment => (
-                                <CommnetItem key={comment._id} {...comment} />
-                            ))}
+                    {estate.heating && (
+                        <>
+                            <span className={styles.textBold}>Heating:</span> {estate.heating}
                         </>
                     )}
                 </div>
+
+                {estate.typeOfBuilding && (
+                    <div>
+                        <span className={styles.textBold}>Type of building:</span> {estate.typeOfBuilding}
+                    </div>
+                )}
+
+                {estate.description && (
+                    <div>
+                        <span className={styles.textBold}>Description:</span> {estate.description}
+                    </div>
+                )}
+
+                <div><span className={styles.textBold}>Contacts:</span> {estate.contacts}</div>
+
+                <div className={styles.edit}>
+                    {estate._ownerId === userId &&
+                        <>
+                            <Link to={`/estates/edit/${estateId}`} className={styles.editButton}>Edit</Link>
+                            <button onClick={deleteButtonClickHandler} className={styles.deleteButton}>Delete</button>
+                        </>
+                    }
+                </div>
+
+                {comments.length > 0 && (
+                    <>
+                        <h3 className={styles.title}>Comments:</h3>
+
+                        {comments.map(comment => (
+                            <CommnetItem key={comment._id} {...comment} />
+                        ))}
+                    </>
+                )}
             </div>
 
             <AddComment
@@ -127,6 +147,6 @@ export default function EstateDetails() {
             />
 
             <Map />
-        </>
+        </div>
     );
 };

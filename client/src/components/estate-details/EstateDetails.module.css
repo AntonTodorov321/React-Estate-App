@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .content {
@@ -10,6 +11,7 @@
     display: flex;
     padding: 1.5em;
     flex-direction: column;
+    margin-bottom: 3em;
 }
 
 .captionDescription {
