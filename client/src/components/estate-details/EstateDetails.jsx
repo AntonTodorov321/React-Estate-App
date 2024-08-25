@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
-import { getCurrencySymbol } from '../../utils/currencyUtils.js';
+import * as estateUtil from '../../utils/estateUtils.js';
 import { AuthContext } from "../../contexts/authContext.jsx";
 import { Path } from "../../paths.js";
 import styles from './EstateDetails.module.css';
@@ -14,6 +14,7 @@ import ImageCarousel from "../carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
 import AddComment from "../add-comment/AddComment.jsx";
 import CommnetItem from "../comment-item/CommentItem.jsx";
+import ImageModal from "../image-modal/ImageModal.jsx";
 
 export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
@@ -34,7 +35,7 @@ export default function EstateDetails() {
         focusDivRef.current.focus()
     }, [estateId]);
 
-    let currencySymbol = getCurrencySymbol(estate.currency);
+    let currencySymbol = estateUtil.getCurrencySymbol(estate.currency);
 
     const deleteButtonClickHandler = async () => {
         const result = confirm(`Are you sure you want to delete ${estate.typeOfEstate} apartment in ${estate.location}?`)
@@ -72,8 +73,8 @@ export default function EstateDetails() {
             <div className={styles.content}>
                 <div className={styles.header}>
                     <div>
-                        <h2>Rent {estate.typeOfEstate} apartment</h2>
-                        <h4>Sofia, {estate.location}</h4>
+                        <h2>{estateUtil.completeEstateName(estate.typeOfEstate)}</h2>
+                        <h4>{estateUtil.completeEstateLocation(estate.location)}</h4>
                     </div>
 
                     <div className={styles.captionDescription}>
@@ -87,8 +88,12 @@ export default function EstateDetails() {
                     carouselRef={carouselRef}
                 />
 
-                <h3>Rent {estate.typeOfEstate} apartment</h3>
-                <div className={styles.textBold}>Sofia, {estate.location}</div>
+                {/* <ImageModal>
+
+                </ImageModal> */}
+
+                <h3>{estateUtil.completeEstateName(estate.typeOfEstate)}</h3>
+                <div className={styles.textBold}>{estateUtil.completeEstateLocation(estate.location)}</div>
                 <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
                 <div>
                     <span className={styles.textBold}>Size:</span> {estate.size}m<sup>2</sup>

@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
+import * as estateUtil from '../../utils/estateUtils.js';
 import styles from './EstateItem.module.css';
-import { getCurrencySymbol } from '../../utils/currencyUtils.js';
+import * as estateUtils from '../../utils/estateUtils.js';
 import { AuthContext } from '../../contexts/authContext.jsx';
 
 export default function EstateItem({
@@ -22,9 +23,9 @@ export default function EstateItem({
         <div className={styles.content}>
             <div className={styles.container}>
                 <div>
-                    <h4 className={styles.important}>Rent {typeOfEstate} apartment</h4>
-                    <p><span className={styles.important}>Location: </span> Sofia, {location}</p>
-                    <p><span className={styles.important}>Price: </span> {price} {getCurrencySymbol(currency)}</p>
+                    <h4 className={styles.important}>{estateUtil.completeEstateName(typeOfEstate)}</h4>
+                    <p><span className={styles.important}>Location: </span>{estateUtil.completeEstateLocation(location)}</p>
+                    <p><span className={styles.important}>Price: </span> {price} {estateUtils.getCurrencySymbol(currency)}</p>
                     {description && 
                     <p><span className={styles.important}>Description: </span> {description}</p>}
                     {isAuthenticated &&

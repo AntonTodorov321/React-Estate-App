@@ -7,9 +7,7 @@ import { faImage } from '@fortawesome/free-regular-svg-icons';
 import { faMaximize, faMinimize } from '@fortawesome/free-solid-svg-icons';
 
 import styles from '../css/Carousel.module.css';
-import { getCurrencySymbol } from '../../utils/currencyUtils';
-import { completeEstateName } from '../../utils/completeEstateName';
-import { compoleteEstateLocation } from '../../utils/completeEstateLocation';
+import * as estateUtils from '../../utils/estateUtils';
 
 export default function ImageModal({
     isModalOpen,
@@ -51,8 +49,8 @@ export default function ImageModal({
             className={styles.modal}
             overlayClassName={styles.overlay}
         >
-            <p className={styles.price}>{estate.price} {getCurrencySymbol(estate.currency)}
-                <span className={styles.caption}>{completeEstateName(estate.typeOfEstate)}, {compoleteEstateLocation(estate.location)}</span>
+            <p className={styles.price}>{estate.price} {estateUtils.getCurrencySymbol(estate.currency)}
+                <span className={styles.caption}>{estateUtils.completeEstateName(estate.typeOfEstate)}, {estateUtils.compoleteEstateLocation(estate.location)}</span>
                 <span className={styles.spacer}></span>
                 <span className={styles.closeButton} onClick={closeModal}>&times;</span>
             </p>
