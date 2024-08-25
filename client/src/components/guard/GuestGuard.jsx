@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 
 import { AuthContext } from '../../contexts/authContext';
 import Spinner from '../spinner/Spinner';
+import { Path } from '../../paths';
 
 export default function GuestGuard() {
     const { isAuthenticated } = useContext(AuthContext);
@@ -12,18 +13,29 @@ export default function GuestGuard() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        let redirectTimeout;
+        let showToast;
+
         if (isAuthenticated) {
-            toast.info('You are already authenticated. Redirecting ...');
-            setTimeout(() => {
-                navigate(-1,);
+            showToast = setTimeout(() => {
+                toast.info('You are already authenticated. Redirecting ...');
+            }, 100);
+
+            redirectTimeout = setTimeout(() => {
+                navigate(-1);
             }, 1000);
         } else {
             setIsRedirecting(false);
         }
+
+        return () => {
+            clearTimeout(redirectTimeout);
+            clearTimeout(showToast);
+        };
     }, [isAuthenticated, navigate]);
 
     if (isRedirecting) {
-        return <Spinner/>;
+        return <Spinner />;
     }
 
     return <Outlet />;

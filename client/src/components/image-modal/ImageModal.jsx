@@ -14,7 +14,6 @@ export default function ImageModal({
     closeModal,
     selectedImageIndex,
     estate,
-    allImg,
     handleImageChange,
 }) {
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -50,7 +49,7 @@ export default function ImageModal({
             overlayClassName={styles.overlay}
         >
             <p className={styles.price}>{estate.price} {estateUtils.getCurrencySymbol(estate.currency)}
-                <span className={styles.caption}>{estateUtils.completeEstateName(estate.typeOfEstate)}, {estateUtils.compoleteEstateLocation(estate.location)}</span>
+                <span className={styles.caption}>{estateUtils.completeEstateName(estate.typeOfEstate)}, {estateUtils.completeEstateLocation(estate.location)}</span>
                 <span className={styles.spacer}></span>
                 <span className={styles.closeButton} onClick={closeModal}>&times;</span>
             </p>
@@ -77,7 +76,7 @@ export default function ImageModal({
                     showStatus={false}
                     onChange={handleImageChange}
                 >
-                    {allImg.map((img, index) => (
+                    {estate.allImg.map((img, index) => (
                         <div
                             key={index}
                             className={styles.slide}
@@ -90,7 +89,7 @@ export default function ImageModal({
 
                 <div className={styles.imageStatus}>
                     <FontAwesomeIcon icon={faImage} />
-                    <p>{selectedImageIndex + 1}/{allImg.length}</p>
+                    <p>{selectedImageIndex + 1}/{estate.allImg.length}</p>
                 </div>
 
                 {!isFullScreen &&

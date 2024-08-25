@@ -14,7 +14,6 @@ import ImageCarousel from "../carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
 import AddComment from "../add-comment/AddComment.jsx";
 import CommnetItem from "../comment-item/CommentItem.jsx";
-import ImageModal from "../image-modal/ImageModal.jsx";
 
 export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
@@ -86,11 +85,8 @@ export default function EstateDetails() {
                 <ImageCarousel
                     allImg={estate.allImg}
                     carouselRef={carouselRef}
+                    estate={estate}
                 />
-
-                {/* <ImageModal>
-
-                </ImageModal> */}
 
                 <h3>{estateUtil.completeEstateName(estate.typeOfEstate)}</h3>
                 <div className={styles.textBold}>{estateUtil.completeEstateLocation(estate.location)}</div>
