@@ -76,7 +76,6 @@ export default function ImageCarousel({
                 </div>
             </div>
 
-
             <ImageModal
                 estate={estate}
                 isModalOpen={isModalOpen}
