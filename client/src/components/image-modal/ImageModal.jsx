@@ -79,7 +79,7 @@ export default function ImageModal({
                     {estate.allImg.map((img, index) => (
                         <div
                             key={index}
-                            className={styles.slide}
+                            className={styles.img}
                             onClick={openFullScreen}
                         >
                             <img src={img} className={styles.carouselImage} />
