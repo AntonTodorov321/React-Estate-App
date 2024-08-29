@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import { Carousel } from 'react-responsive-carousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './ImageCarousel.module.css';
 
@@ -68,7 +70,10 @@ export default function ImageCarousel({
                     {selectedImageIndex + 1}/{allImg.length}
                     <span className={styles.arrow} onClick={handleNextClick}>&gt;</span>
                 </div>
-                <span className={styles.bigger}>&#128269;Bigger</span>
+                <div className={styles.biggerText} onClick={() => openModal(selectedImageIndex)}>
+                    <FontAwesomeIcon icon={faMagnifyingGlassPlus} className={styles.magnifyingGlas} />
+                    <span className={styles.bigger}>Bigger</span>
+                </div>
             </div>
 
 

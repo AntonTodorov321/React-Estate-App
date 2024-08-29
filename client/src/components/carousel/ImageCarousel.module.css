@@ -55,4 +55,19 @@
     font-size: 0.8em;
     cursor: pointer;
     margin-left: auto;
+    color: #c6cbd2;
+    margin-left: 0.5em;
+}
+
+.biggerText {
+    color: #c6cbd2;
+}
+
+.biggerText:hover .magnifyingGlas {
+    color: white;
+}
+
+.biggerText:hover .bigger {
+    color: white;
+    text-decoration: underline;
 }
