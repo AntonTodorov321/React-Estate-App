@@ -74,6 +74,7 @@ export default function ImageModal({
                     selectedItem={selectedImageIndex}
                     showIndicators={false}
                     showStatus={false}
+                    showArrows={false}
                     onChange={handleImageChange}
                 >
                     {estate.allImg.map((img, index) => (

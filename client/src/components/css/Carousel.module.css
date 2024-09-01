@@ -10,11 +10,12 @@
 .container:fullscreen {
     background: rgb(112, 112, 112);
     align-items: center;
+    overflow: hidden;
 }
 
 .container:fullscreen .img {
-    height: 100vh;
-    width: 100%;
+    height: 90vh;
+    width: auto;
 }
 
 .carouselContainer {
