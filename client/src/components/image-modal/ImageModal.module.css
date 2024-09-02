@@ -3,37 +3,31 @@
     justify-content: center;
     position: relative;
     margin-top: 1.7em;
-    max-height: 80vh;
-    overflow: hidden;
 }
 
 .container:fullscreen {
     background: rgb(112, 112, 112);
     align-items: center;
-    overflow: hidden;
 }
 
 .container:fullscreen .img {
     height: 90vh;
-    width: auto;
 }
 
 .carouselContainer {
     width: 80%;
-    overflow: hidden;
-    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
 .img {
     height: 50vh;
     cursor: pointer;
-    position: relative;
 }
 
 .carouselImage {
+    width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .modal {
@@ -49,6 +43,7 @@
     max-height: 90%;
     overflow: auto;
     z-index: 1000;
+
 }
 
 .overlay {
@@ -86,53 +81,6 @@
 
 .spacer {
     flex-grow: 1;
-}
-
-.modalContent {
-    max-height: 80vh;
-    overflow-y: auto;
-}
-
-.showStatus {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.3em;
-}
-
-.arrows {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: center;
-}
-
-.arrow {
-    cursor: pointer;
-    font-size: 1.5em;
-    color: #dcd7d7;
-    padding: 0 0.6em;
-}
-
-.arrow:hover {
-    color: rgb(255, 255, 255);
-}
-
-.bigger {
-    font-size: 0.8em;
-    cursor: pointer;
-    margin-left: 0.2em;
-}
-
-.bigger:hover {
-    text-decoration: underline;
 }
 
 .imageStatus {

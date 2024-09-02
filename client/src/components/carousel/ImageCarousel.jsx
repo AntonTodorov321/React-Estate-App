@@ -56,7 +56,7 @@ export default function ImageCarousel({
                 {allImg.map((img, index) => (
                     <div
                         key={img}
-                        className={styles.slide}
+                        className={styles.img}
                         onClick={() => openModal(index)}
                     >
                         <img src={img} className={styles.carouselImage} />

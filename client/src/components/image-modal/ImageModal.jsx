@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-regular-svg-icons';
 import { faMaximize, faMinimize } from '@fortawesome/free-solid-svg-icons';
 
-import styles from '../css/Carousel.module.css';
+import styles from './ImageModal.module.css';
 import * as estateUtils from '../../utils/estateUtils';
 
 export default function ImageModal({
