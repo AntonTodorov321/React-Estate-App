@@ -95,7 +95,7 @@ export default function ImageModal({
                             <img
                                 src={img}
                                 ref={imgRef}
-                                className={`${styles.carouselImage} ${isPortrait ? styles.landscape : styles.isPortrait}`}
+                                className={`${isPortrait ? styles.landscape : styles.portrait}`}
                             />
                         </div>
                     ))}
@@ -103,7 +103,7 @@ export default function ImageModal({
 
                 <div className={styles.imageStatus}>
                     <FontAwesomeIcon icon={faImage} />
-                    <p>{selectedImageIndex + 1}/{estate.allImg.length}</p>
+                    <p style={{ margin: 0 }}>{selectedImageIndex + 1}/{estate.allImg.length}</p>
                 </div>
 
                 {!isFullScreen &&

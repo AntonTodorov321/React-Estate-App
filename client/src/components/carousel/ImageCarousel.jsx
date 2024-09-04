@@ -70,7 +70,8 @@ export default function ImageCarousel({
                         <img
                             src={img}
                             ref={imgRef}
-                            className={`${styles.carouselImage} ${isPortrait ? styles.landscape : styles.isPortrait}`} />
+                            className={`${isPortrait ? styles.landscape : styles.portrait}`}
+                        />
                     </div>
                 ))}
             </Carousel>
