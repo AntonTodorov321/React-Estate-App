@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,15 @@ export default function ImageCarousel({
 }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [isPortrait, setIsPortrait] = useState(false);
+    const imgRef = useRef();
+
+    useEffect(() => {
+        if (imgRef.current) {
+            const { naturalWidth, naturalHeight } = imgRef.current;
+            setIsPortrait(naturalHeight > naturalWidth);
+        }
+    }, [selectedImageIndex]);
 
     const openModal = (index) => {
         setSelectedImageIndex(index);
@@ -25,7 +34,6 @@ export default function ImageCarousel({
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setSelectedImageIndex(null);
     };
 
     const handleImageChange = (index) => {
@@ -59,7 +67,10 @@ export default function ImageCarousel({
                         className={styles.img}
                         onClick={() => openModal(index)}
                     >
-                        <img src={img} className={styles.carouselImage} />
+                        <img
+                            src={img}
+                            ref={imgRef}
+                            className={`${styles.carouselImage} ${isPortrait ? styles.landscape : styles.isPortrait}`} />
                     </div>
                 ))}
             </Carousel>

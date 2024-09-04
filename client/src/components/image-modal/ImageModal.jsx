@@ -18,6 +18,15 @@ export default function ImageModal({
 }) {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const fullScreenRef = useRef();
+    const [isPortrait, setIsPortrait] = useState(false);
+    const imgRef = useRef();
+
+    useEffect(() => {
+        if (imgRef.current) {
+            const { naturalWidth, naturalHeight } = imgRef.current;
+            setIsPortrait(naturalHeight > naturalWidth);
+        }
+    }, [selectedImageIndex]);
 
     useEffect(() => {
         const handleFullscreenChange = () => {
@@ -83,7 +92,11 @@ export default function ImageModal({
                             className={styles.img}
                             onClick={openFullScreen}
                         >
-                            <img src={img} className={styles.carouselImage} />
+                            <img
+                                src={img}
+                                ref={imgRef}
+                                className={`${styles.carouselImage} ${isPortrait ? styles.landscape : styles.isPortrait}`}
+                            />
                         </div>
                     ))}
                 </Carousel>
