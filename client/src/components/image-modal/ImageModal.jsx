@@ -85,11 +85,22 @@ export default function ImageModal({
                     showStatus={false}
                     showArrows={false}
                     onChange={handleImageChange}
+                    renderThumbs={() => (
+                        estate.allImg.map((img, index) => (
+                            <img
+                                src={img}
+                                className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
+                                style={{
+                                    height: '5em',
+                                }}
+                            />
+                        ))
+                    )}
                 >
                     {estate.allImg.map((img, index) => (
                         <div
                             key={index}
-                            className={styles.img}
+                            className={styles.imgContainer}
                             onClick={openFullScreen}
                         >
                             <img

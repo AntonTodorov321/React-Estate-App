@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.container:fullscreen .img {
+.container:fullscreen .imgContainer {
     height: 90vh;
 }
 
@@ -27,10 +27,10 @@
     transition: opacity 0.3s ease;
 }
 
-.img {
+.imgContainer {
     height: 50vh;
-    cursor: pointer;
     width: 99%;
+    cursor: pointer;
     background-color: rgb(238, 233, 233);
 }
 
@@ -115,7 +115,7 @@
 .resize {
     position: absolute;
     top: 0px;
-    right: 75px;
+    right: 77px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 0.9em;
     color: white;

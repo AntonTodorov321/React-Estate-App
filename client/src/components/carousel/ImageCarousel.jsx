@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -59,12 +59,23 @@ export default function ImageCarousel({
                 showIndicators={false}
                 showStatus={false}
                 onChange={handleImageChange}
+                renderThumbs={() => (
+                    estate.allImg.map((img, index) => (
+                        <img
+                            src={img}
+                            className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
+                            style={{
+                                height: '5em',
+                            }}
+                        />
+                    ))
+                )}
                 className={`${styles.carouselContainer} ${isModalOpen ? styles.carouselHidden : ''}`}
             >
                 {allImg.map((img, index) => (
                     <div
                         key={img}
-                        className={styles.img}
+                        className={styles.imgContainer}
                         onClick={() => openModal(index)}
                     >
                         <img
