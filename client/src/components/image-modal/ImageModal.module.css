@@ -14,6 +14,14 @@
     height: 90vh;
 }
 
+.container:fullscreen .imageStatus {
+    left: 0px;
+}
+
+.container:fullscreen .resize {
+    right: 0px;
+}
+
 .carouselContainer {
     width: 80%;
     transition: opacity 0.3s ease;
