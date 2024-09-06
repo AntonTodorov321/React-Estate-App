@@ -88,6 +88,7 @@ export default function ImageModal({
                     renderThumbs={() => (
                         estate.allImg.map((img, index) => (
                             <img
+                                key={index}
                                 src={img}
                                 className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
                                 style={{

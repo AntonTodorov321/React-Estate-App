@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,12 @@ export default function ImageCarousel({
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [isPortrait, setIsPortrait] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            carouselRef.current.moveTo(0);
+        }, 30)
+    }, [])
 
     const handleImageLoad = (index, e) => {
         setIsPortrait(prevState => {
@@ -62,6 +68,7 @@ export default function ImageCarousel({
                 renderThumbs={() => (
                     estate.allImg.map((img, index) => (
                         <img
+                            key={index}
                             src={img}
                             className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
                             style={{
