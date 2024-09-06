@@ -17,15 +17,15 @@ export default function ImageCarousel({
 }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    const [isPortrait, setIsPortrait] = useState(false);
-    const imgRef = useRef();
+    const [isPortrait, setIsPortrait] = useState([]);
 
-    useEffect(() => {
-        if (imgRef.current) {
-            const { naturalWidth, naturalHeight } = imgRef.current;
-            setIsPortrait(naturalHeight > naturalWidth);
-        }
-    }, [selectedImageIndex]);
+    const handleImageLoad = (index, e) => {
+        setIsPortrait(prevState => {
+            const newState = [...prevState];
+            newState[index] = e.target.naturalHeight > e.target.naturalWidth;
+            return newState;
+        });
+    };
 
     const openModal = (index) => {
         setSelectedImageIndex(index);
@@ -69,8 +69,8 @@ export default function ImageCarousel({
                     >
                         <img
                             src={img}
-                            ref={imgRef}
-                            className={`${isPortrait ? styles.landscape : styles.portrait}`}
+                            onLoad={(e) => handleImageLoad(index, e)}
+                            className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
                         />
                     </div>
                 ))}
