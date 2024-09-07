@@ -113,6 +113,7 @@ export default function ImageCarousel({
                 selectedImageIndex={selectedImageIndex}
                 handleImageChange={handleImageChange}
                 handlePrevClick={handlePrevClick}
+                handleNextClick={handleNextClick}
             />
         </div>
     );

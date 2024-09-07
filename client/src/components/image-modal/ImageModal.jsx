@@ -16,6 +16,7 @@ export default function ImageModal({
     estate,
     handleImageChange,
     handlePrevClick,
+    handleNextClick
 }) {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const fullScreenRef = useRef();
@@ -114,14 +115,12 @@ export default function ImageModal({
                         ))}
                     </Carousel>
 
-                    <div className={styles.arrowWrapper}>
-                        <div className={styles.leftArrowContainer} onClick={handlePrevClick} >
-                            <FontAwesomeIcon icon={faChevronLeft} className={styles.leftArrow} />
-                        </div>
+                    <div className={styles.leftArrowContainer} onClick={handlePrevClick} >
+                        <FontAwesomeIcon icon={faChevronLeft} className={styles.leftArrow} />
+                    </div>
 
-                        <div className={styles.rightArrowContainer} onClick={handlePrevClick} >
-                            <FontAwesomeIcon icon={faChevronRight} className={styles.rightArrow} />
-                        </div>
+                    <div className={styles.rightArrowContainer} onClick={handleNextClick} >
+                        <FontAwesomeIcon icon={faChevronRight} className={styles.rightArrow} />
                     </div>
 
                     {!isFullScreen &&
@@ -140,7 +139,7 @@ export default function ImageModal({
 
                 {isFullScreen &&
                     <>
-                        <div className={styles.imageStatus}>
+                        <div className={styles.imageStatusFullScreen}>
                             <FontAwesomeIcon icon={faImage} />
                             <p style={{ margin: 0 }}>{selectedImageIndex + 1}/{estate.allImg.length}</p>
                         </div>
