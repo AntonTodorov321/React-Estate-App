@@ -14,10 +14,8 @@
     height: 90vh;
 }
 
-.container:fullscreen .imageStatus {
-    top: 0px;
-    right: 0px;
-    right: auto;
+.container:fullscreen .resize {
+    position: absolute;
 }
 
 .carouselContainer {
@@ -121,6 +119,15 @@
     color: white;
 }
 
-.resize:hover {
+.resizeFullScreen {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.9em;
+    color: white;
+}
+
+.resize:hover, .resizeFullScreen:hover {
     color: #aba5a5;
 }

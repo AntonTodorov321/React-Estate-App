@@ -113,23 +113,32 @@ export default function ImageModal({
                         ))}
                     </Carousel>
 
-                    <div className={styles.imageStatus}>
-                        <FontAwesomeIcon icon={faImage} />
-                        <p style={{ margin: 0 }}>{selectedImageIndex + 1}/{estate.allImg.length}</p>
-                    </div>
-
                     {!isFullScreen &&
-                        <div className={styles.resize} onClick={openFullScreen}>
-                            <FontAwesomeIcon icon={faMaximize} />
-                        </div>
-                    }
+                        <>
+                            <div className={styles.imageStatus}>
+                                <FontAwesomeIcon icon={faImage} />
+                                <p style={{ margin: 0 }}>{selectedImageIndex + 1}/{estate.allImg.length}</p>
+                            </div>
 
-                    {isFullScreen &&
-                        <div className={styles.resize} onClick={closeFullScreen}>
-                            <FontAwesomeIcon icon={faMinimize} />
-                        </div>
+                            <div className={styles.resize} onClick={openFullScreen}>
+                                <FontAwesomeIcon icon={faMaximize} />
+                            </div>
+                        </>
                     }
                 </div>
+
+                {isFullScreen &&
+                    <>
+                        <div className={styles.imageStatus}>
+                            <FontAwesomeIcon icon={faImage} />
+                            <p style={{ margin: 0 }}>{selectedImageIndex + 1}/{estate.allImg.length}</p>
+                        </div>
+
+                        <div className={styles.resizeFullScreen} onClick={closeFullScreen}>
+                            <FontAwesomeIcon icon={faMinimize} />
+                        </div>
+                    </>
+                }
             </div>
         </Modal>
     );
