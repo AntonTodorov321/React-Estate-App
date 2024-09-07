@@ -15,16 +15,15 @@
 }
 
 .container:fullscreen .imageStatus {
-    left: 0px;
-}
-
-.container:fullscreen .resize {
+    top: 0px;
     right: 0px;
+    right: auto;
 }
 
 .carouselContainer {
     width: 80%;
     transition: opacity 0.3s ease;
+    position: relative;
 }
 
 .imgContainer {
@@ -101,7 +100,7 @@
 .imageStatus {
     position: absolute;
     top: 0px;
-    left: 71px;
+    left: 0px;
     display: flex;
     gap: 0.6em;
     flex-direction: row;
@@ -110,12 +109,13 @@
     padding: 1.3em 0.9em;
     color: white;
     height: 30px;
+    z-index: 10;
 }
 
 .resize {
     position: absolute;
     top: 0px;
-    right: 77px;
+    right: 1%;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 0.9em;
     color: white;

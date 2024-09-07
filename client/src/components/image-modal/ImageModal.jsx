@@ -75,61 +75,61 @@ export default function ImageModal({
                 ref={fullScreenRef}
                 tabIndex='0'
             >
-                <Carousel
-                    autoPlay={false}
-                    showThumbs={!isFullScreen}
-                    infiniteLoop={true}
-                    className={styles.carouselContainer}
-                    selectedItem={selectedImageIndex}
-                    showIndicators={false}
-                    showStatus={false}
-                    showArrows={false}
-                    onChange={handleImageChange}
-                    renderThumbs={() => (
-                        estate.allImg.map((img, index) => (
-                            <img
+                <div className={styles.carouselContainer}>
+                    <Carousel
+                        autoPlay={false}
+                        showThumbs={!isFullScreen}
+                        infiniteLoop={true}
+                        selectedItem={selectedImageIndex}
+                        showIndicators={false}
+                        showStatus={false}
+                        showArrows={false}
+                        onChange={handleImageChange}
+                        renderThumbs={() => (
+                            estate.allImg.map((img, index) => (
+                                <img
+                                    key={index}
+                                    src={img}
+                                    className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
+                                    style={{
+                                        height: '5em',
+                                    }}
+                                />
+                            ))
+                        )}
+                    >
+                        {estate.allImg.map((img, index) => (
+                            <div
                                 key={index}
-                                src={img}
-                                className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
-                                style={{
-                                    height: '5em',
-                                }}
-                            />
-                        ))
-                    )}
-                >
-                    {estate.allImg.map((img, index) => (
-                        <div
-                            key={index}
-                            className={styles.imgContainer}
-                            onClick={openFullScreen}
-                        >
-                            <img
-                                src={img}
-                                onLoad={(e) => handleImageLoad(index, e)}
-                                className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
-                            />
+                                className={styles.imgContainer}
+                                onClick={openFullScreen}
+                            >
+                                <img
+                                    src={img}
+                                    onLoad={(e) => handleImageLoad(index, e)}
+                                    className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
+                                />
+                            </div>
+                        ))}
+                    </Carousel>
+
+                    <div className={styles.imageStatus}>
+                        <FontAwesomeIcon icon={faImage} />
+                        <p style={{ margin: 0 }}>{selectedImageIndex + 1}/{estate.allImg.length}</p>
+                    </div>
+
+                    {!isFullScreen &&
+                        <div className={styles.resize} onClick={openFullScreen}>
+                            <FontAwesomeIcon icon={faMaximize} />
                         </div>
-                    ))}
-                </Carousel>
+                    }
 
-                <div className={styles.imageStatus}>
-                    <FontAwesomeIcon icon={faImage} />
-                    <p style={{ margin: 0 }}>{selectedImageIndex + 1}/{estate.allImg.length}</p>
+                    {isFullScreen &&
+                        <div className={styles.resize} onClick={closeFullScreen}>
+                            <FontAwesomeIcon icon={faMinimize} />
+                        </div>
+                    }
                 </div>
-
-                {!isFullScreen &&
-                    <div className={styles.resize} onClick={openFullScreen}>
-                        <FontAwesomeIcon icon={faMaximize} />
-                    </div>
-                }
-
-                {isFullScreen &&
-                    <div className={styles.resize} onClick={closeFullScreen}>
-                        <FontAwesomeIcon icon={faMinimize} />
-                    </div>
-                }
-
             </div>
         </Modal>
     );
