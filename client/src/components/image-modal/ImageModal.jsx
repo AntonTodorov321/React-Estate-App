@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-regular-svg-icons';
-import { faMaximize, faMinimize } from '@fortawesome/free-solid-svg-icons';
+import { faMaximize, faMinimize, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './ImageModal.module.css';
 import * as estateUtils from '../../utils/estateUtils';
@@ -15,6 +15,7 @@ export default function ImageModal({
     selectedImageIndex,
     estate,
     handleImageChange,
+    handlePrevClick,
 }) {
     const [isFullScreen, setIsFullScreen] = useState(false);
     const fullScreenRef = useRef();
@@ -112,6 +113,16 @@ export default function ImageModal({
                             </div>
                         ))}
                     </Carousel>
+
+                    <div className={styles.arrowWrapper}>
+                        <div className={styles.leftArrowContainer} onClick={handlePrevClick} >
+                            <FontAwesomeIcon icon={faChevronLeft} className={styles.leftArrow} />
+                        </div>
+
+                        <div className={styles.rightArrowContainer} onClick={handlePrevClick} >
+                            <FontAwesomeIcon icon={faChevronRight} className={styles.rightArrow} />
+                        </div>
+                    </div>
 
                     {!isFullScreen &&
                         <>

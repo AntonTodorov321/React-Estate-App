@@ -112,6 +112,7 @@ export default function ImageCarousel({
                 closeModal={closeModal}
                 selectedImageIndex={selectedImageIndex}
                 handleImageChange={handleImageChange}
+                handlePrevClick={handlePrevClick}
             />
         </div>
     );
