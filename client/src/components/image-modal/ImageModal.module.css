@@ -18,6 +18,14 @@
     position: absolute;
 }
 
+.container:fullscreen .leftArrowContainer{
+    top:50%;
+}
+
+.container:fullscreen .rightArrowContainer{
+    top:50%;
+}
+
 .carouselContainer {
     width: 80%;
     transition: opacity 0.3s ease;
