@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 import * as estateUtil from '../../utils/estateUtils.js';
 import styles from './EstateItem.module.css';
@@ -26,14 +28,21 @@ export default function EstateItem({
                     <h4 className={styles.important}>{estateUtil.completeEstateName(typeOfEstate)}</h4>
                     <p><span className={styles.important}>Location: </span>{estateUtil.completeEstateLocation(location)}</p>
                     <p><span className={styles.important}>Price: </span> {price} {estateUtils.getCurrencySymbol(currency)}</p>
-                    {description && 
-                    <p><span className={styles.important}>Description: </span> {description}</p>}
+                    {description &&
+                        <p><span className={styles.important}>Description: </span> {description}</p>}
                     {isAuthenticated &&
                         <Button as={Link} to={`/estates/${_id}`} variant="primary" className={styles.button}>Details</Button>
                     }
-
                 </div>
-                <div ><img src={mainImg} alt={typeOfEstate} className={styles.image} /></div>
+
+                <div>
+                    <img src={mainImg} alt={typeOfEstate} className={styles.image} />
+                </div>
+            </div>
+            <div className={styles.call}>
+                <span className={styles.callText}>Call
+                    <FontAwesomeIcon icon={faPhone} className={styles.phone} />
+                </span>
             </div>
             <hr />
         </div>
