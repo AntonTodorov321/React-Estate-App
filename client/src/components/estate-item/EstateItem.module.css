@@ -17,6 +17,7 @@
     margin-left: 5em;
     margin-bottom: 2.5em;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .content {
@@ -59,5 +60,12 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
 }
+
+.heading:hover{
+    cursor: pointer;
+    color: white;
+}
+

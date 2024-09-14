@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -16,11 +16,23 @@ export default function LatestEstates({
     size,
     currency
 }) {
+    const navigate = useNavigate();
+
+    const openDetails = () => {
+        navigate(`/estates/${_id}`);
+    };
+
     return (
         <Card className={styles.card}>
             <div className={styles.imgWrapper}>
-                <Card.Img variant="top" src={mainImg} alt={typeOfEstate} className={styles.img} />
-                <div className={styles.moreInfo}>
+                <Card.Img variant="top"
+                    src={mainImg}
+                    alt={typeOfEstate}
+                    className={styles.img}
+                    onClick={openDetails}
+                />
+
+                <div className={styles.moreInfo} onClick={openDetails}>
                     <p>Location: {location}</p>
                     <p>Price: {price} {getCurrencySymbol(currency)}</p>
                     <p>Size: {size} m<sup>2</sup></p>

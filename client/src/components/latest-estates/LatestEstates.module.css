@@ -85,6 +85,7 @@
 .description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    line-clamp: 3;
     overflow: hidden;
     -webkit-line-clamp: 3;
 }

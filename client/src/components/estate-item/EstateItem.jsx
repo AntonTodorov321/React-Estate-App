@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,12 +20,19 @@ export default function EstateItem({
     description,
 }) {
     const { isAuthenticated } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const openDetails = () => {
+        navigate(`/estates/${_id}`);
+    };
 
     return (
         <div className={styles.content}>
             <div className={styles.container}>
                 <div>
-                    <h4 className={styles.important}>{estateUtil.completeEstateName(typeOfEstate)}</h4>
+                    <h4 className={`${styles.important} ${styles.heading}`} onClick={openDetails}>
+                        {estateUtil.completeEstateName(typeOfEstate)}
+                    </h4>
                     <p><span className={styles.important}>Location: </span>{estateUtil.completeEstateLocation(location)}</p>
                     <p><span className={styles.important}>Price: </span> {price} {estateUtils.getCurrencySymbol(currency)}</p>
                     {description &&
@@ -33,13 +40,9 @@ export default function EstateItem({
                             <span className={styles.important}>Description:</span>
                             {description}
                         </p>}
-                        
-                    {isAuthenticated &&
-                        <Button as={Link} to={`/estates/${_id}`} variant="primary" className={styles.button}>Details</Button>
-                    }
                 </div>
 
-                <div>
+                <div onClick={openDetails}>
                     <img src={mainImg} alt={typeOfEstate} className={styles.image} />
                 </div>
 
