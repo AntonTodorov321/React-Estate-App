@@ -29,7 +29,11 @@ export default function EstateItem({
                     <p><span className={styles.important}>Location: </span>{estateUtil.completeEstateLocation(location)}</p>
                     <p><span className={styles.important}>Price: </span> {price} {estateUtils.getCurrencySymbol(currency)}</p>
                     {description &&
-                        <p><span className={styles.important}>Description: </span> {description}</p>}
+                        <p className={styles.description}>
+                            <span className={styles.important}>Description:</span>
+                            {description}
+                        </p>}
+                        
                     {isAuthenticated &&
                         <Button as={Link} to={`/estates/${_id}`} variant="primary" className={styles.button}>Details</Button>
                     }
@@ -38,11 +42,12 @@ export default function EstateItem({
                 <div>
                     <img src={mainImg} alt={typeOfEstate} className={styles.image} />
                 </div>
-            </div>
-            <div className={styles.call}>
-                <span className={styles.callText}>Call
-                    <FontAwesomeIcon icon={faPhone} className={styles.phone} />
-                </span>
+
+                <div className={styles.call}>
+                    <span className={styles.callText}>Call
+                        <FontAwesomeIcon icon={faPhone} className={styles.phone} />
+                    </span>
+                </div>
             </div>
             <hr />
         </div>

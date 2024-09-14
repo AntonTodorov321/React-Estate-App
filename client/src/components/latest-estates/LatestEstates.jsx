@@ -28,7 +28,7 @@ export default function LatestEstates({
             </div>
             <Card.Body className={styles.cardBody}>
                 <Card.Title className={styles.textCenter}>Rent {typeOfEstate} apartment</Card.Title>
-                <Card.Text className={styles.textCenter}>
+                <Card.Text className={`${styles.textCenter} ${styles.description}`}>
                     {description}
                 </Card.Text>
             </Card.Body>
