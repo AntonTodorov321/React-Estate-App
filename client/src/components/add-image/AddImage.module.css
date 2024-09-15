@@ -29,8 +29,9 @@
 
 .image {
     width: 300px;
-    height: auto;
+    height: 300px;
     margin-top: 0.6em;
+    object-fit: contain;
 }
 
 .removeButton{
