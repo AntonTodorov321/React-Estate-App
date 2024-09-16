@@ -5,25 +5,53 @@ export default function CallModal({
     username,
     createdOn
 }) {
+    const date = new Date(createdOn);
+
+    const formattedDate = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+    const formattedTime = date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+
     return (
-        <div className={styles.modalContainer} >
+        <div className={styles.modalContainer}>
             <div className={styles.modalContent}>
-                <p>{username}: {contacts}</p>
-                <label htmlFor='description'>Description</label>
-                <textarea rows='4' />
-                <p>Call status</p>
-                <label htmlFor='didntAnswer'>Didn't answer</label>
-                <input type='radio' id='didntAnswer' value='didntAnswer' />
-                <label htmlFor='wrongNumber'>Wrong Number</label>
-                <input type='radio' id='wrongNumber' value='wrongNumber' />
-                <label htmlFor='pickUp'>Pick up</label>
-                <input type='radio' id='pickUp' value='pickUp' />
-                <p>View status</p>
-                <label htmlFor='canSee'>Can see it</label>
-                <input type='radio' id='canSee' value='canSee' />
-                <label htmlFor='cannotSee'>Can't see it</label>
-                <input type='radio' id='cannotSee' value='cannotSee' />
-                <p>Creacted on: {createdOn}</p>
+                <div className={styles.sectionTitle}>Contacts</div>
+                <p className={styles.userInfo}>{username} - {contacts}</p>
+
+                <label htmlFor="description" className={styles.descriptionLabel}>Description</label>
+                <textarea
+                    rows="4"
+                    className={styles.descriptionTextarea}
+                />
+
+                <div className={styles.section}>
+                    <p className={styles.sectionTitle}>Call status</p>
+                    <div className={styles.radioGroup}>
+                        <label htmlFor="didntAnswer">
+                            <input type="radio" id="didntAnswer" name="callStatus" value="didntAnswer" />Didn't answer</label>
+                        <label htmlFor="wrongNumber">
+                            <input type="radio" id="wrongNumber" name="callStatus" value="wrongNumber" /> Wrong Number</label>
+                        <label htmlFor="pickUp">
+                            <input type="radio" id="pickUp" name="callStatus" value="pickUp" />Picked up</label>
+                    </div>
+                </div>
+
+                <div className={styles.section}>
+                    <p className={styles.sectionTitle}>View status</p>
+                    <div className={styles.radioGroup}>
+                        <label htmlFor="canSee">
+                            <input type="radio" id="canSee" name="viewStatus" value="canSee" /> Can see it</label>
+                        <label htmlFor="cannotSee">
+                            <input type="radio" id="cannotSee" name="viewStatus" value="cannotSee" />Can't see it</label>
+                    </div>
+                </div>
+
+                <p className={styles.createdOn}>{formattedDate} at {formattedTime}</p>
             </div>
         </div>
     );
