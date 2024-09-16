@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,11 +18,19 @@ export default function EstateItem({
     location,
     mainImg,
     description,
+    contacts,
+    _createdOn,
+    owner
 }) {
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openDetails = () => {
         navigate(`/estates/${_id}`);
+    };
+
+    const openModal = () => {
+        setIsModalOpen(true);
     };
 
     return (
@@ -45,7 +54,7 @@ export default function EstateItem({
                         <img src={mainImg} alt={typeOfEstate} className={styles.image} />
                     </div>
 
-                    <div className={styles.call}>
+                    <div className={styles.call} onClick={openModal}>
                         <span className={styles.callText}>Call
                             <FontAwesomeIcon icon={faPhone} className={styles.phone} />
                         </span>
@@ -54,7 +63,13 @@ export default function EstateItem({
                 <hr />
             </div>
 
-            <CallModal/>
+            {isModalOpen &&
+                <CallModal
+                    contacts={contacts}
+                    username={owner.username}
+                    createdOn={_createdOn}
+                />
+            }
         </>
     );
 };

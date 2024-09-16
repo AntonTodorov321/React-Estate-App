@@ -9,6 +9,8 @@ import EstateItem from "../estate-item/EstateItem";
 export default function EstateList() {
     const [estates, setEstates] = useState([]);
 
+    console.log(estates);
+
     useEffect(() => {
         try {
             estateService.getAll()

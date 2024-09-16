@@ -2,7 +2,14 @@ const baseUrl = `${import.meta.env.VITE_API_URL}/data/estates`;
 
 import * as request from "../lib/request";
 
-export const getAll = () => request.get(baseUrl);
+export const getAll = () => {
+    const query = new URLSearchParams({
+        load: 'owner=_ownerId:users'
+    });
+
+    return request.get(`${baseUrl}?${query}`);
+};
+
 export const getDetails = (estateId) => request.get(`${baseUrl}/${estateId}`);
 export const create = (data) => request.post(baseUrl, data);
 export const getOne = (estateId) => request.get(`${baseUrl}/${estateId}`);
