@@ -279,7 +279,7 @@ export default function AddEstate() {
                 />
 
                 <div className={styles.fullRowSubmit}>
-                    <button type="submit" className={styles.submit}>Submit</button>
+                    <button type="submit" className={styles.submitButton}>Submit</button>
                 </div>
             </form >
         </div >
