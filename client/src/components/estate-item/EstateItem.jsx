@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,12 +25,38 @@ export default function EstateItem({
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    useEffect(() => {
+        if (isModalOpen) {
+            window.addEventListener('keydown', handleKeyDown);
+        };
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isModalOpen]);
+
     const openDetails = () => {
         navigate(`/estates/${_id}`);
     };
 
     const openModal = () => {
         setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        };
+    };
+
+    const handleBackgroundClick = (event) => {
+        if (event.target === event.currentTarget) {
+            closeModal();
+        };
     };
 
     return (
@@ -68,6 +94,8 @@ export default function EstateItem({
                     contacts={contacts}
                     username={owner.username}
                     createdOn={_createdOn}
+                    closeModal={closeModal}
+                    handleBackgroundClick={handleBackgroundClick}
                 />
             }
         </>

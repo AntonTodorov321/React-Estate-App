@@ -3,7 +3,9 @@ import styles from './CallModal.module.css';
 export default function CallModal({
     contacts,
     username,
-    createdOn
+    createdOn,
+    closeModal,
+    handleBackgroundClick
 }) {
     const date = new Date(createdOn);
 
@@ -19,12 +21,12 @@ export default function CallModal({
 
     return (
         <form>
-            <div className={styles.modalContainer}>
+            <div className={styles.modalContainer} onClick={handleBackgroundClick}>
                 <div className={styles.modalContent}>
 
                     <div className={styles.section}>
                         <p className={`${styles.sectionTitle} ${styles.heading}`}>Contacts
-                            <span className={styles.closeButton}>&times;</span>
+                            <span className={styles.closeButton} onClick={closeModal}>&times;</span>
                         </p>
                         <p className={styles.userInfo}>{username} - {contacts}</p>
                     </div>
