@@ -94,6 +94,7 @@ export default function EstateItem({
                     contacts={contacts}
                     username={owner.username}
                     createdOn={_createdOn}
+                    _id={_id}
                     closeModal={closeModal}
                     handleBackgroundClick={handleBackgroundClick}
                 />

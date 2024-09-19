@@ -7,33 +7,32 @@ import * as estateUtil from '../../utils/estateUtils.js';
 import { AuthContext } from "../../contexts/authContext.jsx";
 import { Path } from "../../paths.js";
 import * as estateService from '../../services/estateService.js';
-import * as commentService from '../../services/commentService.js';
+import * as callService from '../../services/callService.js';
 import styles from './EstateDetails.module.css';
 
 import ImageCarousel from "../carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
-import AddComment from "../add-comment/AddComment.jsx";
-import CommnetItem from "../comment-item/CommentItem.jsx";
+import CallItem from "../comment-item/CallItem.jsx";
 
 export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
-    const [comments, setComment] = useState([]);
+    const [calls, setCalls] = useState([]);
     const focusDivRef = useRef();
     const carouselRef = useRef();
     const { estateId } = useParams();
-    const { userId, username } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         estateService.getDetails(estateId)
             .then(setEstate);
 
-        commentService.getCurrent(estateId)
-            .then(setComment);
-
-        focusDivRef.current.focus()
-    }, [estateId]);
-
+        callService.getAll(estateId)
+            .then(setCalls);
+            
+            focusDivRef.current.focus()
+        }, [estateId]);
+        
     let currencySymbol = estateUtil.getCurrencySymbol(estate.currency);
 
     const deleteButtonClickHandler = async () => {
@@ -48,10 +47,6 @@ export default function EstateDetails() {
                 toast.error('An error occurred: ' + err.message);
             }
         };
-    };
-
-    const addComment = (newComment) => {
-        setComment(state => [...state, { ...newComment, owner: { username } }]);
     };
 
     const handleKeyDown = (e) => {
@@ -131,21 +126,16 @@ export default function EstateDetails() {
                     }
                 </div>
 
-                {comments.length > 0 && (
+                {calls.length > 0 && (
                     <>
-                        <h3 className={styles.title}>Comments:</h3>
+                        <h3 className={styles.title}>Calls:</h3>
 
-                        {comments.map(comment => (
-                            <CommnetItem key={comment._id} {...comment} />
+                        {calls.map(call => (
+                            <CallItem key={call._id} {...call} />
                         ))}
                     </>
                 )}
             </div>
-
-            <AddComment
-                estateId={estateId}
-                addComment={addComment}
-            />
 
             <Map />
         </div>

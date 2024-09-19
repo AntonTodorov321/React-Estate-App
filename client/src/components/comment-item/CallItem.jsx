@@ -1,8 +1,8 @@
-import styles from './CommentItem.module.css';
+import styles from './CallItem.module.css';
 
-export default function CommnetItem({
+export default function CallItem({
     owner,
-    comment
+    call
 }) {
     return (
         <div className={styles.comment}>
@@ -10,7 +10,8 @@ export default function CommnetItem({
                 <span className={styles.username}>{owner.username}</span>
             </div>
             <div className={styles.content}>
-                {comment}
+                {call.description}
+                {call.callStatus}
             </div>
         </div>
     );

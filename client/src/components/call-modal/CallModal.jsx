@@ -1,4 +1,6 @@
 import { useState } from 'react';
+
+import * as callService from '../../services/callService';
 import styles from './CallModal.module.css';
 
 const initialValues = {
@@ -10,13 +12,15 @@ export default function CallModal({
     contacts,
     username,
     createdOn,
+    _id,
     closeModal,
-    handleBackgroundClick
+    handleBackgroundClick,
 }) {
     const [formValues, setFormValues] = useState(initialValues);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
+        await callService.create(_id, formValues);
         closeModal();
     };
 
