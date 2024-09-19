@@ -69,12 +69,23 @@ export default function CallModal({
                     <div className={styles.section}>
                         <p className={styles.sectionTitle}>Call status</p>
                         <div className={styles.radioGroup}>
+                            <label htmlFor="pickUp">
+                                <input
+                                    type="radio"
+                                    id="pickUp"
+                                    name="callStatus"
+                                    value="Picked up"
+                                    onChange={onChange}
+                                />
+                                Picked up
+                            </label>
+
                             <label htmlFor="didntAnswer">
                                 <input
                                     type="radio"
                                     id="didntAnswer"
                                     name="callStatus"
-                                    value="didntAnswer"
+                                    value="Didnt answer"
                                     onChange={onChange}
                                 />
                                 Didn't answer
@@ -85,22 +96,13 @@ export default function CallModal({
                                     type="radio"
                                     id="wrongNumber"
                                     name="callStatus"
-                                    value="wrongNumber"
+                                    value="Wrong number"
                                     onChange={onChange}
                                 />
                                 Wrong Number
                             </label>
 
-                            <label htmlFor="pickUp">
-                                <input
-                                    type="radio"
-                                    id="pickUp"
-                                    name="callStatus"
-                                    value="pickUp"
-                                    onChange={onChange}
-                                />
-                                Picked up
-                            </label>
+
 
                         </div>
                     </div>

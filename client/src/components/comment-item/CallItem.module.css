@@ -24,3 +24,24 @@
     word-wrap: break-word;
     white-space: pre-wrap;
 }
+
+.pickedUp{
+    color: green;
+    font-size: 0.7em;
+    text-align: end;
+    margin-right: 1em;
+}
+
+.didntAnswer{
+    color:red;
+    font-size: 0.7em;
+    text-align: end;
+    margin-right: 1em;
+}
+
+.wrongNumber{
+    color: purple;
+    font-size: 0.7em;
+    text-align: end;
+    margin-right: 1em;
+}
