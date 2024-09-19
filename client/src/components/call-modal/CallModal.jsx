@@ -1,4 +1,10 @@
+import { useState } from 'react';
 import styles from './CallModal.module.css';
+
+const initialValues = {
+    description: '',
+    callStatus: ''
+};
 
 export default function CallModal({
     contacts,
@@ -7,6 +13,20 @@ export default function CallModal({
     closeModal,
     handleBackgroundClick
 }) {
+    const [formValues, setFormValues] = useState(initialValues);
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        closeModal();
+    };
+
+    const onChange = (e) => {
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    };
+
     const date = new Date(createdOn);
 
     const formattedDate = date.toLocaleDateString('en-US', {
@@ -20,7 +40,7 @@ export default function CallModal({
     });
 
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <div className={styles.modalContainer} onClick={handleBackgroundClick}>
                 <div className={styles.modalContent}>
 
@@ -35,7 +55,10 @@ export default function CallModal({
                         <label htmlFor="description" className={styles.descriptionLabel}>Description</label>
                         <textarea
                             rows="4"
+                            name='description'
                             className={styles.descriptionTextarea}
+                            value={formValues.description}
+                            onChange={onChange}
                         />
                     </div>
 
@@ -43,11 +66,38 @@ export default function CallModal({
                         <p className={styles.sectionTitle}>Call status</p>
                         <div className={styles.radioGroup}>
                             <label htmlFor="didntAnswer">
-                                <input type="radio" id="didntAnswer" name="callStatus" value="didntAnswer" />Didn't answer</label>
+                                <input
+                                    type="radio"
+                                    id="didntAnswer"
+                                    name="callStatus"
+                                    value="didntAnswer"
+                                    onChange={onChange}
+                                />
+                                Didn't answer
+                            </label>
+
                             <label htmlFor="wrongNumber">
-                                <input type="radio" id="wrongNumber" name="callStatus" value="wrongNumber" /> Wrong Number</label>
+                                <input
+                                    type="radio"
+                                    id="wrongNumber"
+                                    name="callStatus"
+                                    value="wrongNumber"
+                                    onChange={onChange}
+                                />
+                                Wrong Number
+                            </label>
+
                             <label htmlFor="pickUp">
-                                <input type="radio" id="pickUp" name="callStatus" value="pickUp" />Picked up</label>
+                                <input
+                                    type="radio"
+                                    id="pickUp"
+                                    name="callStatus"
+                                    value="pickUp"
+                                    onChange={onChange}
+                                />
+                                Picked up
+                            </label>
+
                         </div>
                     </div>
 
