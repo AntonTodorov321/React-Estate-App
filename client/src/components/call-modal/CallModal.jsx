@@ -99,7 +99,7 @@ export default function CallModal({
                                     value="Wrong number"
                                     onChange={onChange}
                                 />
-                                Wrong Number
+                                Wrong number
                             </label>
 
 

@@ -92,19 +92,29 @@ export default function ImageCarousel({
                         />
                     </div>
                 ))}
-            </Carousel>
 
-            <div className={styles.showStatus}>
-                <div className={styles.centerArrows}>
-                    <span className={styles.arrow} onClick={handlePrevClick}>&lt;</span>
-                    {selectedImageIndex + 1}/{allImg.length}
-                    <span className={styles.arrow} onClick={handleNextClick}>&gt;</span>
+                {allImg.length === 0 &&
+                    <>
+                        <div className={styles.imgContainer}>
+                            <img src='https://www.allianceplast.com/wp-content/uploads/no-image.png' className={styles.portrait} />
+                        </div>
+                    </>
+                }
+            </Carousel>
+            
+            {allImg.length !== 0 &&
+                <div className={styles.showStatus}>
+                    <div className={styles.centerArrows}>
+                        <span className={styles.arrow} onClick={handlePrevClick}>&lt;</span>
+                        {selectedImageIndex + 1}/{allImg.length}
+                        <span className={styles.arrow} onClick={handleNextClick}>&gt;</span>
+                    </div>
+                    <div className={styles.biggerText} onClick={() => openModal(selectedImageIndex)}>
+                        <FontAwesomeIcon icon={faMagnifyingGlassPlus} className={styles.magnifyingGlas} />
+                        <span className={styles.bigger}>Bigger</span>
+                    </div>
                 </div>
-                <div className={styles.biggerText} onClick={() => openModal(selectedImageIndex)}>
-                    <FontAwesomeIcon icon={faMagnifyingGlassPlus} className={styles.magnifyingGlas} />
-                    <span className={styles.bigger}>Bigger</span>
-                </div>
-            </div>
+            }
 
             <ImageModal
                 estate={estate}

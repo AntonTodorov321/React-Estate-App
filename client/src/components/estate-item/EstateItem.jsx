@@ -76,9 +76,17 @@ export default function EstateItem({
                             </p>}
                     </div>
 
-                    <div onClick={openDetails}>
-                        <img src={mainImg} alt={typeOfEstate} className={styles.image} />
-                    </div>
+                    {mainImg &&
+                        <div onClick={openDetails}>
+                            <img src={mainImg} alt={typeOfEstate} className={styles.image} />
+                        </div>
+                    }
+
+                    {!mainImg &&
+                        <div onClick={openDetails}>
+                            <img src='https://res.cloudinary.com/heyset/image/upload/v1689582418/buukmenow-folder/no-image-icon-0.jpg'  className={styles.image} />
+                        </div>
+                    }
 
                     <div className={styles.call} onClick={openModal}>
                         <span className={styles.callText}>Call

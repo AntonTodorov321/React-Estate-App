@@ -25,12 +25,22 @@ export default function LatestEstates({
     return (
         <Card className={styles.card}>
             <div className={styles.imgWrapper}>
-                <Card.Img variant="top"
-                    src={mainImg}
-                    alt={typeOfEstate}
-                    className={styles.img}
-                    onClick={openDetails}
-                />
+                {mainImg &&
+                    <Card.Img
+                        src={mainImg}
+                        alt={typeOfEstate}
+                        className={styles.img}
+                        onClick={openDetails}
+                    />
+                }
+
+                {!mainImg &&
+                    <Card.Img
+                        src='https://st4.depositphotos.com/17828278/24401/v/450/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg'
+                        className={styles.img}
+                        onClick={openDetails}
+                    />
+                }
 
                 <div className={styles.moreInfo} onClick={openDetails}>
                     <p>Location: {location}</p>
