@@ -19,12 +19,6 @@ export default function ImageCarousel({
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [isPortrait, setIsPortrait] = useState([]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            carouselRef.current.moveTo(0);
-        }, 30)
-    }, [])
-
     const handleImageLoad = (index, e) => {
         setIsPortrait(prevState => {
             const newState = [...prevState];
@@ -79,29 +73,30 @@ export default function ImageCarousel({
                 )}
                 className={`${styles.carouselContainer} ${isModalOpen ? styles.carouselHidden : ''}`}
             >
-                {allImg.map((img, index) => (
-                    <div
-                        key={img}
-                        className={styles.imgContainer}
-                        onClick={() => openModal(index)}
-                    >
-                        <img
-                            src={img}
-                            onLoad={(e) => handleImageLoad(index, e)}
-                            className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
-                        />
-                    </div>
-                ))}
-
-                {allImg.length === 0 &&
+                {allImg.length > 0 ? (
+                    allImg.map((img, index) => (
+                        <div
+                            key={img}
+                            className={styles.imgContainer}
+                            onClick={() => openModal(index)}
+                        >
+                            <img
+                                src={img}
+                                onLoad={(e) => handleImageLoad(index, e)}
+                                className={`${isPortrait[index] ? styles.portrait : styles.landscape}`}
+                            />
+                        </div>
+                    ))
+                ) : (
+                    allImg.length === 0 &&
                     <>
                         <div className={styles.imgContainer}>
                             <img src='https://www.allianceplast.com/wp-content/uploads/no-image.png' className={styles.portrait} />
                         </div>
                     </>
-                }
+                )}
             </Carousel>
-            
+
             {allImg.length !== 0 &&
                 <div className={styles.showStatus}>
                     <div className={styles.centerArrows}>
