@@ -10,8 +10,10 @@ export default function CallItem({
         callStatusStyle = styles.pickedUp;
     } else if (call.callStatus === 'Didnt answer') {
         callStatusStyle = styles.didntAnswer;
-    } else {
+    } else if (call.callStatus === 'Wrong number') {
         callStatusStyle = styles.wrongNumber;
+    } else {
+        callStatusStyle = styles.uncalled;
     };
 
     return (

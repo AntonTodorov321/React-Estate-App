@@ -5,7 +5,7 @@ import styles from './CallModal.module.css';
 
 const initialValues = {
     description: '',
-    callStatus: ''
+    callStatus: 'Uncalled'
 };
 
 export default function CallModal({
@@ -101,9 +101,6 @@ export default function CallModal({
                                 />
                                 Wrong number
                             </label>
-
-
-
                         </div>
                     </div>
 
