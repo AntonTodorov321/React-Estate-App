@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
-import * as estateUtil from '../../utils/estateUtils.js';
+import * as callService from '../../services/callService.js';
 import * as estateUtils from '../../utils/estateUtils.js';
 import styles from './EstateItem.module.css';
 
@@ -24,8 +24,12 @@ export default function EstateItem({
 }) {
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [lastCall, setLastCall] = useState([]);
 
     useEffect(() => {
+        callService.getLast(_id)
+            .then(setLastCall);
+
         if (isModalOpen) {
             window.addEventListener('keydown', handleKeyDown);
         };
@@ -66,9 +70,9 @@ export default function EstateItem({
                 <div className={styles.container}>
                     <div>
                         <h4 className={`${styles.important} ${styles.heading}`} onClick={openDetails}>
-                            {estateUtil.completeEstateName(typeOfEstate)}
+                            {estateUtils.completeEstateName(typeOfEstate)}
                         </h4>
-                        <p><span className={styles.important}>Location: </span>{estateUtil.completeEstateLocation(location)}</p>
+                        <p><span className={styles.important}>Location: </span>{estateUtils.completeEstateLocation(location)}</p>
                         <p><span className={styles.important}>Price: </span> {price} {estateUtils.getCurrencySymbol(currency)}</p>
                         {description &&
                             <p className={styles.description}>

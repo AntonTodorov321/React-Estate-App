@@ -19,3 +19,13 @@ export const getAll = (estateId) => {
 
     return request.get(`${baseUrl}?${query}`);
 };
+
+export const getLast = (estateId) => {
+    const query = new URLSearchParams({
+        where: `estateId="${estateId}"`,
+        sortBy: `_createdOn desc`,
+        pageSize: 1
+    });
+
+    return request.get(`${baseUrl}?${query}`);
+};
