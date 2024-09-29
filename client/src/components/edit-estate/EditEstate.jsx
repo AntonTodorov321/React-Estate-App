@@ -287,7 +287,7 @@ export default function EditEstate() {
                 />
 
                 <div className={styles.fullRowSubmit}>
-                    <button type="submit" className={styles.submit}>Submit</button>
+                    <button type="submit" className={styles.submitButton}>Submit</button>
                 </div>
             </form >
         </div >
