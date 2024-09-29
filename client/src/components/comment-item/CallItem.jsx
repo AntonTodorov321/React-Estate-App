@@ -4,7 +4,7 @@ export default function CallItem({
     owner,
     call
 }) {
-    let callStatusStyle;
+    let callStatusStyle = styles.uncalled;
 
     if (call.callStatus === 'Picked up') {
         callStatusStyle = styles.pickedUp;
@@ -12,8 +12,6 @@ export default function CallItem({
         callStatusStyle = styles.didntAnswer;
     } else if (call.callStatus === 'Wrong number') {
         callStatusStyle = styles.wrongNumber;
-    } else {
-        callStatusStyle = styles.uncalled;
     };
 
     return (

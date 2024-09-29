@@ -2,9 +2,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background: linear-gradient(to bottom,
-            #e7ebed 0%,
-            rgba(168, 166, 166, 0.7) 100%);
     padding: 2.5em;
     margin-bottom: 2em;
     position: relative;
@@ -64,8 +61,31 @@
     -webkit-line-clamp: 3;
 }
 
-.heading:hover{
+.heading:hover {
     cursor: pointer;
     color: white;
 }
 
+.pickedUp {
+    background: linear-gradient(to bottom,
+            #e7ebed 80%,
+            green);
+}
+
+.didntAnswer {
+    background: linear-gradient(to bottom,
+            #e7ebed 80%,
+            red);
+}
+
+.wrongNumber {
+    background: linear-gradient(to bottom,
+            #e7ebed 80%,
+            purple);
+}
+
+.uncalled {
+    background: linear-gradient(to bottom,
+            #e7ebed 80%,
+            rgba(168, 166, 166, 0.7));
+}

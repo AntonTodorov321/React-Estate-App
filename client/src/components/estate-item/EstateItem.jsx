@@ -39,6 +39,20 @@ export default function EstateItem({
         };
     }, [isModalOpen]);
 
+    let containerColorStyle = styles.uncalled;
+
+    if (lastCall[0]) {
+        const callStstus = lastCall[0].call.callStatus;
+
+        if (callStstus === 'Picked up') {
+            containerColorStyle = styles.pickedUp;
+        } else if (callStstus === 'Didnt answer') {
+            containerColorStyle = styles.didntAnswer;
+        } else if (callStstus === 'Wrong number') {
+            containerColorStyle = styles.wrongNumber;
+        };
+    };
+
     const openDetails = () => {
         localStorage.setItem('scrollPosition', window.scrollY);
         navigate(`/estates/${_id}`);
@@ -67,7 +81,7 @@ export default function EstateItem({
     return (
         <>
             <div className={styles.content}>
-                <div className={styles.container}>
+                <div className={`${styles.container} ${containerColorStyle}`}>
                     <div>
                         <h4 className={`${styles.important} ${styles.heading}`} onClick={openDetails}>
                             {estateUtils.completeEstateName(typeOfEstate)}
