@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -29,10 +29,11 @@ export default function EstateDetails() {
 
         callService.getAll(estateId)
             .then(setCalls);
-            
-            focusDivRef.current.focus()
-        }, [estateId]);
-        
+
+        window.scrollTo(0, 0);
+        focusDivRef.current.focus({ preventScroll: true });
+    }, [estateId]);
+
     let currencySymbol = estateUtil.getCurrencySymbol(estate.currency);
 
     const deleteButtonClickHandler = async () => {
@@ -45,7 +46,7 @@ export default function EstateDetails() {
                 navigate(Path.AllEstates);
             } catch (err) {
                 toast.error('An error occurred: ' + err.message);
-            }
+            };
         };
     };
 
@@ -54,14 +55,14 @@ export default function EstateDetails() {
             carouselRef.current.decrement();
         } else if (e.key === 'ArrowRight') {
             carouselRef.current.increment();
-        }
+        };
     };
 
     return (
         <div
             ref={focusDivRef}
             onKeyDown={handleKeyDown}
-            tabIndex='0'
+            tabIndex='-1'
             className={styles.container}
         >
             <div className={styles.content}>

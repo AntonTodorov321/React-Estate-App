@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { ToastContainer} from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 import { AuthProvider } from './contexts/authContext';
 import { Path } from './paths';
@@ -32,7 +32,8 @@ function App() {
                     autoClose={1500}
                     draggable={true}
                     position="top-right"
-                    theme="light" />
+                    theme="light"
+                />
 
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />
@@ -52,6 +53,7 @@ function App() {
 
                     <Route path="*" element={<NotFound />} />
                 </Routes>
+
 
                 <Footer />
             </AuthProvider>

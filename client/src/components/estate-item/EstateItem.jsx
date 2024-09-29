@@ -36,6 +36,7 @@ export default function EstateItem({
     }, [isModalOpen]);
 
     const openDetails = () => {
+        localStorage.setItem('scrollPosition', window.scrollY);
         navigate(`/estates/${_id}`);
     };
 
@@ -84,7 +85,7 @@ export default function EstateItem({
 
                     {!mainImg &&
                         <div onClick={openDetails}>
-                            <img src='https://res.cloudinary.com/heyset/image/upload/v1689582418/buukmenow-folder/no-image-icon-0.jpg'  className={styles.image} />
+                            <img src='https://res.cloudinary.com/heyset/image/upload/v1689582418/buukmenow-folder/no-image-icon-0.jpg' className={styles.image} />
                         </div>
                     }
 

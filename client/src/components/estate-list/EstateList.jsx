@@ -15,7 +15,15 @@ export default function EstateList() {
                 .then(data => setEstates(data));
         } catch (err) {
             toast.error('An error occurred: ' + err.message);
-        }
+        };
+
+        const savedPosition = localStorage.getItem('scrollPosition');
+
+        if (savedPosition) {
+            setTimeout(() => {
+                window.scrollTo(0, savedPosition);
+            }, 30)
+        };
     }, []);
 
     return (
