@@ -17,6 +17,10 @@ export default function EditEstate() {
     const navigate = useNavigate();
     const { estateId } = useParams();
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    },[]);
+
     const submitHandler = async (values) => {
         await estateService.edit({
             ...values,
