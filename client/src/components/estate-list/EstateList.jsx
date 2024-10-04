@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import * as estateService from '../../services/estateService';
 
 import EstateItem from "../estate-item/EstateItem";
+import Pagination from "../pagination/Pagination";
 
 export default function EstateList() {
     const [estates, setEstates] = useState([]);
@@ -29,10 +30,12 @@ export default function EstateList() {
     return (
         <>
             {estates.map(estate =>
-                <EstateItem
+                <EstateItem Item
                     key={estate._id}
                     {...estate}
                 />)}
+
+            <Pagination />
         </>
     );
 };
