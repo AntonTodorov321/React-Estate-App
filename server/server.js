@@ -1402,6 +1402,78 @@
                 totalFloors: 8,
                 heating: 'air condition',
                 _createdOn: 1723570947699
+            },
+            "985d9eab-ad2e-4622-a5c8-116261fb1fd3": {
+                typeOfEstate: "one-bedroom",
+                price: 600,
+                currency: "lv",
+                location: "Izgrev",
+                size: 45,
+                mainImg: "https://media.vanityfair.com/photos/650322e5d8980cf1b1aba77a/4:3/w_2000,h_1500,c_limit/VF_1023_Yorkshire%20Estates_Opener.jpg",
+                allImg: [
+                    'https://media.vanityfair.com/photos/650322e5d8980cf1b1aba77a/4:3/w_2000,h_1500,c_limit/VF_1023_Yorkshire%20Estates_Opener.jpg',
+                ],
+                description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
+                typeOfBuilding: "panel",
+                contacts: "088 888 8888",
+                floor: 5,
+                totalFloors: 8,
+                heating: 'air condition',
+                _createdOn: 1723570947699
+            },
+            "985d9eab-ad2e-4622-a5c8-116261fb1fd9": {
+                typeOfEstate: "two-bedroom",
+                price: 600,
+                currency: "EUR",
+                location: "Iztok",
+                size: 78,
+                mainImg: "https://www.chevalcollection.com/wp-content/uploads/2023/01/CMTP_Deluxe_One_Bedroom_Living_Area.jpg",
+                allImg: [
+                    'https://www.bowlingbrookapts.com/sites/default/files/patuxent-1.jpg',
+                ],
+                description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
+                typeOfBuilding: "panel",
+                contacts: "088 888 8888",
+                floor: 5,
+                totalFloors: 8,
+                heating: 'air condition',
+                _createdOn: 1723570947699
+            },
+            "985d9eab-ad2e-4622-a5c8-116261fb1fd8": {
+                typeOfEstate: "tree-bedroom",
+                price: 1050,
+                currency: "lv",
+                location: "Lagera",
+                size: 78,
+                mainImg: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/287504075.jpg?k=3b77eec490bc7fe0f63c1a7ca764adbabc1731fc81b5bf87c957daf12c9cfba5&o=&hp=1",
+                allImg: [
+                    'https://cf.bstatic.com/xdata/images/hotel/max1024x768/287504075.jpg?k=3b77eec490bc7fe0f63c1a7ca764adbabc1731fc81b5bf87c957daf12c9cfba5&o=&hp=1',
+                ],
+                description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
+                typeOfBuilding: "panel",
+                contacts: "088 888 8888",
+                floor: 5,
+                totalFloors: 8,
+                heating: 'air condition',
+                _createdOn: 1723570947699
+            },
+            "985d9eab-ad2e-4622-a5c8-116261fb1fd7": {
+                typeOfEstate: "one-bedroom",
+                price: 500,
+                currency: "EUR",
+                location: "Centar",
+                size: 78,
+                mainImg: "https://www.home-designing.com/wp-content/uploads/2014/06/Colorful-1-bedroom-apartment.jpg",
+                allImg: [
+                    'https://www.home-designing.com/wp-content/uploads/2014/06/Colorful-1-bedroom-apartment.jpg',
+                ],
+                description: ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta eius, vel saepe deleniti dolore maiores nisi fuga quam magni sit facilis',
+                typeOfBuilding: "panel",
+                contacts: "088 888 8888",
+                floor: 5,
+                totalFloors: 8,
+                heating: 'air condition',
+                _createdOn: 1723570947699
             }
         }
     };
