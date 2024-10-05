@@ -9,9 +9,14 @@ import EstateItem from "../estate-item/EstateItem";
 import Pagination from "../pagination/Pagination";
 
 export default function EstateList() {
-    const [estates, setEstates] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
     const location = useLocation();
+
+    const [estates, setEstates] = useState([]);
+    const [currentPage, setCurrentPage] = useState(() => {
+        const searchParams = new URLSearchParams(location.search);
+        let page = searchParams.get('page');
+        return page ? Number(page) : 1;
+    });
 
     const searchParams = new URLSearchParams(location.search);
     let page = searchParams.get('page');
