@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import * as estateService from '../../services/estateService';
 
@@ -8,34 +9,36 @@ export default function Pagination() {
 
     estateService.getEstatesCount().then(setEstateCount);
     const totalPages = Math.ceil(estateCount / 3);
-
-    const paginate = (pageNumber) => setCurrentPage(pageNumber); 
+    ``
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className="pagination">
-            <button
+            <Link
+                to={`?page=${currentPage - 1}`}
                 onClick={() => paginate(currentPage - 1)}
-                disabled={currentPage === 1}
             >
                 Previous
-            </button>
+            </Link>
 
             {Array.from({ length: totalPages }, (_, index) => (
-                <button
+                <Link
                     key={index}
+                    to={`?page=${index + 1}`}
                     onClick={() => paginate(index + 1)}
                     className={currentPage === index + 1 ? 'active' : ''}
                 >
                     {index + 1}
-                </button>
+                </Link>
             ))}
 
-            <button
+            <Link
+                to={`?page=${currentPage + 1}`}
                 onClick={() => paginate(currentPage + 1)}
                 disabled={currentPage === totalPages}
             >
                 Next
-            </button>
+            </Link>
         </div>
     );
 };
