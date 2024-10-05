@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import * as estateService from '../../services/estateService';
+import * as styles from './Pagination.module.css';
 
 export default function Pagination({
     paginate,
@@ -13,10 +14,11 @@ export default function Pagination({
     const totalPages = Math.ceil(estateCount / 3);
 
     return (
-        <div className="pagination">
+        <div className={styles.pagination}>
             <Link
                 to={`?page=${currentPage - 1}`}
                 onClick={() => paginate(currentPage - 1)}
+                className={`${styles.page} ${currentPage === 1 ? styles.disabled : ''}`}
             >
                 Previous
             </Link>
@@ -26,7 +28,7 @@ export default function Pagination({
                     key={index}
                     to={`?page=${index + 1}`}
                     onClick={() => paginate(index + 1)}
-                    className={currentPage === index + 1 ? 'active' : ''}
+                    className={`${styles.page} ${currentPage === index + 1 ? styles.active : ''}`}
                 >
                     {index + 1}
                 </Link>
@@ -35,7 +37,7 @@ export default function Pagination({
             <Link
                 to={`?page=${currentPage + 1}`}
                 onClick={() => paginate(currentPage + 1)}
-                disabled={currentPage === totalPages}
+                className={`${styles.page} ${currentPage === totalPages ? styles.disabled : ''}`}
             >
                 Next
             </Link>

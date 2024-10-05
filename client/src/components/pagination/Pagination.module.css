@@ -1,0 +1,26 @@
+.pagination{
+    text-align: center;
+}
+
+.page{
+    margin: 0 2px 0 2px;
+    color: rgb(141, 31, 31);
+    text-decoration: none;
+    border: #b3b3b3 1px solid;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.page:hover{
+    background-color: rgb(141, 31, 31);
+    color: white;
+}
+
+.active{
+    background-color: rgb(141, 31, 31);
+    color: white;
+}
+
+.disabled{
+    pointer-events: none;
+    color: gray;
+}
