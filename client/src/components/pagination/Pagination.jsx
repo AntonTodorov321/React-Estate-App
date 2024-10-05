@@ -11,7 +11,7 @@ export default function Pagination({
     const [estateCount, setEstateCount] = useState(0);
 
     estateService.getEstatesCount().then(setEstateCount);
-    const totalPages = Math.ceil(estateCount / 1);
+    const totalPages = Math.ceil(estateCount / 3);
 
     let startPage = Math.max(currentPage - 2, 1);
     let endPage = startPage + 4;
