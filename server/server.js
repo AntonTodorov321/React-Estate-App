@@ -1474,7 +1474,7 @@
                 totalFloors: 8,
                 heating: 'air condition',
                 _createdOn: 1723570947699
-            }
+            },
         }
     };
 

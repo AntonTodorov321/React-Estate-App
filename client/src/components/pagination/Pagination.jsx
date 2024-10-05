@@ -11,7 +11,17 @@ export default function Pagination({
     const [estateCount, setEstateCount] = useState(0);
 
     estateService.getEstatesCount().then(setEstateCount);
-    const totalPages = Math.ceil(estateCount / 3);
+    const totalPages = Math.ceil(estateCount / 1);
+
+    let startPage = Math.max(currentPage - 2, 1);
+    let endPage = startPage + 4;
+
+    if (endPage > totalPages) {
+        endPage = totalPages;
+        startPage = Math.max(endPage - 4, 1);
+    };
+
+    const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
 
     return (
         <div className={styles.pagination}>
@@ -31,14 +41,14 @@ export default function Pagination({
                 Previous
             </Link>
 
-            {Array.from({ length: totalPages }, (_, index) => (
+            {pageNumbers.map((page) => (
                 <Link
-                    key={index}
-                    to={`?page=${index + 1}`}
-                    onClick={() => paginate(index + 1)}
-                    className={`${styles.page} ${currentPage === index + 1 ? styles.active : ''}`}
+                    key={page}
+                    to={`?page=${page}`}
+                    onClick={() => paginate(page)}
+                    className={`${styles.page} ${currentPage === page ? styles.active : ''}`}
                 >
-                    {index + 1}
+                    {page}
                 </Link>
             ))}
 
