@@ -16,6 +16,14 @@ export default function Pagination({
     return (
         <div className={styles.pagination}>
             <Link
+                to={`?page=${1}`}
+                onClick={() => paginate(1)}
+                className={`${styles.page} ${currentPage === 1 ? styles.disabled : ''}`}
+            >
+                &lt;&lt;
+            </Link>
+
+            <Link
                 to={`?page=${currentPage - 1}`}
                 onClick={() => paginate(currentPage - 1)}
                 className={`${styles.page} ${currentPage === 1 ? styles.disabled : ''}`}
@@ -40,6 +48,14 @@ export default function Pagination({
                 className={`${styles.page} ${currentPage === totalPages ? styles.disabled : ''}`}
             >
                 Next
+            </Link>
+
+            <Link
+                to={`?page=${totalPages}`}
+                onClick={() => paginate(totalPages)}
+                className={`${styles.page} ${currentPage === totalPages ? styles.disabled : ''}`}
+            >
+                &gt;&gt;
             </Link>
         </div>
     );
