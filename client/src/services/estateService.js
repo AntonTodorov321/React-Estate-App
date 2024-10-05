@@ -2,10 +2,12 @@ const baseUrl = `${import.meta.env.VITE_API_URL}/data/estates`;
 
 import * as request from "../lib/request";
 
-export const getAll = () => {
+export const getAll = (page) => {
+    const offset = (page - 1) * 3;
+ 
     const query = new URLSearchParams({
         load: 'owner=_ownerId:users',
-        offset: 0,
+        offset: offset <= 0 ? 0 : offset,
         pageSize: 3
     });
 

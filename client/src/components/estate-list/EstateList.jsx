@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useLocation } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
@@ -9,10 +10,20 @@ import Pagination from "../pagination/Pagination";
 
 export default function EstateList() {
     const [estates, setEstates] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const location = useLocation();
+
+    const searchParams = new URLSearchParams(location.search);
+    let page = searchParams.get('page');
+    page = page ? page : 1;
+
+    const paginate = (page) => {
+        setCurrentPage(page);
+    };
 
     useEffect(() => {
         try {
-            estateService.getAll()
+            estateService.getAll(page)
                 .then(data => setEstates(data));
         } catch (err) {
             toast.error('An error occurred: ' + err.message);
@@ -25,17 +36,20 @@ export default function EstateList() {
                 window.scrollTo(0, savedPosition);
             }, 30)
         };
-    }, []);
+    }, [page]);
 
     return (
         <>
             {estates.map(estate =>
-                <EstateItem Item
+                <EstateItem
                     key={estate._id}
                     {...estate}
                 />)}
 
-            <Pagination />
+            <Pagination
+                currentPage={currentPage}
+                paginate={paginate}
+            />
         </>
     );
 };

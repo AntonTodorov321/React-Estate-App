@@ -20,7 +20,7 @@ export default function EstateItem({
     description,
     contacts,
     _createdOn,
-    owner
+    owner,
 }) {
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);

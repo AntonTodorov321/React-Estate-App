@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 import * as estateService from '../../services/estateService';
 
-export default function Pagination() {
-    const [currentPage, setCurrentPage] = useState(1);
+export default function Pagination({
+    paginate,
+    currentPage
+}) {
     const [estateCount, setEstateCount] = useState(0);
 
     estateService.getEstatesCount().then(setEstateCount);
     const totalPages = Math.ceil(estateCount / 3);
-    ``
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className="pagination">
