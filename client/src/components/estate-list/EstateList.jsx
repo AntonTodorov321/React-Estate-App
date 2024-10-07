@@ -27,13 +27,6 @@ export default function EstateList() {
     };
 
     useEffect(() => {
-        try {
-            estateService.getAll(page)
-                .then(data => setEstates(data));
-        } catch (err) {
-            toast.error('An error occurred: ' + err.message);
-        };
-
         const savedPosition = localStorage.getItem('scrollPosition');
 
         if (savedPosition) {
@@ -41,6 +34,17 @@ export default function EstateList() {
                 window.scrollTo(0, savedPosition);
             }, 30)
         };
+    }, [])
+
+    useEffect(() => {
+        try {
+            estateService.getAll(page)
+                .then(data => setEstates(data));
+        } catch (err) {
+            toast.error('An error occurred: ' + err.message);
+        };
+
+        window.scrollTo(0, 0);
     }, [page]);
 
     return (
