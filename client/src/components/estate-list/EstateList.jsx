@@ -15,7 +15,7 @@ export default function EstateList() {
     const [currentPage, setCurrentPage] = useState(() => {
         const searchParams = new URLSearchParams(location.search);
         let page = searchParams.get('page');
-        return page ? Number(page) : 1;
+        return Number(page) > 0 ? Number(page) : 1;
     });
 
     const searchParams = new URLSearchParams(location.search);
