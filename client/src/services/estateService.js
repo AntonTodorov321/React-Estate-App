@@ -15,40 +15,33 @@ export const getAll = (page) => {
     return request.get(`${baseUrl}?${query}`);
 };
 
-export const getDetails = (estateId) => {
-    setViews(estateId);
-    return request.get(`${baseUrl}/${estateId}`);
-};
+export const getViews = async (estateId) => {
+    const query = new URLSearchParams({
+        where: `estateId="${estateId}"`
+    });
 
-const setViews = async (estateId) => {
-    try {
-        const query = new URLSearchParams({
-            where: `estateId="${estateId}"`
+    const views = await request.get(`${viewsUrl}?${query}`);
+
+    if (views.length === 0) {
+        request.post(viewsUrl, {
+            estateId,
+            views: 1
         });
 
-        const views = await request.get(`${viewsUrl}?${query}`);
-        
-        if (views.length === 0) {
-            await request.post(viewsUrl, {
-                estateId,
-                views: 2
-            });
-        } else {
-            const viewId = views[0]._id;
-            const lastViewCount = views[0].views;
-            
-            await request.patch(`${viewsUrl}/${viewId}`, {
-                views: lastViewCount + 1
-            });
+        return 1;
+    } else {
+        const viewId = views[0]._id;
+        const newViewCount = views[0].views + 1;
 
-            console.log(views[0].views);
-        };
+        request.patch(`${viewsUrl}/${viewId}`, {
+            views: newViewCount
+        });
 
-    } catch (err) {
-         request.post(viewsUrl, {});
+        return newViewCount;
     };
 };
 
+export const getDetails = (estateId) => request.get(`${baseUrl}/${estateId}`);
 export const create = (data) => request.post(baseUrl, data);
 export const getOne = (estateId) => request.get(`${baseUrl}/${estateId}`);
 export const edit = (data, estateId) => request.put(`${baseUrl}/${estateId}`, data);

@@ -16,6 +16,7 @@ import CallItem from "../comment-item/CallItem.jsx";
 
 export default function EstateDetails() {
     const [estate, setEstate] = useState({ allImg: [] });
+    const [views, setViews] = useState(0);
     const [calls, setCalls] = useState([]);
     const focusDivRef = useRef();
     const carouselRef = useRef();
@@ -26,6 +27,9 @@ export default function EstateDetails() {
     useEffect(() => {
         estateService.getDetails(estateId)
             .then(setEstate);
+
+            estateService.getViews(estateId)
+            .then(setViews)
 
         callService.getAll(estateId)
             .then(setCalls);
@@ -66,6 +70,7 @@ export default function EstateDetails() {
             className={styles.container}
         >
             <div className={styles.content}>
+            <p>{views}</p>
                 <div className={styles.header}>
                     <div>
                         <h2>{estateUtil.completeEstateName(estate.typeOfEstate)}</h2>

@@ -1781,7 +1781,8 @@
                 heating: 'gas',
                 _createdOn: 1723570947715
             }
-        }
+        },
+        views: {}
     };
 
     var rules$1 = {
