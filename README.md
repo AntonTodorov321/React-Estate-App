@@ -10,7 +10,7 @@ The estate app is designed to connect property owners with potential renters. It
 - **Edit & Delete Estate:** Owners can edit their own listings.
 
 ## Live Demo
-- You can access the live demo here - [Estate App]([https://react-estate-app.web.app](https://estate-app-2024.web.app/))
+- You can access the live demo here - [Estate App](https://estate-app-2024.web.app/)
 
 ## Get Started
 
