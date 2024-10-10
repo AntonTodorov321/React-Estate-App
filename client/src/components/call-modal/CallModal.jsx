@@ -32,7 +32,7 @@ export default function CallModal({
         }));
     };
 
-    const [formattedDate, formattedTime] = estateUtils.getFormatedDate(createdOn);
+    const [formattedDate, formattedTime] = estateUtils.getFormattedDate(createdOn);
 
     return (
         <form onSubmit={onSubmit}>

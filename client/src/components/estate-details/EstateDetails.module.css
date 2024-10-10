@@ -66,3 +66,18 @@
 .caption {
     margin-top: 1em;
 }
+
+.additionalInfo{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.smallerText{
+    font-size: 0.8em;
+    text-align: end;
+}

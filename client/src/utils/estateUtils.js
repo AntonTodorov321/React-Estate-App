@@ -2,7 +2,7 @@ export const completeEstateName = (typeOfEstate) => `Rent ${typeOfEstate} apartm
 export const completeEstateLocation = (location) => `Sofia, ${location}`;
 export const getCurrencySymbol = (currency) => currency === 'EUR' ? '€' : 'lv';
 
-export const getFormatedDate = (createdOn) => {
+export const getFormattedDate = (createdOn) => {
     const date = new Date(createdOn);
 
     const formattedDate = date.toLocaleDateString('en-US', {

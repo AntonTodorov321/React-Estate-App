@@ -4,13 +4,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import * as estateUtil from '../../utils/estateUtils.js';
-import { AuthContext } from "../../contexts/authContext.jsx";
-import { Path } from "../../paths.js";
 import * as estateService from '../../services/estateService.js';
 import * as callService from '../../services/callService.js';
+import { AuthContext } from "../../contexts/authContext.jsx";
+import { Path } from "../../paths.js";
 import styles from './EstateDetails.module.css';
 
-import ImageCarousel from "../carousel/ImageCarousel.jsx";
+import ImageCarousel from "../image-carousel/ImageCarousel.jsx";
 import Map from "../map/Map.jsx";
 import CallItem from "../comment-item/CallItem.jsx";
 
@@ -28,7 +28,7 @@ export default function EstateDetails() {
         estateService.getDetails(estateId)
             .then(setEstate);
 
-            estateService.getViews(estateId)
+        estateService.getViews(estateId)
             .then(setViews)
 
         callService.getAll(estateId)
@@ -62,6 +62,8 @@ export default function EstateDetails() {
         };
     };
 
+    const [formattedDate, formattedTime] = estateUtil.getFormattedDate(estate._createdOn);
+
     return (
         <div
             ref={focusDivRef}
@@ -70,7 +72,6 @@ export default function EstateDetails() {
             className={styles.container}
         >
             <div className={styles.content}>
-            <p>{views}</p>
                 <div className={styles.header}>
                     <div>
                         <h2>{estateUtil.completeEstateName(estate.typeOfEstate)}</h2>
@@ -91,7 +92,15 @@ export default function EstateDetails() {
 
                 <h3 className={styles.caption}>{estateUtil.completeEstateName(estate.typeOfEstate)}</h3>
                 <div className={styles.textBold}>{estateUtil.completeEstateLocation(estate.location)}</div>
-                <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
+
+                <div className={styles.additionalInfo}>
+                    <div className={styles.importantRed}> {estate.price}({Math.trunc(estate.price / estate.size)} {currencySymbol}/m<sup>2</sup>)</div>
+                    <div className={styles.smallerText}>
+                        <div>Created on {formattedDate} at {formattedTime}</div>
+                        <div >The ad has been visited <span className={styles.bold}>{views}</span> time{views === 1 ? "" : "s"}</div>
+                    </div>
+                </div>
+
                 <div>
                     <span className={styles.textBold}>Size:</span> {estate.size}m<sup>2</sup>
 
