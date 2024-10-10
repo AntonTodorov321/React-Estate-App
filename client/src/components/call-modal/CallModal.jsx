@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import * as estateUtils from '../../utils/estateUtils';
 import * as callService from '../../services/callService';
 import styles from './CallModal.module.css';
 
@@ -31,17 +32,7 @@ export default function CallModal({
         }));
     };
 
-    const date = new Date(createdOn);
-
-    const formattedDate = date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
-    const formattedTime = date.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
-    });
+    const [formattedDate, formattedTime] = estateUtils.getFormatedDate(createdOn);
 
     return (
         <form onSubmit={onSubmit}>
