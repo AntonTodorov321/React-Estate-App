@@ -1,3 +1,8 @@
+.content {
+    width: 60%;
+    margin: 0 auto;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -15,11 +20,6 @@
     margin-bottom: 2.5em;
     object-fit: cover;
     cursor: pointer;
-}
-
-.content {
-    width: 60%;
-    margin: 0 auto;
 }
 
 .important {

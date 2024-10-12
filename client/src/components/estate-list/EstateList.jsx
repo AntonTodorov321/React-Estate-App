@@ -3,10 +3,12 @@ import { useLocation } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
+import * as styles from './EstateList.module.css';
 import * as estateService from '../../services/estateService';
 
 import EstateItem from "../estate-item/EstateItem";
 import Pagination from "../pagination/Pagination";
+import Filter from "../filter/Filter";
 
 export default function EstateList() {
     const location = useLocation();
@@ -49,11 +51,16 @@ export default function EstateList() {
 
     return (
         <>
-            {estates.map(estate =>
-                <EstateItem
-                    key={estate._id}
-                    {...estate}
-                />)}
+            <div className={styles.filter}>
+                <Filter />
+                <div>
+                    {estates.map(estate =>
+                        <EstateItem
+                            key={estate._id}
+                            {...estate}
+                        />)}
+                </div>
+            </div>
 
             <Pagination
                 currentPage={currentPage}

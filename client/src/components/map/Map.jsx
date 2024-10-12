@@ -1,4 +1,4 @@
-const ApiKey = 'AIzaSyDLktYSYR8Rq3qFJXG6eIHjK7wp3EcJM-I';
+const ApiKey = 'AIzaSyBxTZipa_KGLolgBNrmXyzgSHipOH5SX5Y';
 
 import { useEffect, useState } from 'react';
 
