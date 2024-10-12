@@ -1,5 +1,5 @@
 const baseUrl = `${import.meta.env.VITE_API_URL}/data/estates`;
-const viewsUrl = 'http://localhost:3030/data/views';
+const viewsUrl = `${import.meta.env.VITE_API_URL}/data/views`;
 
 import * as request from "../lib/request";
 
