@@ -1,0 +1,13 @@
+.sliderContainer{
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.buttonCurrency{
+    padding: 1em;
+}
+
+.buttonsCurrency{
+    display: flex;
+}

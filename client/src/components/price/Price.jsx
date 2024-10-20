@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { Slider, Box, Button } from '@mui/material';
 
+import * as styles from './Price.module.css';
+
 export default function Price() {
     const [range, setRange] = useState([0, 2500]);
     const [currency, setCurrency] = useState('EUR');
@@ -18,28 +20,34 @@ export default function Price() {
     };
 
     return (
-        <>
-            <div onClick={changeCurrency} style={{ padding: '1em' }}>lv</div>
-            <div onClick={changeCurrency} style={{ padding: '1em' }}>EUR</div>
+        <div>
+            <div className={styles.buttonsCurrency}>
+                <div onClick={changeCurrency} className={styles.buttonCurrency}>lv</div>
+                <div onClick={changeCurrency} className={styles.buttonCurrency}>EUR</div>
+            </div>
+
             <Box >
-                <Button variant="outlined" >
-                    From: {range[0]} {currency}
-                </Button>
+                <div className={styles.sliderContainer}>
+                    <Button variant="outlined" >
+                        From: {range[0]} {currency}
+                    </Button>
 
-                <Slider
-                    value={range}
-                    onChange={handleSliderChange}
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={currency === 'EUR' ? 2500 : 5000}
-                    step={currency === 'EUR' ? 25 : 50}
-                    sx={{ width: '200px' }}
-                />
+                    <Slider
+                        value={range}
+                        onChange={handleSliderChange}
+                        valueLabelDisplay="auto"
+                        min={0}
+                        max={currency === 'EUR' ? 2500 : 5000}
+                        step={currency === 'EUR' ? 25 : 50}
+                        sx={{ width: '200px' }}
+                    />
 
-                <Button variant="outlined" >
-                    To: {range[1]} {currency}
-                </Button>
+                    <Button variant="outlined" >
+                        To: {range[1]} {currency}
+                    </Button>
+                </div>
+                
             </Box>
-        </>
+        </div>
     );
 }
