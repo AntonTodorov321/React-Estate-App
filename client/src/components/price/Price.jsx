@@ -28,8 +28,8 @@ export default function Price() {
 
             <Box >
                 <div className={styles.sliderContainer}>
-                    <Button variant="outlined" >
-                        From: {range[0]} {currency}
+                    <Button variant="outlined" className={styles.button} style={{ padding: '5px' }}>
+                       {range[0]} {currency}
                     </Button>
 
                     <Slider
@@ -39,14 +39,13 @@ export default function Price() {
                         min={0}
                         max={currency === 'EUR' ? 2500 : 5000}
                         step={currency === 'EUR' ? 25 : 50}
-                        sx={{ width: '200px' }}
+                        sx={{ width: '140px' }}
                     />
 
-                    <Button variant="outlined" >
-                        To: {range[1]} {currency}
+                    <Button variant="outlined" className={styles.button} style={{ padding: '1px' }}>
+                        {range[1]} {currency}
                     </Button>
                 </div>
-                
             </Box>
         </div>
     );

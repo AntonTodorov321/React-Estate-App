@@ -51,9 +51,9 @@ export default function EstateList() {
 
     return (
         <>
-            <div className={styles.filter}>
+            <div className={styles.content}>
                 <Filter />
-                <div>
+                <div >
                     {estates.map(estate =>
                         <EstateItem
                             key={estate._id}
@@ -61,7 +61,7 @@ export default function EstateList() {
                         />)}
                 </div>
             </div>
-
+            
             <Pagination
                 currentPage={currentPage}
                 paginate={paginate}

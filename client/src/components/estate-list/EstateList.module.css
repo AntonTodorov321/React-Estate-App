@@ -1,4 +1,5 @@
-.filter{
+.content {
     display: flex;
     flex-direction: row;
+    gap: 3em;
 }

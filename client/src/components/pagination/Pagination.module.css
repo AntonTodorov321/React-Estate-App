@@ -1,8 +1,9 @@
-.pagination{
+.pagination {
     text-align: center;
+    margin-left: 15em;
 }
 
-.page{
+.page {
     margin: 0 2px 0 2px;
     color: rgb(141, 31, 31);
     text-decoration: none;
@@ -10,17 +11,17 @@
     padding: 0.2em 0.5em 0.2em 0.5em;
 }
 
-.page:hover{
+.page:hover {
     background-color: rgb(141, 31, 31);
     color: white;
 }
 
-.active{
+.active {
     background-color: rgb(141, 31, 31);
     color: white;
 }
 
-.disabled{
+.disabled {
     pointer-events: none;
     color: gray;
 }
