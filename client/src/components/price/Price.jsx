@@ -20,7 +20,7 @@ export default function Price() {
     };
 
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.buttonsCurrency}>
                 <div onClick={changeCurrency} className={`${styles.buttonCurrency} ${currency === 'lv' ? styles.selected : ''}`}>lv</div>
                 <div onClick={changeCurrency} className={`${styles.buttonCurrency} ${currency === 'EUR' ? styles.selected : ''}`}>EUR</div>

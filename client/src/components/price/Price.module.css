@@ -9,11 +9,13 @@
     color: white;
     font-weight: bold;
     border-radius: 0.4em;
-    background-color:#1976d2;
+    color: #1976d2;
+    border: 1px solid #1976d2;
 }
 
-.buttonCurrency:hover{
-    color: rgb(141, 31, 31);
+.buttonCurrency:hover {
+    color: white;
+    background-color: #1976d2;
     cursor: pointer;
 }
 
@@ -27,6 +29,11 @@
     width: 6em;
 }
 
-.selected{
-    color: rgb(141, 31, 31);
+.selected {
+    color: white;
+    background-color: #1976d2;
+}
+
+.container{
+    margin-left: 1em;
 }
