@@ -6,13 +6,27 @@
 
 .buttonCurrency {
     padding: 1em;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.4em;
+    background-color:#1976d2;
+}
+
+.buttonCurrency:hover{
+    color: rgb(141, 31, 31);
+    cursor: pointer;
 }
 
 .buttonsCurrency {
     display: flex;
     justify-content: center;
+    gap: 0.5em;
 }
 
 .button {
     width: 6em;
+}
+
+.selected{
+    color: rgb(141, 31, 31);
 }

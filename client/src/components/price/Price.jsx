@@ -22,14 +22,14 @@ export default function Price() {
     return (
         <div>
             <div className={styles.buttonsCurrency}>
-                <div onClick={changeCurrency} className={styles.buttonCurrency}>lv</div>
-                <div onClick={changeCurrency} className={styles.buttonCurrency}>EUR</div>
+                <div onClick={changeCurrency} className={`${styles.buttonCurrency} ${currency === 'lv' ? styles.selected : ''}`}>lv</div>
+                <div onClick={changeCurrency} className={`${styles.buttonCurrency} ${currency === 'EUR' ? styles.selected : ''}`}>EUR</div>
             </div>
 
             <Box >
                 <div className={styles.sliderContainer}>
                     <Button variant="outlined" className={styles.button} style={{ padding: '5px' }}>
-                       {range[0]} {currency}
+                        {range[0]} {currency}
                     </Button>
 
                     <Slider
