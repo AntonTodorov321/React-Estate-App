@@ -4,21 +4,12 @@ import { Slider, Box, Button } from '@mui/material';
 
 import * as styles from './Price.module.css';
 
-export default function Price() {
-    const [range, setRange] = useState([0, 2500]);
-    const [currency, setCurrency] = useState('EUR');
-
-    const handleSliderChange = (event, newValue) => {
-        setRange(newValue);
-    };
-
-    const changeCurrency = (e) => {
-        const selectedCurrency = e.target.textContent;
-        setCurrency(selectedCurrency);
-
-        setRange(selectedCurrency === 'EUR' ? [0, 2500] : [0, 5000]);
-    };
-
+export default function Price({
+    range,
+    currency,
+    changeCurrency,
+    handleSliderChange,
+}) {
     return (
         <div className={styles.container}>
             <div className={styles.buttonsCurrency}>
