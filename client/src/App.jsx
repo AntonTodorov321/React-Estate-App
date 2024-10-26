@@ -54,7 +54,6 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
 
-
                 <Footer />
             </AuthProvider>
         </ErrorBoundary>

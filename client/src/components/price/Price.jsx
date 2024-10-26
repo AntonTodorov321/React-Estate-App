@@ -7,14 +7,25 @@ import * as styles from './Price.module.css';
 export default function Price({
     range,
     currency,
-    changeCurrency,
+    handleChange,
     handleSliderChange,
 }) {
     return (
         <div className={styles.container}>
             <div className={styles.buttonsCurrency}>
-                <div onClick={changeCurrency} className={`${styles.buttonCurrency} ${currency === 'lv' ? styles.selected : ''}`}>lv</div>
-                <div onClick={changeCurrency} className={`${styles.buttonCurrency} ${currency === 'EUR' ? styles.selected : ''}`}>EUR</div>
+                <div
+                    data-name="currency"
+                    onClick={handleChange}
+                    className={`${styles.buttonCurrency} ${currency === 'lv' ? styles.selected : ''}`}>
+                    lv
+                </div>
+
+                <div
+                    data-name="currency"
+                    onClick={handleChange}
+                    className={`${styles.buttonCurrency} ${currency === 'EUR' ? styles.selected : ''}`}>
+                    EUR
+                </div>
             </div>
 
             <Box >

@@ -3,13 +3,14 @@ const viewsUrl = `${import.meta.env.VITE_API_URL}/data/views`;
 
 import * as request from "../lib/request";
 
-export const getAll = (page) => {
+export const getEstates = (page) => {
     const offset = (page - 1) * 3;
 
     const query = new URLSearchParams({
         load: 'owner=_ownerId:users',
         offset: offset <= 0 ? 0 : offset,
-        pageSize: 3
+        pageSize: 3,
+        where:'currency="EUR"'
     });
 
     return request.get(`${baseUrl}?${query}`);

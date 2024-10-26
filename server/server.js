@@ -1346,7 +1346,7 @@
             "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
                 typeOfEstate: "one-bedroom",
                 price: 325,
-                currency: "Euro",
+                currency: "EUR",
                 location: "Manastirski Livadi",
                 size: 45,
                 mainImg: "https://www.essexapartmenthomes.com/-/media/Project/EssexPropertyTrust/Sites/EssexApartmentHomes/Blog/2021/2021-01-12-Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up/Studio-vs-One-Bedroom-Apartment-How-They-Measure-Up-1.jpg",
@@ -1366,7 +1366,7 @@
             "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
                 typeOfEstate: "maisonette",
                 price: 970,
-                currency: "Euro",
+                currency: "EUR",
                 location: "Lozenec",
                 size: 210,
                 mainImg: "https://d1hy6t2xeg0mdl.cloudfront.net/image/326244/4454e60113/standard",

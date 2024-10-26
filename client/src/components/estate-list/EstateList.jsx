@@ -20,13 +20,14 @@ export default function EstateList() {
         return Number(page) > 0 ? Number(page) : 1;
     });
 
+    const [range, setRange] = useState([0, 2500]);
+    const [filter, setFilter] = useState({
+        currency: 'EUR'
+    });
+
     const searchParams = new URLSearchParams(location.search);
     let page = searchParams.get('page');
     page = page ? page : 1;
-
-    const paginate = (page) => {
-        setCurrentPage(page);
-    };
 
     useEffect(() => {
         const savedPosition = localStorage.getItem('scrollPosition');
@@ -40,7 +41,7 @@ export default function EstateList() {
 
     useEffect(() => {
         try {
-            estateService.getAll(page)
+            estateService.getEstates(page)
                 .then(data => setEstates(data));
         } catch (err) {
             toast.error('An error occurred: ' + err.message);
@@ -49,10 +50,46 @@ export default function EstateList() {
         window.scrollTo(0, 0);
     }, [page]);
 
+    const handleSliderChange = (event, newValue) => {
+        setRange(newValue);
+    };
+
+    const handleChange = (e) => {
+        if (e.target.dataset.name) {
+            const selectedCurrency = e.target.textContent;
+
+            setFilter(state => ({
+                ...state,
+                [e.target.dataset.name]: selectedCurrency
+            }));
+            setRange(selectedCurrency === 'EUR' ? [0, 2500] : [0, 5000]);
+        } else {
+            setFilter(state => ({
+                ...state,
+                [e.target.name]: e.target.value
+            }));
+        };
+    };
+
+    const search = () => {
+        console.log(filter.currency);
+    };
+
+    const paginate = (page) => {
+        setCurrentPage(page);
+    };
+
     return (
         <>
             <div className={styles.content}>
-                <Filter />
+                <Filter
+                    range={range}
+                    handleSliderChange={handleSliderChange}
+                    filter={filter}
+                    handleChange={handleChange}
+                    search={search}
+                />
+
                 <div >
                     {estates.map(estate =>
                         <EstateItem
@@ -61,7 +98,7 @@ export default function EstateList() {
                         />)}
                 </div>
             </div>
-            
+
             <Pagination
                 currentPage={currentPage}
                 paginate={paginate}
