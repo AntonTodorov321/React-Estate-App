@@ -81,12 +81,14 @@ export default function EstateList() {
 
         estateService.getEstatesCount(range, filter)
             .then(setEstateCount);
+
+        setCurrentPage(1);
     };
 
     const paginate = (page) => {
         setCurrentPage(page);
     };
-    
+
     return (
         <>
             <div className={styles.content}>
@@ -100,11 +102,11 @@ export default function EstateList() {
 
                 <div >
                     {estates.slice((currentPage - 1) * 3, (currentPage - 1) * 3 + 3).
-                    map(estate =>
-                        <EstateItem
-                            key={estate._id}
-                            {...estate}
-                        />)}
+                        map(estate =>
+                            <EstateItem
+                                key={estate._id}
+                                {...estate}
+                            />)}
                 </div>
             </div>
 
