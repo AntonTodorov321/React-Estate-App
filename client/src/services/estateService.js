@@ -12,21 +12,22 @@ export const getEstates = async (page, range, filter) => {
         pageSize: 3,
     });
 
-    const whereConditions = [];
-    if (filter.location) whereConditions.push(`location="${filter.location}"`);
-    if (filter.typeOfEstate) whereConditions.push(`typeOfEstate="${filter.typeOfEstate}"`);
-
-    if (whereConditions.length > 0) {
-        query.append('where', whereConditions.join(' AND '));
-    };
+    buildQuery(filter, query);
 
     const estates = await request.get(`${baseUrl}?${query}`);
-    const filtredEstates = filterEstates(estates, range, filter.currency);
-    
-    return filtredEstates;
+    return filterEstatesPrice(estates, range, filter.currency);
 };
 
-const filterEstates = (estates, range, currency) => {
+export const getEstatesCount = async(range, filter) => {
+    const query = new URLSearchParams({});
+
+    buildQuery(filter,query);
+
+    const estates = await request.get(`${baseUrl}?${query}`);
+    return filterEstatesPrice(estates, range, filter.currency).length;
+ };
+
+const filterEstatesPrice = (estates, range, currency) => {
     return estates.filter(estate => {
         let price = estate.price;
 
@@ -38,6 +39,16 @@ const filterEstates = (estates, range, currency) => {
 
         return price >= range[0] && price <= range[1];
     });
+};
+
+const buildQuery = (filter, query) => {
+    const whereConditions = [];
+    if (filter.location) whereConditions.push(`location="${filter.location}"`);
+    if (filter.typeOfEstate) whereConditions.push(`typeOfEstate="${filter.typeOfEstate}"`);
+
+    if (whereConditions.length > 0) {
+        query.append('where', whereConditions.join(' AND '));
+    };
 };
 
 export const getViews = async (estateId) => {
@@ -72,4 +83,3 @@ export const getOne = (estateId) => request.get(`${baseUrl}/${estateId}`);
 export const edit = (data, estateId) => request.put(`${baseUrl}/${estateId}`, data);
 export const remove = (estateId) => request.remove(`${baseUrl}/${estateId}`);
 export const getLatest = () => request.get(`${baseUrl}?sortBy=_createdOn%20desc&offset=0&pageSize=3`);
-export const getEstatesCount = () => request.get(`${baseUrl}?count=0`);

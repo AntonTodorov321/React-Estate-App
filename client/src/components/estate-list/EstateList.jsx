@@ -103,6 +103,8 @@ export default function EstateList() {
             <Pagination
                 currentPage={currentPage}
                 paginate={paginate}
+                range={range}
+                filter={filter}
             />
         </>
     );

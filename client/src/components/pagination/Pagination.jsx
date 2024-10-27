@@ -6,11 +6,13 @@ import * as styles from './Pagination.module.css';
 
 export default function Pagination({
     paginate,
-    currentPage
+    currentPage,
+    range,
+    filter,
 }) {
     const [estateCount, setEstateCount] = useState(0);
 
-    estateService.getEstatesCount().then(setEstateCount);
+    estateService.getEstatesCount(range, filter).then(setEstateCount);
     const totalPages = Math.ceil(estateCount / 3);
 
     let startPage = Math.max(currentPage - 2, 1);
