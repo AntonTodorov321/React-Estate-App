@@ -3,17 +3,41 @@ const viewsUrl = `${import.meta.env.VITE_API_URL}/data/views`;
 
 import * as request from "../lib/request";
 
-export const getEstates = (page) => {
+export const getEstates = async (page, range, filter) => {
     const offset = (page - 1) * 3;
 
     const query = new URLSearchParams({
         load: 'owner=_ownerId:users',
         offset: offset <= 0 ? 0 : offset,
         pageSize: 3,
-        where:'currency="EUR"'
     });
 
-    return request.get(`${baseUrl}?${query}`);
+    const whereConditions = [];
+    if (filter.location) whereConditions.push(`location="${filter.location}"`);
+    if (filter.typeOfEstate) whereConditions.push(`typeOfEstate="${filter.typeOfEstate}"`);
+
+    if (whereConditions.length > 0) {
+        query.append('where', whereConditions.join(' AND '));
+    };
+
+    const estates = await request.get(`${baseUrl}?${query}`);
+    const filtredEstates = filterEstates(estates, range, filter.currency);
+    
+    return filtredEstates;
+};
+
+const filterEstates = (estates, range, currency) => {
+    return estates.filter(estate => {
+        let price = estate.price;
+
+        if (estate.currency === 'lv' && currency === 'EUR') {
+            price /= 2;
+        } else if (estate.currency === 'EUR' && currency === 'lv') {
+            price *= 2;
+        };
+
+        return price >= range[0] && price <= range[1];
+    });
 };
 
 export const getViews = async (estateId) => {

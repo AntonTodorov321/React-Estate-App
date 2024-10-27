@@ -21,7 +21,7 @@ export default function Filter({
 
                 <select
                     value={filter.typeOfEstate}
-                    onChange={() => handleChange(e)}
+                    onChange={(e) => handleChange(e)}
                     name="typeOfEstate"
                 >
                     <option value=""></option>
@@ -35,7 +35,7 @@ export default function Filter({
 
             <select
                 value={filter.location}
-                onChange={() => handleChange(e)}
+                onChange={(e) => handleChange(e)}
                 name="location"
             >
                 <option value=""></option>

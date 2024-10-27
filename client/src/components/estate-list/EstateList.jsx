@@ -41,7 +41,7 @@ export default function EstateList() {
 
     useEffect(() => {
         try {
-            estateService.getEstates(page)
+            estateService.getEstates(page, range, filter)
                 .then(data => setEstates(data));
         } catch (err) {
             toast.error('An error occurred: ' + err.message);
@@ -72,7 +72,8 @@ export default function EstateList() {
     };
 
     const search = () => {
-        console.log(filter.currency);
+        estateService.getEstates(page, range, filter)
+            .then(data => setEstates(data));
     };
 
     const paginate = (page) => {
