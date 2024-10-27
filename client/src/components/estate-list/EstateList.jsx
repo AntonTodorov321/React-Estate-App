@@ -38,11 +38,9 @@ export default function EstateList() {
                 window.scrollTo(0, savedPosition);
             }, 30)
         };
-    }, [])
 
-    useEffect(() => {
         try {
-            estateService.getEstates(page, range, filter)
+            estateService.getEstates(range, filter)
                 .then(data => setEstates(data));
 
             estateService.getEstatesCount(range, filter)
@@ -50,7 +48,9 @@ export default function EstateList() {
         } catch (err) {
             toast.error('An error occurred: ' + err.message);
         };
+    }, [])
 
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [page]);
 
@@ -76,7 +76,7 @@ export default function EstateList() {
     };
 
     const search = () => {
-        estateService.getEstates(page, range, filter)
+        estateService.getEstates(range, filter)
             .then(data => setEstates(data));
 
         estateService.getEstatesCount(range, filter)
@@ -86,7 +86,7 @@ export default function EstateList() {
     const paginate = (page) => {
         setCurrentPage(page);
     };
-
+    
     return (
         <>
             <div className={styles.content}>
@@ -99,7 +99,8 @@ export default function EstateList() {
                 />
 
                 <div >
-                    {estates.map(estate =>
+                    {estates.slice((currentPage - 1) * 3, (currentPage - 1) * 3 + 3).
+                    map(estate =>
                         <EstateItem
                             key={estate._id}
                             {...estate}

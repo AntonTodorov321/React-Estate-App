@@ -3,16 +3,12 @@ const viewsUrl = `${import.meta.env.VITE_API_URL}/data/views`;
 
 import * as request from "../lib/request";
 
-export const getEstates = async (page, range, filter) => {
-    const offset = (page - 1) * 3;
-
+export const getEstates = async (range, filter) => {
     const query = new URLSearchParams({
         load: 'owner=_ownerId:users',
-        offset: offset <= 0 ? 0 : offset,
-        pageSize: 3,
     });
 
-    buildQuery(filter, query, range);
+    buildQuery(filter, query);
 
     const estates = await request.get(`${baseUrl}?${query}`);
     return filterEstatesPrice(estates, range, filter.currency);

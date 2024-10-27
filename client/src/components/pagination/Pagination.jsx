@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import * as estateService from '../../services/estateService';
 import * as styles from './Pagination.module.css';
 
 export default function Pagination({
@@ -9,8 +7,6 @@ export default function Pagination({
     currentPage,
     estateCount,
 }) {
-    console.log(`estateCount=${estateCount}`);
-    
     const totalPages = Math.ceil(estateCount / 3);
 
     let startPage = Math.max(currentPage - 2, 1);
