@@ -2,28 +2,42 @@ import { Slider, Box, Button } from '@mui/material';
 
 import * as styles from './Price.module.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEraser } from '@fortawesome/free-solid-svg-icons';
+
 export default function Price({
     range,
     currency,
     handleChange,
     handleSliderChange,
+    cleanFilter,
 }) {
     return (
         <div className={styles.container}>
+
             <div className={styles.buttonsCurrency}>
-                <div
-                    data-name="currency"
-                    onClick={handleChange}
-                    className={`${styles.buttonCurrency} ${currency === 'lv' ? styles.selected : ''}`}>
-                    lv
+                <div className={styles.currencyWrapper}>
+
+                    <div
+                        data-name="currency"
+                        onClick={handleChange}
+                        className={`${styles.buttonCurrency} ${currency === 'lv' ? styles.selected : ''}`}>
+                        lv
+                    </div>
+
+                    <div
+                        data-name="currency"
+                        onClick={handleChange}
+                        className={`${styles.buttonCurrency} ${currency === 'EUR' ? styles.selected : ''}`}>
+                        EUR
+                    </div>
                 </div>
 
-                <div
-                    data-name="currency"
-                    onClick={handleChange}
-                    className={`${styles.buttonCurrency} ${currency === 'EUR' ? styles.selected : ''}`}>
-                    EUR
-                </div>
+                <FontAwesomeIcon
+                    icon={faEraser}
+                    className={styles.eraser}
+                    onClick={cleanFilter}
+                />
             </div>
 
             <Box >

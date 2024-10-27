@@ -90,6 +90,21 @@ export default function EstateList() {
         setCurrentPage(page);
     };
 
+    const cleanFilter = () => {
+        setRange([0, 2500]);
+        setFilter({
+            currency: 'EUR',
+            typeOfEstate: '',
+            location: ''
+        });
+
+        estateService.getEstates(range, filter)
+            .then(data => setEstates(data));
+
+        estateService.getEstatesCount(range, filter)
+            .then(setEstateCount);
+    };
+
     return (
         <>
             <div className={styles.content}>
@@ -99,6 +114,7 @@ export default function EstateList() {
                     filter={filter}
                     handleChange={handleChange}
                     search={search}
+                    cleanFilter={cleanFilter}
                 />
 
                 <div>

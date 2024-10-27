@@ -1,12 +1,14 @@
-import Price from "../price/Price";
 import styles from './Filter.module.css';
+
+import Price from "../price/Price";
 
 export default function Filter({
     range,
     handleSliderChange,
     filter,
     handleChange,
-    search
+    search,
+    cleanFilter,
 }) {
     return (
         <div className={styles.container}>
@@ -15,6 +17,7 @@ export default function Filter({
                 currency={filter.currency}
                 handleChange={handleChange}
                 handleSliderChange={handleSliderChange}
+                cleanFilter={cleanFilter}
             />
 
             <div>
