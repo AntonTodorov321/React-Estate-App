@@ -9,11 +9,12 @@ import * as estateService from '../../services/estateService';
 import EstateItem from "../estate-item/EstateItem";
 import Pagination from "../pagination/Pagination";
 import Filter from "../filter/Filter";
+import NoResults from "../no-results/NoResults";
 
 export default function EstateList() {
     const location = useLocation();
 
-    const [estateCount, setEstateCount] = useState(0);
+    const [estatesCount, setEstateCount] = useState(0);
     const [estates, setEstates] = useState([]);
     const [currentPage, setCurrentPage] = useState(() => {
         const searchParams = new URLSearchParams(location.search);
@@ -100,21 +101,24 @@ export default function EstateList() {
                     search={search}
                 />
 
-                <div >
+                <div>
                     {estates.slice((currentPage - 1) * 3, (currentPage - 1) * 3 + 3).
                         map(estate =>
                             <EstateItem
                                 key={estate._id}
                                 {...estate}
                             />)}
+                    {estatesCount === 0 && <NoResults />}
                 </div>
             </div>
 
-            <Pagination
-                currentPage={currentPage}
-                paginate={paginate}
-                estateCount={estateCount}
-            />
+            {estatesCount > 0 &&
+                <Pagination
+                    currentPage={currentPage}
+                    paginate={paginate}
+                    estateCount={estatesCount}
+                />
+            }
         </>
     );
 };

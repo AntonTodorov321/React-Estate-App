@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { Slider, Box, Button } from '@mui/material';
 
 import * as styles from './Price.module.css';

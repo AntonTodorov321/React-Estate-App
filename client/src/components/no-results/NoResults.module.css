@@ -1,0 +1,11 @@
+.noResults {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5em;
+    font-size: 1.2em;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    width: 50em;
+}
