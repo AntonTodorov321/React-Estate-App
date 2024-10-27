@@ -13,6 +13,7 @@ import Filter from "../filter/Filter";
 export default function EstateList() {
     const location = useLocation();
 
+    const [estateCount, setEstateCount] = useState(0);
     const [estates, setEstates] = useState([]);
     const [currentPage, setCurrentPage] = useState(() => {
         const searchParams = new URLSearchParams(location.search);
@@ -43,6 +44,9 @@ export default function EstateList() {
         try {
             estateService.getEstates(page, range, filter)
                 .then(data => setEstates(data));
+
+            estateService.getEstatesCount(range, filter)
+                .then(setEstateCount);
         } catch (err) {
             toast.error('An error occurred: ' + err.message);
         };
@@ -74,6 +78,9 @@ export default function EstateList() {
     const search = () => {
         estateService.getEstates(page, range, filter)
             .then(data => setEstates(data));
+
+        estateService.getEstatesCount(range, filter)
+            .then(setEstateCount);
     };
 
     const paginate = (page) => {
@@ -103,8 +110,7 @@ export default function EstateList() {
             <Pagination
                 currentPage={currentPage}
                 paginate={paginate}
-                range={range}
-                filter={filter}
+                estateCount={estateCount}
             />
         </>
     );

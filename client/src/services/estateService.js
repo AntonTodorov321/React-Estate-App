@@ -12,20 +12,20 @@ export const getEstates = async (page, range, filter) => {
         pageSize: 3,
     });
 
-    buildQuery(filter, query);
+    buildQuery(filter, query, range);
 
     const estates = await request.get(`${baseUrl}?${query}`);
     return filterEstatesPrice(estates, range, filter.currency);
 };
 
-export const getEstatesCount = async(range, filter) => {
+export const getEstatesCount = async (range, filter) => {
     const query = new URLSearchParams({});
 
-    buildQuery(filter,query);
+    buildQuery(filter, query);
 
     const estates = await request.get(`${baseUrl}?${query}`);
     return filterEstatesPrice(estates, range, filter.currency).length;
- };
+};
 
 const filterEstatesPrice = (estates, range, currency) => {
     return estates.filter(estate => {
@@ -43,6 +43,7 @@ const filterEstatesPrice = (estates, range, currency) => {
 
 const buildQuery = (filter, query) => {
     const whereConditions = [];
+
     if (filter.location) whereConditions.push(`location="${filter.location}"`);
     if (filter.typeOfEstate) whereConditions.push(`typeOfEstate="${filter.typeOfEstate}"`);
 
