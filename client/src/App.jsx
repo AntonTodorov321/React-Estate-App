@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify'
 
 import { AuthProvider } from './contexts/authContext';
+import { FilterProvider } from './contexts/filterContext';
 import { Path } from './paths';
 
 import Home from './components/home/Home';
@@ -35,24 +36,27 @@ function App() {
                     theme="light"
                 />
 
-                <Routes>
-                    <Route path={Path.Home} element={<Home />} />
-                    <Route path={Path.AllEstates} element={<EstateList />} />
+                <FilterProvider>
+                    <Routes>
+                        <Route path={Path.Home} element={<Home />} />
 
-                    <Route element={<GuestGuard />}>
-                        <Route path={Path.Login} element={<Login />} />
-                        <Route path={Path.Register} element={<Register />} />
-                    </Route>
+                        <Route path={Path.AllEstates} element={<EstateList />} />
 
-                    <Route element={<AuthGuard />}>
-                        <Route path={Path.AddEstate} element={<AddEstate />} />
-                        <Route path='/estates/:estateId' element={<EstateDetails />} />
-                        <Route path='/estates/edit/:estateId' element={<EditEstate />} />
-                        <Route path={Path.Logout} element={<Logout />} />
-                    </Route>
+                        <Route element={<GuestGuard />}>
+                            <Route path={Path.Login} element={<Login />} />
+                            <Route path={Path.Register} element={<Register />} />
+                        </Route>
 
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
+                        <Route element={<AuthGuard />}>
+                            <Route path={Path.AddEstate} element={<AddEstate />} />
+                            <Route path='/estates/:estateId' element={<EstateDetails />} />
+                            <Route path='/estates/edit/:estateId' element={<EditEstate />} />
+                            <Route path={Path.Logout} element={<Logout />} />
+                        </Route>
+
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </FilterProvider>
 
                 <Footer />
             </AuthProvider>

@@ -1,17 +1,19 @@
+import { useContext } from 'react';
+
 import { Slider, Box, Button } from '@mui/material';
 
 import * as styles from './Price.module.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEraser } from '@fortawesome/free-solid-svg-icons';
+import { FilterContext } from '../../contexts/filterContext';
 
 export default function Price({
-    range,
-    currency,
-    handleChange,
-    handleSliderChange,
-    cleanFilter,
+    cleanFilter
 }) {
+    const { range, filter, handleChange, handleSliderChange } = useContext(FilterContext);
+    const currency = filter.currency;
+
     return (
         <div className={styles.container}>
 

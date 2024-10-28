@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useLocation } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -10,21 +10,18 @@ import EstateItem from "../estate-item/EstateItem";
 import Pagination from "../pagination/Pagination";
 import Filter from "../filter/Filter";
 import NoResults from "../no-results/NoResults";
+import { FilterContext } from "../../contexts/filterContext";
 
 export default function EstateList() {
     const location = useLocation();
 
+    const { range, filter, cleanFilter, initialRange, initialFilter } = useContext(FilterContext);
     const [estatesCount, setEstateCount] = useState(0);
     const [estates, setEstates] = useState([]);
     const [currentPage, setCurrentPage] = useState(() => {
         const searchParams = new URLSearchParams(location.search);
         let page = searchParams.get('page');
         return Number(page) > 0 ? Number(page) : 1;
-    });
-
-    const [range, setRange] = useState([0, 2500]);
-    const [filter, setFilter] = useState({
-        currency: 'EUR'
     });
 
     const searchParams = new URLSearchParams(location.search);
@@ -42,7 +39,7 @@ export default function EstateList() {
 
         try {
             estateService.getEstates(range, filter)
-                .then(data => setEstates(data));
+                .then(setEstates);
 
             estateService.getEstatesCount(range, filter)
                 .then(setEstateCount);
@@ -54,27 +51,6 @@ export default function EstateList() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [page]);
-
-    const handleSliderChange = (event, newValue) => {
-        setRange(newValue);
-    };
-
-    const handleChange = (e) => {
-        if (e.target.dataset.name) {
-            const selectedCurrency = e.target.textContent;
-
-            setFilter(state => ({
-                ...state,
-                [e.target.dataset.name]: selectedCurrency
-            }));
-            setRange(selectedCurrency === 'EUR' ? [0, 2500] : [0, 5000]);
-        } else {
-            setFilter(state => ({
-                ...state,
-                [e.target.name]: e.target.value
-            }));
-        };
-    };
 
     const search = () => {
         estateService.getEstates(range, filter)
@@ -90,21 +66,13 @@ export default function EstateList() {
         setCurrentPage(page);
     };
 
-    const cleanFilter = () => {
-        const resetRange = [0, 2500];
-        const resetFilter = {
-            currency: 'EUR',
-            typeOfEstate: '',
-            location: ''
-        };
-
-        setRange(resetRange);
-        setFilter(resetFilter);
-
-        estateService.getEstates(resetRange, resetFilter)
+    const cleanAndSearch = () => {
+        cleanFilter();
+        
+        estateService.getEstates(initialRange, initialFilter)
             .then(setEstates);
 
-        estateService.getEstatesCount(resetRange, resetFilter)
+        estateService.getEstatesCount(initialRange, initialFilter)
             .then(setEstateCount);
     };
 
@@ -112,12 +80,8 @@ export default function EstateList() {
         <>
             <div className={styles.content}>
                 <Filter
-                    range={range}
-                    handleSliderChange={handleSliderChange}
-                    filter={filter}
-                    handleChange={handleChange}
                     search={search}
-                    cleanFilter={cleanFilter}
+                    cleanFilter={cleanAndSearch}
                 />
 
                 <div>

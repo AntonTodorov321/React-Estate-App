@@ -1,22 +1,20 @@
+import { useContext } from 'react';
+
 import styles from './Filter.module.css';
+
+import { FilterContext } from '../../contexts/filterContext';
 
 import Price from "../price/Price";
 
 export default function Filter({
-    range,
-    handleSliderChange,
-    filter,
-    handleChange,
     search,
     cleanFilter,
 }) {
+    const { filter, handleChange } = useContext(FilterContext);
+
     return (
         <div className={styles.container}>
             <Price
-                range={range}
-                currency={filter.currency}
-                handleChange={handleChange}
-                handleSliderChange={handleSliderChange}
                 cleanFilter={cleanFilter}
             />
 
