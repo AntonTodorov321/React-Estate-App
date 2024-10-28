@@ -78,7 +78,7 @@ export default function EstateList() {
 
     const search = () => {
         estateService.getEstates(range, filter)
-            .then(data => setEstates(data));
+            .then(setEstates);
 
         estateService.getEstatesCount(range, filter)
             .then(setEstateCount);
@@ -91,17 +91,20 @@ export default function EstateList() {
     };
 
     const cleanFilter = () => {
-        setRange([0, 2500]);
-        setFilter({
+        const resetRange = [0, 2500];
+        const resetFilter = {
             currency: 'EUR',
             typeOfEstate: '',
             location: ''
-        });
+        };
 
-        estateService.getEstates(range, filter)
-            .then(data => setEstates(data));
+        setRange(resetRange);
+        setFilter(resetFilter);
 
-        estateService.getEstatesCount(range, filter)
+        estateService.getEstates(resetRange, resetFilter)
+            .then(setEstates);
+
+        estateService.getEstatesCount(resetRange, resetFilter)
             .then(setEstateCount);
     };
 
